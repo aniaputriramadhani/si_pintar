@@ -1,0 +1,900 @@
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+/* ==================================================
+   GLOBAL
+================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    color:#fff;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at top left,#7c3aed 0%,transparent 30%),
+        radial-gradient(circle at top right,#2563eb 0%,transparent 28%),
+        radial-gradient(circle at bottom,#06b6d4 0%,transparent 35%),
+        linear-gradient(135deg,#07111f,#101827,#091322);
+    background-attachment:fixed;
+    overflow-x:hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{ width:8px; }
+::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.15); border-radius:20px; }
+::-webkit-scrollbar-track{ background:transparent; }
+
+/* ==================================================
+   CONTENT
+================================================== */
+
+.content{
+    margin-left:280px;
+    width:calc(100% - 280px);
+    padding:32px;
+    overflow-x:hidden;
+}
+
+/* ==================================================
+   SIDEBAR
+================================================== */
+
+.sidebar{
+    width:280px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+    display:flex;
+    flex-direction:column;
+    padding:22px;
+    overflow-y:auto;
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+    border-right:1px solid rgba(255,255,255,.08);
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.08),
+        0 20px 60px rgba(0,0,0,.30);
+    z-index:1000;
+}
+
+.sidebar-logo{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+    padding-bottom:25px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.sidebar-logo img{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+    background:white;
+    padding:8px;
+}
+
+.sidebar-logo h3{
+    font-size:22px;
+    margin:0;
+    font-weight:700;
+}
+
+.sidebar-logo p{
+    margin:0;
+    color:rgba(255,255,255,.6);
+    font-size:13px;
+}
+
+.menu-title{
+    margin:18px 12px 10px;
+    color:rgba(255,255,255,.45);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:14px 18px;
+    margin:6px 0;
+    border-radius:18px;
+    color:white;
+    text-decoration:none;
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.menu-item i{ font-size:22px; }
+
+.menu-item:hover{
+    color:white;
+    transform:translateX(8px);
+    background:rgba(255,255,255,.08);
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.15),
+        0 15px 40px rgba(0,0,0,.20);
+}
+
+.menu-item.active{
+    background:linear-gradient(135deg,rgba(99,102,241,.9),rgba(59,130,246,.8));
+    color:white;
+    font-weight:600;
+    box-shadow:0 15px 40px rgba(59,130,246,.35);
+}
+
+/* ==================================================
+   GLASS CARD
+================================================== */
+
+.glass-card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+    border-radius:24px;
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.10),
+        0 20px 50px rgba(0,0,0,.25);
+    transition:.35s;
+}
+
+.glass-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 25px 60px rgba(80,120,255,.30);
+}
+
+/* ==================================================
+   TOPBAR (satu definisi, sudah anti kepotong)
+================================================== */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding:20px 28px;
+    margin-bottom:28px;
+    border-radius:24px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(28px);
+    -webkit-backdrop-filter:blur(28px);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.topbar > div:first-child{
+    flex:0 0 auto;
+}
+
+.topbar > div:last-child{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    flex-wrap:nowrap;
+    gap:14px;
+    margin-left:auto;
+    min-width:0;
+}
+
+@media(max-width:992px){
+    .content{ margin-left:0; width:100%; }
+    .sidebar{ position:relative; width:100%; height:auto; }
+    .topbar{ flex-direction:column; align-items:stretch; }
+    .topbar > div:first-child,
+    .topbar > div:last-child{ width:100%; }
+    .search-box{ width:100%; max-width:100%; }
+    .profile-card{ width:100%; }
+}
+
+.search-box{
+    flex:1 1 180px;
+    min-width:140px;
+    max-width:300px;
+    width:auto;
+    height:50px;
+    border:none;
+    outline:none;
+    padding:0 18px;
+    border-radius:50px;
+    background:rgba(255,255,255,.08);
+    color:white;
+}
+
+.search-box::placeholder{
+    color:rgba(255,255,255,.5);
+}
+
+/* Profile card di dalam topbar */ 
+
+.profile-card{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:auto;
+    max-width:220px;
+    padding:8px 16px;
+    border-radius:20px;
+    flex-shrink:0;
+}
+
+.profile-img,
+.profile-fallback{
+    width:54px;
+    height:54px;
+    min-width:54px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    object-fit:cover;
+}
+
+.profile-fallback{
+    background:linear-gradient(135deg,#6366F1,#3B82F6);
+    font-weight:700;
+    color:#fff;
+}
+
+.profile-info{
+    flex:1;
+    overflow:hidden;
+}
+
+.profile-info .name{
+    font-size:20px;
+    font-weight:700;
+    color:#fff;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.profile-info small{
+    color:rgba(255,255,255,.65);
+    display:block;
+}
+
+/* ==================================================
+   BUTTON
+================================================== */
+
+.btn-glass{
+    border:none;
+    color:white;
+    border-radius:16px;
+    padding:12px 22px;
+    font-weight:600;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    transition:.35s;
+}
+
+.btn-glass:hover{
+    transform:translateY(-3px);
+    color:#fff;
+    box-shadow:0 15px 40px rgba(59,130,246,.4);
+}
+
+/* ==================================================
+   STAT CARD (LIQUID GLASS)
+================================================== */
+
+.stat-card{
+    position:relative;
+    overflow:hidden;
+    min-height:180px;
+    padding:28px;
+    border-radius:28px;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(35px);
+    -webkit-backdrop-filter:blur(35px);
+    border:1px solid rgba(255,255,255,.10);
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.15),
+        0 20px 45px rgba(0,0,0,.25);
+    transition:.35s ease;
+}
+
+.stat-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 30px 70px rgba(79,139,255,.35);
+}
+
+.stat-card::before{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    top:-90px;
+    right:-90px;
+    background:rgba(255,255,255,.08);
+    filter:blur(8px);
+}
+
+.stat-card::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    bottom:-45px;
+    left:-45px;
+    background:rgba(255,255,255,.05);
+}
+
+/* Angka/teks di stat-card harus di atas lingkaran dekorasi */
+.stat-card .stat-title,
+.stat-card .stat-number,
+.stat-card .stat-footer,
+.stat-card .text-white-50{
+    position:relative;
+    z-index:2;
+}
+
+/* Warna */
+.stat-blue{
+    background:linear-gradient(135deg,rgba(59,130,246,.35),rgba(37,99,235,.15));
+}
+.stat-green{
+    background:linear-gradient(135deg,rgba(16,185,129,.35),rgba(22,163,74,.15));
+}
+.stat-yellow{
+    background:linear-gradient(135deg,rgba(251,191,36,.35),rgba(217,119,6,.15));
+}
+.stat-red{
+    background:linear-gradient(135deg,rgba(236,72,153,.35),rgba(190,24,93,.15));
+}
+
+.icon-circle{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:20px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 10px 30px rgba(255,255,255,.12);
+    font-size:28px;
+    color:white;
+}
+
+.stat-title{
+    font-size:14px;
+    color:rgba(255,255,255,.65);
+    margin-bottom:12px;
+}
+
+.stat-number{
+    font-size:54px;
+    font-weight:800;
+    line-height:1;
+}
+
+.stat-footer{
+    margin-top:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:rgba(255,255,255,.75);
+    font-size:14px;
+}
+
+.glow-line{
+    width:100%;
+    height:3px;
+    margin-top:18px;
+    border-radius:20px;
+    background:linear-gradient(90deg,rgba(255,255,255,.4),transparent);
+}
+
+/* ==================================================
+   CHART / PROGRESS / ACTIVITY (kartu generik)
+================================================== */
+
+.chart-card{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(25px);
+    border-radius:28px;
+    padding:25px;
+    box-shadow:0 20px 45px rgba(0,0,0,.2);
+}
+
+.chart-title{
+    font-size:20px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.progress-card{
+    background:rgba(255,255,255,.08);
+    border-radius:28px;
+    padding:25px;
+    backdrop-filter:blur(25px);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.progress-title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    font-size:14px;
+}
+
+.progress{
+    height:12px;
+    background:rgba(255,255,255,.08);
+    border-radius:30px;
+    overflow:hidden;
+    margin-bottom:25px;
+}
+
+.progress-bar{
+    border-radius:30px;
+    background:linear-gradient(90deg,#3B82F6,#8B5CF6,#06B6D4);
+}
+
+.activity-card{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(25px);
+    border-radius:28px;
+    padding:25px;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.activity-item{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    padding:18px;
+    margin-bottom:12px;
+    border-radius:18px;
+    background:rgba(255,255,255,.05);
+}
+
+.activity-item:last-child{
+    margin-bottom:0;
+}
+
+.activity-icon{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:rgba(255,255,255,.08);
+}
+
+/* ==================================================
+   QUICK MENU
+================================================== */
+
+.quick-btn{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    min-height:130px;
+    padding:18px;
+    border-radius:22px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.quick-btn:hover{
+    color:white;
+    transform:translateY(-4px);
+    background:rgba(255,255,255,.12);
+}
+
+/* ==================================================
+   ANIMATION
+================================================== */
+
+.fade-up{
+    animation:fadeUp .7s ease;
+}
+
+@keyframes fadeUp{
+    from{ opacity:0; transform:translateY(25px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+.glow{
+    animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+    from{ box-shadow:0 0 20px rgba(99,102,241,.25); }
+    to{ box-shadow:0 0 45px rgba(99,102,241,.45); }
+}
+
+/* ==========================
+   PANEL GLASS
+========================== */
+
+.panel-glass{
+    position:relative;
+    overflow:hidden;
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:28px;
+    padding:28px;
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.08),
+        0 20px 50px rgba(0,0,0,.28);
+    transition:.35s;
+}
+
+.panel-glass:hover{
+    transform:translateY(-5px);
+    box-shadow:0 25px 60px rgba(99,102,241,.28);
+}
+
+.panel-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:28px;
+}
+
+.panel-title h4{
+    color:white;
+    font-weight:700;
+    margin:0;
+}
+
+.panel-dot{
+    color:rgba(255,255,255,.5);
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* =========================
+   DASHBOARD SIZE
+========================= */
+
+.dashboard-chart{ min-height:470px; }
+.dashboard-progress{ min-height:470px; }
+.dashboard-activity{ min-height:320px; }
+.dashboard-quick{ min-height:320px; }
+
+.dashboard-chart canvas{
+    width:100%!important;
+    height:360px!important;
+}
+
+/* ===========================================
+   FORM / INPUT GLASS
+=========================================== */
+
+.glass-input{
+    background:rgba(255,255,255,.08)!important;
+    border:1px solid rgba(255,255,255,.08)!important;
+    color:white!important;
+    border-radius:16px;
+    padding:14px 18px;
+    backdrop-filter:blur(20px);
+}
+
+.glass-input::placeholder{
+    color:rgba(255,255,255,.55);
+}
+
+.glass-input:focus{
+    background:rgba(255,255,255,.12)!important;
+    color:white!important;
+    border-color:#6366F1!important;
+    box-shadow:0 0 0 .2rem rgba(99,102,241,.25)!important;
+}
+
+.glass-input option{
+    background:#1b2434;
+    color:#fff;
+}
+
+.glass-input[readonly]{
+    opacity:.8;
+}
+
+/* ===========================================
+   GLASS TABLE
+=========================================== */
+
+.table-glass{
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:24px;
+    overflow:hidden;
+}
+
+.table-glass table{
+    width:100%;
+    margin:0;
+    color:#fff;
+}
+
+.table-glass thead{
+    background:rgba(255,255,255,.08);
+}
+
+.table-glass thead th{
+    color:#fff;
+    font-weight:700;
+    border:none;
+    padding:18px;
+}
+
+.table-glass tbody td{
+    color:#fff;
+    border-top:1px solid rgba(255,255,255,.08);
+    padding:18px;
+    vertical-align:middle;
+}
+
+.table-glass tbody tr{
+    transition:.3s;
+}
+
+.table-glass tbody tr:hover{
+    background:rgba(255,255,255,.06);
+}
+
+.table,
+.table thead,
+.table tbody,
+.table tr,
+.table td,
+.table th{
+    background:transparent !important;
+    color:#fff !important;
+    border-color:rgba(255,255,255,.08)!important;
+}
+
+.table-hover tbody tr:hover{
+    background:rgba(255,255,255,.06)!important;
+}
+
+/* tombol aksi tabel */
+.action-btn{
+    border-radius:12px;
+    padding:7px 16px;
+    font-size:14px;
+    margin-right:5px;
+}
+
+.badge{
+    border-radius:50px;
+    padding:8px 14px;
+}
+
+/* ===========================================
+   PROFILE AVATAR (halaman profile)
+=========================================== */
+
+.profile-avatar-lg{
+    width:110px;
+    height:110px;
+    border-radius:28px;
+    object-fit:cover;
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:0 15px 40px rgba(0,0,0,.3);
+}
+
+.profile-avatar-fallback-lg{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:42px;
+    font-weight:800;
+    color:#fff;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+}
+
+.avatar-upload-btn{
+    position:absolute;
+    bottom:-6px;
+    right:-6px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+    color:#fff;
+    border:3px solid rgba(15,20,35,.9);
+    cursor:pointer;
+    font-size:14px;
+    transition:.3s;
+}
+
+.avatar-upload-btn:hover{
+    transform:scale(1.1);
+}
+
+/* ===========================================
+   MODAL GLASS (Bootstrap)
+=========================================== */
+
+.modal-content{
+    background:rgba(20,24,38,.92);
+    backdrop-filter:blur(30px);
+    -webkit-backdrop-filter:blur(30px);
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:24px;
+    color:#fff;
+}
+
+.modal-header,
+.modal-footer{
+    border-color:rgba(255,255,255,.08);
+}
+
+.modal-title{
+    color:#fff;
+}
+
+.btn-close{
+    filter:invert(1) grayscale(100%) brightness(200%);
+}
+
+.modal-backdrop.show{
+    opacity:.65;
+}
+
+/* ===========================================
+   LEGEND DOT & DONUT/PIE CHART WRAPPER
+=========================================== */
+
+.legend-dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    flex-shrink:0;
+}
+
+.donut-wrap{
+    position:relative;
+    width:190px;
+    aspect-ratio:1/1;
+    flex-shrink:0;
+    margin:0 auto;
+}
+
+.donut-wrap canvas{
+    width:100%!important;
+    height:100%!important;
+}
+
+/* ===========================================
+   LOGIN PAGE
+=========================================== */
+
+.login-page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:40px;
+    padding:60px 8vw;
+}
+
+.login-brand{
+    flex:1 1 420px;
+    min-width:320px;
+}
+
+.login-logo{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:22px;
+    color:#fff;
+    background:linear-gradient(135deg,#6366f1,#3b82f6);
+}
+
+.login-headline{
+    font-size:40px;
+    font-weight:800;
+    line-height:1.25;
+    color:#fff;
+}
+
+.login-form-wrap{
+    flex:1 1 380px;
+    max-width:440px;
+    margin:0 auto;
+}
+
+.login-card{
+    padding:40px;
+}
+
+/* Maskot */
+
+.mascot-row{
+    display:flex;
+    gap:24px;
+    margin-top:48px;
+    flex-wrap:wrap;
+}
+
+.mascot svg{
+    display:block;
+    filter:drop-shadow(0 15px 30px rgba(0,0,0,.25));
+}
+
+.mascot .eyes-open,
+.mascot .eyes-closed{
+    transition:opacity .2s ease;
+}
+
+.mascot .eyes-closed{
+    opacity:0;
+}
+
+.mascot.peeking .eyes-open{
+    opacity:0;
+}
+
+.mascot.peeking .eyes-closed{
+    opacity:1;
+}
+
+.mascot .hand{
+    transform:translateY(55px);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+    transform-origin:center;
+}
+
+.mascot.peeking .hand{
+    transform:translateY(0);
+}
+
+/* pupil hantu (maskot 3) bergerak ngikutin ketikan username/email */
+.mascot .pupil{
+    transition:cx .15s ease, cy .15s ease;
+}
+
+.mascot.peeking .blush{
+    opacity:.3;
+}
+
+@media(max-width:768px){
+    .login-page{ padding:40px 6vw; }
+    .login-headline{ font-size:30px; }
+    .mascot-row{ justify-content:center; }
+}
