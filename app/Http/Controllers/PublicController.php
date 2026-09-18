@@ -13,7 +13,9 @@ class PublicController extends Controller
 
     public function searchNisn(Request $request)
     {
-        $nisn = $request->query('nisn');
-        return view('public.nisn-search', compact('nisn'));
+        $nisn = $request->input('nisn');
+        $nik  = $request->input('nik');
+
+        return view('public.nisn-search', compact('nisn', 'nik'));
     }
 }

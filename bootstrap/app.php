@@ -11,8 +11,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Daftarkan alias middleware role kamu
         $middleware->alias([
             'role' => \App\Http\Middleware\RoleMiddleware::class,
+        ]);
+
+        // Tambahkan baris ini untuk mengecualikan rute login dari CSRF (mengatasi Page Expired di LocalTunnel)
+        $middleware->validateCsrfTokens(except: [
+            'login',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

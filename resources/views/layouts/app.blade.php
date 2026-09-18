@@ -6,70 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Kemendikdasmen</title>
+    <title>SIPINTAR - Kemendikdasmen</title>
 
-    <!-- Memuat CSS & JS via Vite (Pastikan npm run dev menyala) -->
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    <!-- Font Awesome CDN (Untuk memuat seluruh icon) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Memuat CSS & JS via Vite -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased">
 
     @auth
-        <!-- Jika sudah login, tampilkan Sidebar -->
-        <div class="sidebar">
-            <div class="sidebar-logo">
-                <div class="login-logo">K</div>
-                <div>
-                    <h3>Kemendikdas</h3>
-                    <p>Admin Dashboard</p>
-                </div>
-            </div>
+        <!-- LAYOUT SETELAH LOGIN (Sidebar + Content) -->
+        <div class="flex min-h-screen">
             
-            <div class="menu-title">Menu Utama</div>
-            <a href="{{ route('admin.dashboard') }}" class="menu-item active">
-                <i class="bi bi-grid-1x2-fill"></i> Dashboard
-            </a>
-            <!-- Tambahkan menu sidebar lainnya di sini jika ada -->
+            <!-- Memanggil Component Sidebar -->
+            @include('layouts.sidebar')
+
+            <!-- Area Konten Utama -->
+            <main class="flex-1 p-6 lg:p-8">
+                @yield('content')
+            </main>
+
+        </div>
+    @else
+        <!-- LAYOUT SEBELUM LOGIN -->
+        <div class="min-h-screen bg-slate-900 text-white">
+            @yield('content')
         </div>
     @endauth
-
-    <!-- Area Konten Utama -->
-    <div class="@auth content @else container py-5 @endauth">
-        
-        @auth
-            <!-- Topbar khusus untuk halaman Admin yang sudah login -->
-            <div class="topbar">
-                <div>
-                    <h4 class="fw-bold mb-0">Dashboard</h4>
-                    <small class="text-white-50">Selamat datang kembali!</small>
-                </div>
-                <div class="d-flex align-items-center gap-3">
-                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                        @csrf
-                        <button class="btn btn-glass btn-sm">
-                            <i class="bi bi-box-arrow-right"></i> Logout
-                        </button>
-                    </form>
-                </div>
-            </div>
-        @else
-            <!-- Navbar atas standar jika belum login -->
-            <nav class="topbar mb-4">
-                <a class="navbar-brand fw-bold text-white text-decoration-none fs-4" href="/">
-                    Kemendikdasmen
-                </a>
-                <div>
-                    <a href="{{ route('login') }}" class="btn-glass text-decoration-none">
-                        Login
-                    </a>
-                </div>
-            </nav>
-        @endauth
-
-        <!-- Konten Halaman Dinamis -->
-        @yield('content')
-
-    </div>
 
 </body>
 

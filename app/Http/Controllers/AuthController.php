@@ -25,10 +25,10 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             $user = Auth::user();            
-            // Direct Otomatis Berdasarkan Role Pengguna
+            // Redirect Otomatis Berdasarkan Role Pengguna
             if ($user->role === 'sekolah') {
                 return redirect()->intended(route('sekolah.dashboard'));
-            } elseif (in_array($user->role, ['dinas', 'dinas_sd', 'dinas_smp', 'dinas_sma', 'dinas_smk'])) {
+            } elseif ($user->role === 'dinas') {
                 return redirect()->intended(route('dinas.dashboard'));
             } elseif ($user->role === 'admin_pusat') {
                 return redirect()->intended(route('admin.dashboard'));
@@ -52,4 +52,3 @@ class AuthController extends Controller
         return redirect()->route('public.home');
     }
 }
-

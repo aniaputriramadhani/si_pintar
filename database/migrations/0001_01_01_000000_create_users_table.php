@@ -14,15 +14,16 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('username')->unique(); // Ganti email jadi username
+            $table->string('username')->unique(); // Menggunakan username sebagai pengenal unik
+            $table->string('email')->nullable()->unique(); // Ditambahkan nullable agar opsional jika butuh email
             $table->string('password');
-            $table->enum('role', ['sekolah', 'dinas', 'admin_pusat'])->default('sekolah'); // Tambahkan kolom role
+            $table->enum('role', ['sekolah', 'dinas', 'admin_pusat'])->default('sekolah');
             $table->rememberToken();
             $table->timestamps();
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('username')->primary(); // Pakai username
+            $table->string('username')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });

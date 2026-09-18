@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Sekolah;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SekolahController extends Controller
@@ -10,8 +11,8 @@ class SekolahController extends Controller
     {
         $summary = [
             'belum_aktivasi' => 14,
-            'nominasi' => 25,
-            'pemberian' => 40
+            'nominasi'       => 25,
+            'pemberian'      => 40
         ];
         
         return view('sekolah.dashboard', compact('summary'));

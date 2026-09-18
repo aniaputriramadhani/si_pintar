@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dinas;
 
+use App\Http\Controllers\Controller; // IMPORT BASE CONTROLLER
 use Illuminate\Http\Request;
 
 class DinasController extends Controller
@@ -58,6 +59,46 @@ class DinasController extends Controller
     }
 
     /**
+     * Tampilan Data PIP
+     */
+    public function datapip()
+    {
+        return view('dinas.datapip');
+    }
+
+    /**
+     * Tampilan Pemantauan Aktivasi & Penyaluran
+     */
+    public function pemantauan()
+    {
+        return view('dinas.pemantauan');
+    }
+
+    /**
+     * Tampilan Rekapitulasi Data
+     */
+    public function rekap()
+    {
+        return view('dinas.rekap');
+    }
+
+    /**
+     * Tampilan Verifikasi Usulan
+     */
+    public function verifikasi()
+    {
+        return view('dinas.verifikasi');
+    }
+
+    /**
+     * Tampilan Manajemen Dokumen
+     */
+    public function dokumen()
+    {
+        return view('dinas.dokumen');
+    }
+
+    /**
      * Fitur Tiket Pengaduan Dua Arah (Dinas <-> Admin Pusat)
      */
     public function pengaduan()
@@ -81,6 +122,14 @@ class DinasController extends Controller
         ];
 
         return view('dinas.pengaduan', compact('daftarTiket'));
+    }
+
+    /**
+     * Tampilan Status dan Riwayat
+     */
+    public function status()
+    {
+        return view('dinas.status');
     }
 
     /**
