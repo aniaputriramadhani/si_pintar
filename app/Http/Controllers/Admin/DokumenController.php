@@ -7,18 +7,14 @@ use Illuminate\Http\Request;
 
 class DokumenController extends Controller
 {
-    /**
-     * Tampilkan halaman utama Manajemen Dokumen Admin Pusat
-     */
     public function index(Request $request)
     {
-        // Ambil filter tahun (default 2026 sesuai dengan tampilan view)
         $tahun = $request->get('tahun', 2026);
-
-        // Jika nantinya kamu menggunakan DB/Model, data bisa dipanggil di sini.
-        // Untuk saat ini kita siapkan variabel pendukung sesuai statistik di Blade.
         $totalUnggah = 12;
+        
+        // Cek tab apa yang sedang dibuka (default 'dokumen')
+        $tab = $request->get('tab', 'dokumen');
 
-        return view('admin.dokumen', compact('tahun', 'totalUnggah'));
+        return view('admin.dokumen', compact('tahun', 'totalUnggah', 'tab'));
     }
 }

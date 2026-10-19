@@ -110,8 +110,8 @@
 
                 <!-- Informasi Sekolah Aktif -->
                 <div class="rounded-2xl border border-slate-200/80 bg-slate-50 p-4">
-                    <p id="sideNamaSekolah" class="text-lg font-black text-slate-800 leading-snug">SDN 1 Bahagia Selatan</p>
-                    <p id="sideNPSN" class="mono text-xs font-bold text-blue-600 mt-1">NPSN: 63948836</p>
+                    <p id="sideNamaSekolah" class="text-lg font-black text-slate-800 leading-snug">SMPN 1 SOREANG</p>
+                    <p id="sideNPSN" class="mono text-xs font-bold text-blue-600 mt-1">NPSN: 20206127</p>
                 </div>
 
                 <!-- Navigation Links -->
@@ -199,97 +199,246 @@
             <!-- TOP NAVBAR HEADER -->
             <header class="sticky top-0 z-30 border-b border-blue-900/10 bg-white/80 px-5 py-4 backdrop-blur-xl sm:px-8 lg:px-10">
                 <div class="mx-auto flex max-w-[1500px] items-center justify-between gap-4">
-                    
                     <div class="flex items-center gap-3">
                         <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#071a33] font-extrabold text-[#5ee8d6] lg:hidden">SD</span>
                         <div>
                             <p class="mono text-xs font-bold uppercase tracking-[.16em] text-[#0055FF]">Portal Dashboard Sekolah</p>
-                            <h1 class="mt-1 text-2xl font-extrabold tracking-tight sm:text-4xl text-[#071a33]">Detail SK Pemberian</h1>
+                            <h1 id="pageTitle" class="mt-1 text-2xl font-extrabold tracking-tight sm:text-4xl text-[#071a33]">Data SK Pemberian</h1>
                         </div>
                     </div>
 
                     <div class="flex items-center gap-3">
                         <div class="hidden text-right sm:block">
-                            <p id="topNamaSekolah" class="text-lg font-extrabold text-[#071a33]">SDN 1 Bahagia Selatan</p>
+                            <p id="topNamaSekolah" class="text-lg font-extrabold text-[#071a33]">SMPN 1 SOREANG</p>
                             <p class="text-base font-bold text-emerald-600 flex items-center justify-end gap-1.5">
                                 <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span> Terverifikasi
                             </p>
                         </div>
-
                         <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#0055FF] text-white font-extrabold text-xl shadow-lg shadow-blue-600/30" aria-label="Profil Sekolah">
                             SD
                         </div>
                     </div>
-
                 </div>
             </header>
 
-            <!-- KONTEN UTAMA DETAIL SK PEMBERIAN -->
+            <!-- KONTEN UTAMA (DAMPINGAN TABEL AWAL & DETAIL) -->
             <div class="min-h-screen text-[#071a33] relative overflow-hidden px-4 py-6 sm:px-8 lg:px-12 lg:py-10">
                 <div class="relative z-10 mx-auto max-w-[1540px] space-y-8">
 
-                    <!-- BANNER DETAIL SISWA & SK -->
-                    <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 border-l-8 border-l-[#0055FF]">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <!-- VIEW 1: TABEL DAFTAR SISWA AWAL -->
+                    <div id="sectionTabelAwal" class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-6">
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
                             <div>
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="px-3 py-1 rounded-md bg-blue-50 text-[#0055FF] border border-blue-100 text-xs font-black tracking-wider uppercase">Data Terverifikasi</span>
-                                    <span class="text-xs font-bold text-slate-400">Tahun 2026</span>
+                                <span class="px-3 py-1 rounded-md bg-blue-50 text-[#0055FF] border border-blue-100 text-xs font-black tracking-wider uppercase">AWAL -> DATA SK PEMBERIAN</span>
+                                <h2 class="text-2xl font-black text-[#071a33] mt-1">SMPN 1 SOREANG</h2>
+                            </div>
+                            <span class="text-xs font-bold text-slate-400">Tahun 2026</span>
+                        </div>
+
+                        <!-- Tabel Daftar Siswa -->
+                        <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-[#0055FF] text-white text-xs uppercase tracking-wider font-extrabold">
+                                        <th class="p-4 w-16 text-center">No</th>
+                                        <th class="p-4">Nama Siswa</th>
+                                        <th class="p-4">No PIP ID</th>
+                                        <th class="p-4">No Rekening</th>
+                                        <th class="p-4 text-center">Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 text-sm font-semibold">
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">1</td>
+                                        <td class="p-4 font-bold text-slate-800">Bela Yulianti</td>
+                                        <td class="p-4 mono text-slate-600">626826984973</td>
+                                        <td class="p-4 mono text-slate-600">0089604126</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Bela Yulianti', '626826984973', '0089604126', '4', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">2</td>
+                                        <td class="p-4 font-bold text-slate-800">Bayu Putra</td>
+                                        <td class="p-4 mono text-slate-600">622209565313</td>
+                                        <td class="p-4 mono text-slate-600">0033859253</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Bayu Putra', '622209565313', '0033859253', '4', 'Rp 750.000', 'Dalam Proses', 'Dalam Proses Penyaluran')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">3</td>
+                                        <td class="p-4 font-bold text-slate-800">Maya Rahmawati</td>
+                                        <td class="p-4 mono text-slate-600">626539963788</td>
+                                        <td class="p-4 mono text-slate-600">0053956887</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Maya Rahmawati', '626539963788', '0053956887', '3', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">4</td>
+                                        <td class="p-4 font-bold text-slate-800">Ferry Sihombing</td>
+                                        <td class="p-4 mono text-slate-600">621027558214</td>
+                                        <td class="p-4 mono text-slate-600">0025862887</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Ferry Sihombing', '621027558214', '0025862887', '5', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">5</td>
+                                        <td class="p-4 font-bold text-slate-800">Diana Sihombing</td>
+                                        <td class="p-4 mono text-slate-600">628291688613</td>
+                                        <td class="p-4 mono text-slate-600">0056920318</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Diana Sihombing', '628291688613', '0056920318', '3', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">6</td>
+                                        <td class="p-4 font-bold text-slate-800">Galih Utami</td>
+                                        <td class="p-4 mono text-slate-600">629777790268</td>
+                                        <td class="p-4 text-slate-400 italic">Belum Terbit</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Galih Utami', '629777790268', '-', '5', 'Rp 750.000', 'Belum Aktif', 'Belum Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">7</td>
+                                        <td class="p-4 font-bold text-slate-800">Dimas Wijaya</td>
+                                        <td class="p-4 mono text-slate-600">623639471016</td>
+                                        <td class="p-4 text-slate-400 italic">Belum Terbit</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Dimas Wijaya', '623639471016', '-', '5', 'Rp 750.000', 'Belum Aktif', 'Belum Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">8</td>
+                                        <td class="p-4 font-bold text-slate-800">Bayu Saputra</td>
+                                        <td class="p-4 mono text-slate-600">629172799576</td>
+                                        <td class="p-4 mono text-slate-600">0045764617</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Bayu Saputra', '629172799576', '0045764617', '4', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">9</td>
+                                        <td class="p-4 font-bold text-slate-800">Adi Wijaya</td>
+                                        <td class="p-4 mono text-slate-600">621472224228</td>
+                                        <td class="p-4 text-slate-400 italic">Belum Terbit</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Adi Wijaya', '621472224228', '-', '5', 'Rp 750.000', 'Belum Aktif', 'Belum Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">10</td>
+                                        <td class="p-4 font-bold text-slate-800">Surya Utami</td>
+                                        <td class="p-4 mono text-slate-600">628948236251</td>
+                                        <td class="p-4 text-slate-400 italic">Belum Terbit</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Surya Utami', '628948236251', '-', '5', 'Rp 750.000', 'Belum Aktif', 'Belum Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">11</td>
+                                        <td class="p-4 font-bold text-slate-800">Wahyu Siregar</td>
+                                        <td class="p-4 mono text-slate-600">629644104486</td>
+                                        <td class="p-4 mono text-slate-600">0088351832</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Wahyu Siregar', '629644104486', '0088351832', '1', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">12</td>
+                                        <td class="p-4 font-bold text-slate-800">Indah Rahmawati</td>
+                                        <td class="p-4 mono text-slate-600">629677226176</td>
+                                        <td class="p-4 mono text-slate-600">0019256194</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Indah Rahmawati', '629677226176', '0019256194', '4', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 transition-colors">
+                                        <td class="p-4 text-center">13</td>
+                                        <td class="p-4 font-bold text-slate-800">Irfan Marpaung</td>
+                                        <td class="p-4 mono text-slate-600">624492777229</td>
+                                        <td class="p-4 mono text-slate-600">0073624461</td>
+                                        <td class="p-4 text-center">
+                                            <button onclick="bukaDetail('Irfan Marpaung', '624492777229', '0073624461', '2', 'Rp 750.000', 'Rekening Tersedia', 'Sudah Disalurkan')" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-[#0055FF] text-xs font-bold transition-all cursor-pointer">Lihat Detail</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- VIEW 2: KONTEN UTAMA DETAIL SK PEMBERIAN (Hidden by Default until 'Lihat Detail' clicked) -->
+                    <div id="sectionDetailSK" class="hidden space-y-8">
+                        
+                        <!-- TOMBOL KEMBALI KE TABEL -->
+<div>
+    <button onclick="kembaliKeTabel()" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-sm transition-all flex items-center gap-2 cursor-pointer">
+        <i class="fa-solid fa-arrow-left text-xs"></i> Kembali ke Daftar Siswa
+    </button>
+</div>
+
+                        <!-- BANNER DETAIL SISWA & SK -->
+                        <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 border-l-8 border-l-[#0055FF]">
+                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                <div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <span class="px-3 py-1 rounded-md bg-blue-50 text-[#0055FF] border border-blue-100 text-xs font-black tracking-wider uppercase">Data Terverifikasi</span>
+                                        <span class="text-xs font-bold text-slate-400">Tahun 2026</span>
+                                    </div>
+                                    <h2 id="detailNamaSiswa" class="text-2xl sm:text-3xl font-black text-[#071a33]">Andi Pratama — SK Pemberian Tahap 43</h2>
+                                    <p class="text-sm font-bold text-slate-500 mt-1">PIP ID: <span id="detailPipId" class="mono text-[#0055FF]">0087123456</span> · SMPN 1 Soreang</p>
                                 </div>
-                                <h2 class="text-2xl sm:text-3xl font-black text-[#071a33]">Andi Pratama — SK Pemberian Tahap 43</h2>
-                                <p class="text-sm font-bold text-slate-500 mt-1">NISN: <span class="mono text-[#0055FF]">0087123456</span> · Kelas 6 · SDN 1 Bahagia Selatan</p>
-                            </div>
 
-                            <!-- ACTION BUTTONS -->
-                            <div class="flex items-center gap-3 self-start md:self-center shrink-0">
-                                <button id="btnUnduh" onclick="handleUnduhSK()" class="px-5 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-extrabold text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer">
-                                    <i id="iconUnduh" class="fa-solid fa-download text-xs"></i>
-                                    <span id="textUnduh">Unduh SK</span>
-                                </button>
-                                <button id="btnCetak" onclick="handleCetakSurat()" class="px-5 py-3 rounded-2xl bg-[#0055FF] hover:bg-blue-700 text-white font-extrabold text-sm transition-all shadow-md shadow-blue-600/20 flex items-center gap-2 cursor-pointer">
-                                    <i id="iconCetak" class="fa-solid fa-print text-xs"></i>
-                                    <span id="textCetak">Cetak Surat</span>
-                                </button>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- RINGKASAN SK (FULL-WIDTH SIMETRIS & FIT) -->
-                    <div class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-6">
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-                            <div class="flex items-center gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
-                                    <i class="fa-solid fa-file-contract text-lg"></i>
+                                <!-- ACTION BUTTONS -->
+                                <div class="flex items-center gap-3 self-start md:self-center shrink-0">
+                                    <button id="btnUnduh" onclick="handleUnduhSK()" class="px-5 py-3 rounded-2xl border-2 border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-extrabold text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer">
+                                        <i id="iconUnduh" class="fa-solid fa-download text-xs"></i>
+                                        <span id="textUnduh">Unduh SK</span>
+                                    </button>
+                                    <button id="btnCetak" onclick="handleCetakSurat()" class="px-5 py-3 rounded-2xl bg-[#0055FF] hover:bg-blue-700 text-white font-extrabold text-sm transition-all shadow-md shadow-blue-600/20 flex items-center gap-2 cursor-pointer">
+                                        <i id="iconCetak" class="fa-solid fa-print text-xs"></i>
+                                        <span id="textCetak">Cetak Surat</span>
+                                    </button>
                                 </div>
-                                <h3 class="text-xl font-black text-[#071a33]">Ringkasan SK</h3>
                             </div>
-                            <span class="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-200">
-                                Aktif
-                            </span>
+                        </section>
+
+                        <!-- RINGKASAN SK -->
+                        <div class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-6">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
+                                        <i class="fa-solid fa-file-contract text-lg"></i>
+                                    </div>
+                                    <h3 class="text-xl font-black text-[#071a33]">Ringkasan SK</h3>
+                                </div>
+                                <span class="px-3.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-black border border-emerald-200">
+                                    Aktif
+                                </span>
+                            </div>
+
+                            <!-- 3 Kartu Grid -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 flex flex-col justify-between">
+                                    <p class="text-xs font-black text-slate-400 uppercase tracking-wider">Nominal Bantuan</p>
+                                    <p id="detailNominal" class="text-3xl font-black text-[#071a33] mt-2">Rp 750.000</p>
+                                </div>
+                                <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 flex flex-col justify-between">
+                                    <p class="text-xs font-black text-slate-400 uppercase tracking-wider">Status Rekening</p>
+                                    <p id="detailStatusRekening" class="text-xl font-bold text-emerald-600 mt-2 flex items-center gap-2">
+                                        <i class="fa-solid fa-circle-check"></i> Rekening Tersedia
+                                    </p>
+                                </div>
+                                <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 flex flex-col justify-between">
+                                    <p class="text-xs font-black text-slate-400 uppercase tracking-wider">Status Penyaluran</p>
+                                    <p id="detailStatusPenyaluran" class="text-xl font-bold text-slate-800 mt-2">Sudah Disalurkan</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- 3 Kartu Grid yang Simetris & Responsif -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <!-- Nominal -->
-                            <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 flex flex-col justify-between">
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-wider">Nominal Bantuan</p>
-                                <p class="text-3xl font-black text-[#071a33] mt-2">Rp 450.000</p>
-                            </div>
-
-                            <!-- Status Rekening -->
-                            <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 flex flex-col justify-between">
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-wider">Status Rekening</p>
-                                <p class="text-xl font-bold text-emerald-600 mt-2 flex items-center gap-2">
-                                    <i class="fa-solid fa-circle-check"></i> Sudah Aktivasi
-                                </p>
-                            </div>
-
-                            <!-- Status Penyaluran -->
-                            <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-6 flex flex-col justify-between">
-                                <p class="text-xs font-black text-slate-400 uppercase tracking-wider">Status Penyaluran</p>
-                                <p class="text-xl font-bold text-slate-800 mt-2">Dana telah disalurkan</p>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- FOOTER -->
@@ -314,13 +463,13 @@
         <div class="space-y-4 mb-8">
             <p class="text-sm">Menerangkan bahwa siswa di bawah ini:</p>
             <table class="w-full text-sm font-semibold">
-                <tr><td class="py-1 w-40">Nama Siswa</td><td>: <strong>Andi Pratama</strong></td></tr>
-                <tr><td class="py-1">NISN</td><td>: 0087123456</td></tr>
-                <tr><td class="py-1">Sekolah</td><td>: SDN 1 Bahagia Selatan</td></tr>
-                <tr><td class="py-1">Kelas</td><td>: 6 (Enam)</td></tr>
-                <tr><td class="py-1">Status SK</td><td>: SK Pemberian Tahap 43</td></tr>
-                <tr><td class="py-1">Nominal Bantuan</td><td>: Rp 450.000,-</td></tr>
-                <tr><td class="py-1">Status Penyaluran</td><td>: Dana Telah Disalurkan</td></tr>
+                <tr><td class="py-1 w-40">Nama Siswa</td><td>: <strong id="printNama">Bela Yulianti</strong></td></tr>
+                <tr><td class="py-1">No PIP ID</td><td>: <span id="printPipId">626826984973</span></td></tr>
+                <tr><td class="py-1">Sekolah</td><td>: SMPN 1 SOREANG</td></tr>
+                <tr><td class="py-1">Tahap SK</td><td>: <span id="printTahap">Tahap 4</span></td></tr>
+                <tr><td class="py-1">Nominal Bantuan</td><td>: <span id="printNominal">Rp 750.000,-</span></td></tr>
+                <tr><td class="py-1">Status Rekening</td><td>: <span id="printStatusRek">Rekening Tersedia</span></td></tr>
+                <tr><td class="py-1">Status Penyaluran</td><td>: <span id="printStatusPenyaluran">Sudah Disalurkan</span></td></tr>
             </table>
             <p class="text-sm mt-4">Telah resmi tercatat sebagai penerima dana Program Indonesia Pintar (PIP) dan dapat menggunakan surat keterangan ini untuk keperluan administrasi sekolah/bank penyalur.</p>
         </div>
@@ -332,13 +481,22 @@
             </div>
             <div class="text-center text-sm">
                 <p>Kab. Subur Perkasa, 13 Agustus 2026</p>
-                <p class="font-bold mt-12">Kepala SDN 1 Bahagia Selatan</p>
+                <p class="font-bold mt-12">Kepala SMPN 1 Soreang</p>
             </div>
         </div>
     </div>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
+        let currentSiswaData = {
+            nama: 'Bela Yulianti',
+            pipId: '626826984973',
+            tahap: '4',
+            nominal: 'Rp 750.000',
+            statusRek: 'Rekening Tersedia',
+            statusPenyaluran: 'Sudah Disalurkan'
+        };
+
         function showToast(message) {
             const toast = document.getElementById('toastNotification');
             document.getElementById('toastMessage').innerText = message;
@@ -352,6 +510,36 @@
             }, 2500);
         }
 
+        function bukaDetail(nama, pipId, noRek, tahap, nominal, statusRek, statusPenyaluran) {
+            currentSiswaData = { nama, pipId, tahap, nominal, statusRek, statusPenyaluran };
+
+            // Update DOM Detail View
+            document.getElementById('detailNamaSiswa').innerText = `${nama} — SK Pemberian Tahap ${tahap}`;
+            document.getElementById('detailPipId').innerText = pipId;
+            document.getElementById('detailNominal').innerText = nominal;
+            document.getElementById('detailStatusRekening').innerHTML = `<i class="fa-solid fa-circle-check"></i> ${statusRek}`;
+            document.getElementById('detailStatusPenyaluran').innerText = statusPenyaluran;
+
+            // Update Print Area Data
+            document.getElementById('printNama').innerText = nama;
+            document.getElementById('printPipId').innerText = pipId;
+            document.getElementById('printTahap').innerText = `Tahap ${tahap}`;
+            document.getElementById('printNominal').innerText = `${nominal},-`;
+            document.getElementById('printStatusRek').innerText = statusRek;
+            document.getElementById('printStatusPenyaluran').innerText = statusPenyaluran;
+
+            // Toggle Sections
+            document.getElementById('sectionTabelAwal').classList.add('hidden');
+            document.getElementById('sectionDetailSK').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function kembaliKeTabel() {
+            document.getElementById('sectionDetailSK').classList.add('hidden');
+            document.getElementById('sectionTabelAwal').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         function handleUnduhSK() {
             const btn = document.getElementById('btnUnduh');
             const icon = document.getElementById('iconUnduh');
@@ -363,12 +551,12 @@
             text.innerText = 'Mengunduh...';
 
             setTimeout(() => {
-                const dummyContent = `====================================================\nSK PEMBERIAN PIP TAHUN 2026 - TAHAP 43\n====================================================\nNama Siswa : Andi Pratama\nNISN       : 0087123456\nKelas      : 6\nNominal    : Rp 450.000\nStatus     : Aktif / Dana Disalurkan\n====================================================\nSIPINTAR - Puslapdik Kemendikdasmen RI\nDokumen Asli Resmi Terverifikasi Sistem`;
+                const dummyContent = `====================================================\nSK PEMBERIAN PIP TAHUN 2026 - TAHAP ${currentSiswaData.tahap}\n====================================================\nNama Siswa : ${currentSiswaData.nama}\nPIP ID     : ${currentSiswaData.pipId}\nNominal    : ${currentSiswaData.nominal}\nStatus Rek : ${currentSiswaData.statusRek}\nPenyaluran : ${currentSiswaData.statusPenyaluran}\n====================================================\nSIPINTAR - Puslapdik Kemendikdasmen RI\nDokumen Asli Resmi Terverifikasi Sistem`;
                 
                 const blob = new Blob([dummyContent], { type: 'text/plain;charset=utf-8' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.download = 'SK_Pemberian_PIP_Andi_Pratama_Tahap43.txt';
+                link.download = `SK_Pemberian_PIP_${currentSiswaData.nama.replace(/\s+/g, '_')}.txt`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);

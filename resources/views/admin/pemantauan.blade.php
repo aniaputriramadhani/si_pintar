@@ -233,47 +233,45 @@
             <div class="min-h-screen text-[#071a33] relative overflow-hidden px-4 py-6 sm:px-8 lg:px-12 lg:py-10">
                 <div class="relative z-10 mx-auto max-w-[1540px] space-y-8">
 
-                    <!-- 4 CARD KARTU RINGKASAN STATUS -->
-                    <section class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                        <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
-                            <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Belum Input</p>
-                            <p class="mt-2 text-4xl font-black text-[#071a33]">82</p>
-                            <p class="mt-1 text-xs font-bold text-amber-600">Sekolah</p>
-                        </article>
-                        <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
-                            <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Input Sebagian</p>
-                            <p class="mt-2 text-4xl font-black text-[#071a33]">147</p>
-                            <p class="mt-1 text-xs font-bold text-blue-600">Sekolah</p>
-                        </article>
-                        <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
-                            <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Sudah Konfirmasi</p>
-                            <p class="mt-2 text-4xl font-black text-[#071a33]">1.420</p>
-                            <p class="mt-1 text-xs font-bold text-emerald-600">Sekolah</p>
-                        </article>
-                        <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
-                            <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Kendala Aktivasi</p>
-                            <p class="mt-2 text-4xl font-black text-rose-600">238</p>
-                            <p class="mt-1 text-xs font-bold text-rose-500">Siswa</p>
-                        </article>
-                    </section>
+                    <!-- ================= 4 KARTU RINGKASAN STATUS ================= -->
+<section class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+    <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
+        <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Belum Input</p>
+        <p class="mt-2 text-4xl font-black text-[#071a33]">62</p>
+        <p class="mt-1 text-xs font-bold text-amber-600">Sekolah</p>
+    </article>
+    <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
+        <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Input Sebagian</p>
+        <p class="mt-2 text-4xl font-black text-[#071a33]">73</p>
+        <p class="mt-1 text-xs font-bold text-blue-600">Sekolah</p>
+    </article>
+    <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
+        <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Sudah Input</p>
+        <p class="mt-2 text-4xl font-black text-[#071a33]">276</p>
+        <p class="mt-1 text-xs font-bold text-emerald-600">Sudah Input Seluruh Siswa</p>
+    </article>
+    <article class="rounded-[2rem] bg-white border-2 border-slate-200 p-6 shadow-xl shadow-slate-200/50">
+        <p class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Kendala Aktivasi</p>
+        <p class="mt-2 text-4xl font-black text-rose-600">45</p>
+        <p class="mt-1 text-xs font-bold text-rose-500">Siswa (Kendala Lapangan)</p>
+    </article>
+</section>
 
-                    <!-- SECTION FILTER PEMANTAUAN (Tahun, Jenjang, Wilayah, Cari) -->
-<section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50">
+<!-- ================= SECTION FILTER PEMANTAUAN ================= -->
+<section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 mb-8">
     <div class="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
         <div class="flex items-center gap-3">
             <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
-                <!-- SVG Filter Native -->
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                 </svg>
             </div>
             <div>
                 <h3 class="text-xl font-black text-[#071a33]">Filter Pemantauan</h3>
-                <p class="text-xs font-bold text-slate-500">Filter pemantauan berdasarkan Tahun, Jenjang, Wilayah, dan Nama Siswa/Sekolah</p>
+                <p class="text-xs font-bold text-slate-500">Filter berdasarkan Tahun, Jenjang, Kategori SK, Wilayah, dan NISN/Nama Sekolah</p>
             </div>
         </div>
         <button type="button" onclick="resetFilterPemantauan()" class="inline-flex items-center gap-2 text-xs font-extrabold text-[#0055FF] hover:text-blue-800 transition">
-            <!-- SVG Reset Native -->
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
@@ -281,23 +279,23 @@
         </button>
     </div>
 
-    <!-- Form Filter Layout -->
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-6 items-end">
+    <!-- Form Filter Grid Layout (Urutan: Tahun, Jenjang, Kategori SK, Wilayah, Insert NISN/Nama Sekolah) -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 items-end">
         
         <!-- Filter Tahun -->
         <div>
             <label for="filterTahun" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Tahun</label>
-            <select id="filterTahun" onchange="applyFilterPemantauan()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                <option value="Semua">Semua Tahun</option>
-                <option value="2026" selected>2026</option>
-                <option value="2025">2025</option>
+            <select id="filterTahun" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                <option value="Semua" selected>Semua Tahun</option>
+                <option value="2026">2026</option>
+                <option value="2024">2024</option>
             </select>
         </div>
 
         <!-- Filter Jenjang -->
         <div>
             <label for="filterJenjang" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Jenjang</label>
-            <select id="filterJenjang" onchange="applyFilterPemantauan()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+            <select id="filterJenjang" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
                 <option value="Semua" selected>Semua Jenjang</option>
                 <option value="SD">SD</option>
                 <option value="SMP">SMP</option>
@@ -306,78 +304,80 @@
             </select>
         </div>
 
-        <!-- Filter Wilayah (Provinsi, Kabupaten, Kecamatan) -->
-        <div class="md:col-span-2">
-            <label for="filterWilayah" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Wilayah (Prov/Kab/Kec)</label>
-            <select id="filterWilayah" onchange="applyFilterPemantauan()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                <option value="Semua" selected>Semua Wilayah</option>
-                <option value="Sulawesi Tengah">Sulawesi Tengah (Semua Kab/Kec)</option>
-                <option value="Banten">Banten (Semua Kab/Kec)</option>
+        <!-- Filter Kategori SK -->
+        <div>
+            <label for="filterKategoriSk" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Kategori SK</label>
+            <select id="filterKategoriSk" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                <option value="Semua" selected>Semua Kategori</option>
+                <option value="SK Pemberian">SK Pemberian</option>
+                <option value="SK Nominasi">SK Nominasi</option>
             </select>
         </div>
 
-        <!-- Search Input -->
+        <!-- Filter Wilayah (Hanya 1 Dropdown Tunggal) -->
         <div>
-            <label for="filterSearch" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Cari</label>
-            <input type="text" id="filterSearch" oninput="applyFilterPemantauan()" placeholder="Cari nama / NISN / Sekolah..." class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all">
+            <label for="filterWilayah" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Wilayah</label>
+            <select id="filterWilayah" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                <option value="Semua" selected>Semua Wilayah</option>
+                <option value="Aceh > Kabupaten Aceh Besar > Darul Imarah">Aceh &gt; Kab. Aceh Besar &gt; Darul Imarah</option>
+                <option value="Aceh > Kabupaten Aceh Besar > Ingin Jaya">Aceh &gt; Kab. Aceh Besar &gt; Ingin Jaya</option>
+                <option value="Banten > Kabupaten Tangerang > Rajeg">Banten &gt; Kab. Tangerang &gt; Rajeg</option>
+            </select>
         </div>
 
-        <!-- Button Filter -->
+        <!-- Insert NISN / Nama Sekolah -->
         <div>
-            <button type="button" onclick="applyFilterPemantauan()" class="w-full rounded-2xl bg-[#0055FF] px-4 py-2.5 text-xs font-extrabold text-white transition hover:bg-blue-700 shadow-md shadow-blue-600/20 flex items-center justify-center gap-2">
-                <!-- SVG Kaca Pembesar Native -->
-                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                Filter
-            </button>
+            <label for="filterSearch" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Insert NISN / Nama Sekolah</label>
+            <input type="text" id="filterSearch" placeholder="Cth: 1452921965..." class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3 py-2.5 text-xs font-bold text-[#071a33] placeholder:text-slate-400 focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all">
         </div>
 
     </div>
+
+    <!-- Tombol Aksi Filter & Reset di Bawah -->
+    <div class="mt-4 flex justify-end gap-3 pt-4 border-t border-slate-100">
+        <button type="button" onclick="applyFilterPemantauan()" class="rounded-2xl bg-[#0055FF] px-6 py-2.5 text-xs font-extrabold text-white transition hover:bg-blue-700 shadow-md shadow-blue-600/20 flex items-center gap-2">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Terapkan Filter
+        </button>
+    </div>
 </section>
 
-<!-- CARD TABEL DATA PEMANTAUN DENGAN ROW COLORING KONSISTEN SEPERTI DATA PIP -->
+<!-- ================= CARD TABEL DATA PEMANTAUAN ================= -->
 <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-4">
     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
         <div class="flex items-center gap-3">
             <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
-                <!-- SVG List Check Native -->
                 <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                 </svg>
             </div>
             <div>
-                <h3 class="text-2xl font-black text-[#071a33]">Daftar Pemantauan Siswa & Sekolah</h3>
-                <p class="text-xs font-bold text-slate-500">Menampilkan detail pemantauan aktivasi rekening per siswa dan sekolah</p>
+                <h3 class="text-2xl font-black text-[#071a33]">Pemantauan Aktivasi Rekening</h3>
+                <p class="text-xs font-bold text-slate-500">Menampilkan status input, kendala aktivasi, serta konfirmasi per siswa dan sekolah</p>
             </div>
         </div>
 
         <span class="px-4 py-2 rounded-xl bg-blue-50 text-[#0055FF] text-xs font-black border border-blue-100">
-            Total Data: <span id="totalDataCount">0</span> Anak
+            Total Data: <span id="totalDataCount">0</span> Siswa
         </span>
+
     </div>
 
-    <!-- FILTER STATUS INPUT BERGAYA TAB/PILL DISATUKAN DI ATAS TABEL -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-2">
-        <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-400 mr-2">Status Input:</label>
-        <select id="filterStatusInput" onchange="applyFilterPemantauan()" class="rounded-2xl border-2 border-slate-300 bg-white px-4 py-2 text-xs font-black text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-            <option value="Semua" selected>Semua Status Input</option>
-            <option value="Sudah Input">Sudah Input</option>
-            <option value="Input Sebagian">Input Sebagian</option>
-            <option value="Belum Input">Belum Input</option>
-        </select>
-    </div>
-
-    <!-- TABEL DENGAN DYNAMIC ROW COLORING SAMA SEPERTI PIP -->
+    <!-- TABEL UTAMA -->
     <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse whitespace-nowrap min-w-[850px]">
+        <table class="w-full text-left border-collapse whitespace-nowrap min-w-[1100px]">
             <thead>
                 <tr class="border-b-2 border-slate-200 bg-slate-50/80 text-slate-700">
                     <th class="py-4 px-4 font-black text-xs uppercase tracking-wider rounded-l-xl">Nama Siswa / NISN</th>
-                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Sekolah / Jenjang</th>
-                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Wilayah (Kec/Kab/Prov)</th>
-                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center">Status Input</th>
-                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center">Konfirmasi Rekening</th>
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Nama Sekolah</th>
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Provinsi</th>
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Kabupaten/Kota</th>
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Kecamatan</th>
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Kategori Kendala</th>
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center">Input Data</th>
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center">Sudah Konfirmasi</th>
                     <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center rounded-r-xl">Aksi</th>
                 </tr>
             </thead>
@@ -388,32 +388,102 @@
     </div>
 </section>
 
-                    <!-- FOOTER -->
-                    <div class="text-sm font-bold text-slate-400 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-slate-200/60">
-                        <span>© 2020–2026 Puslapdik · Kemendikdasmen RI</span>
-                        <span>SIPINTAR - Sistem Informasi Program Indonesia Pintar</span>
-                    </div>
+<!-- FOOTER -->
+<div class="text-sm font-bold text-slate-400 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-slate-200/60 mt-8">
+    <span>© 2020–{{ date('Y') }} Puslapdik · Kemendikdasmen RI</span>
+    <span>SIPINTAR - Sistem Informasi Program Indonesia Pintar</span>
+</div>
 
+<!-- ================= MODAL POPUP DETAIL PEMANTAUAN ================= -->
+<div id="detailModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden transition-all duration-300">
+    <div class="relative w-full max-w-2xl rounded-[2.5rem] bg-white border-2 border-slate-200 shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300" id="modalContainer">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between border-b border-slate-100 px-6 py-5 bg-slate-50/80">
+            <div class="flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                </div>
+                <div>
+                    <h3 class="text-lg font-black text-[#071a33]">Detail Pemantauan Aktivasi Rekening</h3>
+                    <p class="text-xs font-bold text-slate-500">Informasi lengkap status siswa dan sekolah penerima PIP</p>
                 </div>
             </div>
-        </main>
+            <button type="button" onclick="closeDetailModal()" class="grid h-9 w-9 place-items-center rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 font-bold transition">✕</button>
+        </div>
+
+        <!-- Modal Body Content -->
+        <div class="p-6 sm:p-8 space-y-6 max-h-[70vh] overflow-y-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Nama Siswa</span>
+                    <p id="modalNamaSiswa" class="text-base font-extrabold text-[#071a33] mt-1">-</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">NISN</span>
+                    <p id="modalNisn" class="text-base font-mono font-bold text-[#0055FF] mt-1">-</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Satuan Pendidikan (Sekolah)</span>
+                    <p id="modalSekolah" class="text-base font-extrabold text-[#071a33] mt-1">-</p>
+                </div>
+                <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Jenjang & Kategori SK</span>
+                    <p id="modalSkInfo" class="text-base font-extrabold text-[#071a33] mt-1">-</p>
+                </div>
+            </div>
+
+            <div class="rounded-2xl bg-blue-50/50 p-4 border border-blue-100">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600">Wilayah Penempatan</span>
+                <p id="modalWilayah" class="text-sm font-bold text-[#071a33] mt-1">-</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Status Input Data</span>
+                    <div id="modalInputStatus" class="mt-2">-</div>
+                </div>
+                <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100">
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Kategori Kendala Lapangan</span>
+                    <p id="modalKendala" class="text-sm font-bold text-rose-600 mt-2">-</p>
+                </div>
+            </div>
+
+            <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100 flex items-center justify-between">
+                <div>
+                    <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Konfirmasi Admin/Sekolah</span>
+                    <p class="text-xs font-bold text-slate-600 mt-0.5">Status verifikasi kelayakan aktivasi rekening</p>
+                </div>
+                <div id="modalKonfirmasi">-</div>
+            </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end gap-3 border-t border-slate-100 px-6 py-4 bg-slate-50/80">
+            <button type="button" onclick="closeDetailModal()" class="rounded-2xl bg-slate-200 px-5 py-2.5 text-xs font-extrabold text-slate-700 hover:bg-slate-300 transition">Tutup</button>
+            <button type="button" onclick="alert('Data berhasil disimpan/diperbarui.'); closeDetailModal();" class="rounded-2xl bg-[#0055FF] px-6 py-2.5 text-xs font-extrabold text-white hover:bg-blue-700 shadow-md shadow-blue-600/20 transition">Simpan / Tindak Lanjut</button>
+        </div>
     </div>
+</div>
 
 <script>
-    // DATA PEMANTAUAN SISWA LENGKAP
+    // DATA PEMANTAUAN SISWA
     const masterPemantauanData = [
-        { namaSiswa: "Ahmad Rizky", nisn: "0051234567", sekolah: "SDN 1 Banggai", jenjang: "SD", wilayah: "Banggai, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Sudah Input", konfirmasi: "Ya", tahun: "2026" },
-        { namaSiswa: "Siti Nurhaliza", nisn: "0062345678", sekolah: "SDN 1 Selatan", jenjang: "SD", wilayah: "Selatan, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Belum Input", konfirmasi: "Belum", tahun: "2026" },
-        { namaSiswa: "Budi Santoso", nisn: "0043456789", sekolah: "SMPN 1 Labobo", jenjang: "SMP", wilayah: "Labobo, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Belum Input", konfirmasi: "Ya", tahun: "2026" },
-        { namaSiswa: "Dewi Lestari", nisn: "0054567890", sekolah: "SMPN 1 Banggai", jenjang: "SMP", wilayah: "Banggai, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Input Sebagian", konfirmasi: "Belum", tahun: "2026" },
-        { namaSiswa: "Fajar Pratama", nisn: "0035678901", sekolah: "SMAN 1 Bokan", jenjang: "SMA", wilayah: "Bokan, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Sudah Input", konfirmasi: "Belum", tahun: "2026" },
-        { namaSiswa: "Gita Gutawa", nisn: "0026789012", sekolah: "SMAN 1 Banggai", jenjang: "SMA", wilayah: "Banggai, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Sudah Input", konfirmasi: "Belum", tahun: "2026" },
-        { namaSiswa: "Hendra Wijaya", nisn: "0047890123", sekolah: "SMKN 1 Labobo", jenjang: "SMK", wilayah: "Labobo, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Belum Input", konfirmasi: "Ya", tahun: "2025" },
-        { namaSiswa: "Indah Permata", nisn: "0058901234", sekolah: "SMKN 1 Banggai", jenjang: "SMK", wilayah: "Banggai, Kab. Banggai Laut, Sulawesi Tengah", statusInput: "Input Sebagian", konfirmasi: "Belum", tahun: "2026" },
-        { namaSiswa: "Joko Widodo", nisn: "0069012345", sekolah: "SDN 1 Larangan", jenjang: "SD", wilayah: "Larangan, Kota Tangerang, Banten", statusInput: "Sudah Input", konfirmasi: "Belum", tahun: "2026" },
-        { namaSiswa: "Kurniawan", nisn: "0070123456", sekolah: "SDN 2 Larangan", jenjang: "SD", wilayah: "Larangan, Kota Tangerang, Banten", statusInput: "Belum Input", konfirmasi: "Ya", tahun: "2026" },
-        { namaSiswa: "Larasati", nisn: "0041234568", sekolah: "SMPN 1 Cileduk", jenjang: "SMP", wilayah: "Cileduk, Kota Tangerang, Banten", statusInput: "Sudah Input", konfirmasi: "Belum", tahun: "2026" },
-        { namaSiswa: "Muhammad Ali", nisn: "0052345679", sekolah: "SMPN 2 Cileduk", jenjang: "SMP", wilayah: "Cileduk, Kota Tangerang, Banten", statusInput: "Sudah Input", konfirmasi: "Belum", tahun: "2026" }
+        { namaSiswa: "Teguh Marpaung", nisn: "1452921965", sekolah: "SMAN 5 Darul Imarah", jenjang: "SMA", kategoriSk: "SK Pemberian", tahun: "2024", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Eko Gunawan", nisn: "4348747928", sekolah: "SMAN 5 Darul Imarah", jenjang: "SMA", kategoriSk: "SK Pemberian", tahun: "2024", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Oki Ramadhan", nisn: "5812417264", sekolah: "SMAN 5 Darul Imarah", jenjang: "SMA", kategoriSk: "SK Pemberian", tahun: "2024", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "Pemenuhan Berkas Aktivasi", inputData: "Belum Input Siswa", konfirmasi: "Belum" },
+        { namaSiswa: "Krisna Nugroho", nisn: "7570289461", sekolah: "SMAN 5 Darul Imarah", jenjang: "SMA", kategoriSk: "SK Pemberian", tahun: "2024", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "Geografis", inputData: "Input Sebagian Siswa", konfirmasi: "Belum" },
+        { namaSiswa: "Kirana Permata", nisn: "4481532743", sekolah: "SMAN 5 Darul Imarah", jenjang: "SMA", kategoriSk: "SK Pemberian", tahun: "2024", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Hafiz Wijaya", nisn: "3234926454", sekolah: "SMAN 5 Darul Imarah", jenjang: "SMA", kategoriSk: "SK Pemberian", tahun: "2024", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Ferry Nasution", nisn: "8212737967", sekolah: "SMKN 3 Darul Imarah", jenjang: "SMK", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "Layanan Bank", inputData: "Input Sebagian Siswa", konfirmasi: "Belum" },
+        { namaSiswa: "Bayu Ramadhan", nisn: "8353033907", sekolah: "SMKN 3 Darul Imarah", jenjang: "SMK", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "Dinas Pendidikan", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Belum" },
+        { namaSiswa: "Galih Ramadhan", nisn: "5104255361", sekolah: "SMKN 3 Darul Imarah", jenjang: "SMK", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "Geografis", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Belum" },
+        { namaSiswa: "Eko Saputra", nisn: "5539270823", sekolah: "SMKN 3 Darul Imarah", jenjang: "SMK", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "Satuan Pendidikan", inputData: "Input Sebagian Siswa", konfirmasi: "Belum" },
+        { namaSiswa: "Anisa Lestari", nisn: "6200449183", sekolah: "SMKN 3 Darul Imarah", jenjang: "SMK", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Maya Nasution", nisn: "6343274655", sekolah: "SMPN 1 Darul Imarah", jenjang: "SMP", kategoriSk: "SK Nominasi", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "Satuan Pendidikan", inputData: "Input Sebagian Siswa", konfirmasi: "Belum" },
+        { namaSiswa: "Ilham Safitri", nisn: "5410253324", sekolah: "SMPN 1 Darul Imarah", jenjang: "SMP", kategoriSk: "SK Nominasi", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Darul Imarah", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Bunga Lestari", nisn: "5206681331", sekolah: "SDN 3 Ingin Jaya", jenjang: "SD", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Ingin Jaya", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Ferry Hartono", nisn: "1372547626", sekolah: "SDN 3 Ingin Jaya", jenjang: "SD", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Ingin Jaya", kendala: "-", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Ya" },
+        { namaSiswa: "Anisa Kurniawan", nisn: "3170407497", sekolah: "SDN 3 Ingin Jaya", jenjang: "SD", kategoriSk: "SK Pemberian", tahun: "2026", provinsi: "Aceh", kabupaten: "Kabupaten Aceh Besar", kecamatan: "Ingin Jaya", kendala: "Dinas Pendidikan", inputData: "Sudah Input Seluruh Siswa", konfirmasi: "Belum" }
     ];
 
     function renderPemantauanTable(data) {
@@ -425,8 +495,8 @@
         if (data.length === 0) {
             tbody.innerHTML = `
                 <tr>
-                    <td colspan="6" class="text-center py-8 text-slate-400 font-bold text-sm">
-                        Tidak ada data pemantauan yang cocok dengan filter.
+                    <td colspan="9" class="text-center py-8 text-slate-400 font-bold text-sm">
+                        Tidak ada data pemantauan yang cocok dengan filter wilayah/pencarian.
                     </td>
                 </tr>
             `;
@@ -436,21 +506,19 @@
         data.forEach(item => {
             const tr = document.createElement('tr');
 
-            // Default Styling
             let rowBgClass = 'hover:bg-slate-100 transition-all border-b-2 border-slate-200';
             let textNamaClass = 'text-[#071a33] font-bold';
-            let textSubClass = 'text-slate-700';
+            let textSubClass = 'text-slate-700 font-semibold';
 
-            // KONSISTENSI PEWARNAAN BARIS SEPERTI TABEL PIP (Sudah Input = Emerald, Input Sebagian = Blue, Belum Input = Rose)
-            if (item.statusInput === 'Sudah Input') {
+            if (item.inputData === 'Sudah Input Seluruh Siswa') {
                 rowBgClass = 'bg-emerald-100 hover:bg-emerald-200 border-b-2 border-emerald-300 transition-all';
                 textNamaClass = 'text-emerald-950 font-black';
                 textSubClass = 'text-emerald-900 font-bold';
-            } else if (item.statusInput === 'Input Sebagian') {
+            } else if (item.inputData === 'Input Sebagian Siswa') {
                 rowBgClass = 'bg-blue-100 hover:bg-blue-200 border-b-2 border-blue-300 transition-all';
                 textNamaClass = 'text-blue-950 font-black';
                 textSubClass = 'text-blue-900 font-bold';
-            } else if (item.statusInput === 'Belum Input') {
+            } else if (item.inputData === 'Belum Input Siswa') {
                 rowBgClass = 'bg-rose-100 hover:bg-rose-200 border-b-2 border-rose-300 transition-all';
                 textNamaClass = 'text-rose-950 font-black';
                 textSubClass = 'text-rose-900 font-bold';
@@ -461,15 +529,15 @@
             let badgeStatus = '';
             let actionButton = '';
 
-            if (item.statusInput === 'Sudah Input') {
-                badgeStatus = `<span class="px-3.5 py-1 rounded-full bg-emerald-200 text-emerald-900 border border-emerald-400 text-xs font-black">Sudah Input</span>`;
-                actionButton = `<button onclick="detailPemantauan('${item.namaSiswa}')" class="text-[#0055FF] hover:text-blue-900 font-black text-sm transition underline">Lihat Detail</button>`;
-            } else if (item.statusInput === 'Input Sebagian') {
-                badgeStatus = `<span class="px-3.5 py-1 rounded-full bg-blue-200 text-blue-900 border border-blue-400 text-xs font-black">Input Sebagian</span>`;
-                actionButton = `<button onclick="detailPemantauan('${item.namaSiswa}')" class="text-[#0055FF] hover:text-blue-900 font-black text-sm transition underline">Lihat Detail</button>`;
-            } else if (item.statusInput === 'Belum Input') {
-                badgeStatus = `<span class="px-3.5 py-1 rounded-full bg-rose-200 text-rose-900 border border-rose-400 text-xs font-black">Belum Input</span>`;
-                actionButton = `<button onclick="detailPemantauan('${item.namaSiswa}')" class="text-rose-800 hover:text-rose-950 font-black text-sm transition underline">Tindak Lanjut</button>`;
+            if (item.inputData === 'Sudah Input Seluruh Siswa') {
+                badgeStatus = `<span class="px-3.5 py-1 rounded-full bg-emerald-200 text-emerald-900 border border-emerald-400 text-xs font-black">Sudah Input Seluruh Siswa</span>`;
+                actionButton = `<button onclick="detailPemantauan('${item.nisn}')" class="text-[#0055FF] hover:text-blue-900 font-black text-sm transition underline">Lihat Detail</button>`;
+            } else if (item.inputData === 'Input Sebagian Siswa') {
+                badgeStatus = `<span class="px-3.5 py-1 rounded-full bg-blue-200 text-blue-900 border border-blue-400 text-xs font-black">Input Sebagian Siswa</span>`;
+                actionButton = `<button onclick="detailPemantauan('${item.nisn}')" class="text-[#0055FF] hover:text-blue-900 font-black text-sm transition underline">Lihat Detail</button>`;
+            } else {
+                badgeStatus = `<span class="px-3.5 py-1 rounded-full bg-rose-200 text-rose-900 border border-rose-400 text-xs font-black">Belum Input Siswa</span>`;
+                actionButton = `<button onclick="detailPemantauan('${item.nisn}')" class="text-rose-800 hover:text-rose-950 font-black text-sm transition underline">Tindak Lanjut</button>`;
             }
 
             let badgeKonfirmasi = item.konfirmasi === 'Ya' 
@@ -485,7 +553,10 @@
                     <div>${item.sekolah}</div>
                     <span class="inline-block mt-1 px-2 py-0.5 rounded bg-slate-200 text-[#071a33] text-[10px] font-black">${item.jenjang}</span>
                 </td>
-                <td class="p-4 text-xs ${textSubClass}">${item.wilayah}</td>
+                <td class="p-4 text-xs ${textSubClass}">${item.provinsi}</td>
+                <td class="p-4 text-xs ${textSubClass}">${item.kabupaten}</td>
+                <td class="p-4 text-xs ${textSubClass}">${item.kecamatan}</td>
+                <td class="p-4 text-xs ${textSubClass}"><span class="px-2.5 py-1 rounded bg-white/70 border border-slate-300 font-bold">${item.kendala}</span></td>
                 <td class="p-4 text-center">${badgeStatus}</td>
                 <td class="p-4 text-center">${badgeKonfirmasi}</td>
                 <td class="p-4 text-center">${actionButton}</td>
@@ -497,41 +568,91 @@
     function applyFilterPemantauan() {
         const tahun = document.getElementById('filterTahun').value;
         const jenjang = document.getElementById('filterJenjang').value;
+        const kategoriSk = document.getElementById('filterKategoriSk').value;
         const wilayah = document.getElementById('filterWilayah').value;
-        const statusInput = document.getElementById('filterStatusInput').value;
         const searchVal = document.getElementById('filterSearch').value.toLowerCase().trim();
 
         const filtered = masterPemantauanData.filter(item => {
             const matchTahun = (tahun === "Semua" || item.tahun === tahun);
             const matchJenjang = (jenjang === "Semua" || item.jenjang === jenjang);
-            const matchWilayah = (wilayah === "Semua" || item.wilayah.toLowerCase().includes(wilayah.toLowerCase()));
-            const matchStatus = (statusInput === "Semua" || item.statusInput === statusInput);
+            const matchKategori = (kategoriSk === "Semua" || item.kategoriSk === kategoriSk);
             
+            let matchWilayah = true;
+            if (wilayah !== "Semua") {
+                const parts = wilayah.split(" > ");
+                const pProv = parts[0];
+                const pKab = parts[1];
+                const pKec = parts[2];
+                matchWilayah = (item.provinsi.toLowerCase() === pProv.toLowerCase() && 
+                                item.kabupaten.toLowerCase().includes(pKab.toLowerCase()) && 
+                                item.kecamatan.toLowerCase() === pKec.toLowerCase());
+            }
+
             const fullText = (item.namaSiswa + " " + item.nisn + " " + item.sekolah).toLowerCase();
             const matchSearch = (searchVal === "" || fullText.includes(searchVal));
 
-            return matchTahun && matchJenjang && matchWilayah && matchStatus && matchSearch;
+            return matchTahun && matchJenjang && matchKategori && matchWilayah && matchSearch;
         });
 
         renderPemantauanTable(filtered);
     }
 
     function resetFilterPemantauan() {
-        document.getElementById('filterTahun').value = "2026";
+        document.getElementById('filterTahun').value = "Semua";
         document.getElementById('filterJenjang').value = "Semua";
+        document.getElementById('filterKategoriSk').value = "Semua";
         document.getElementById('filterWilayah').value = "Semua";
-        document.getElementById('filterStatusInput').value = "Semua";
         document.getElementById('filterSearch').value = "";
         renderPemantauanTable(masterPemantauanData);
     }
 
-    function detailPemantauan(nama) {
-        alert(`Melihat detail pemantauan aktivasi untuk siswa: ${nama}`);
+    // Fungsi Popup Modal Detail Pemantauan
+    function detailPemantauan(nisn) {
+        const data = masterPemantauanData.find(item => item.nisn === nisn);
+        if (!data) return;
+
+        document.getElementById('modalNamaSiswa').innerText = data.namaSiswa;
+        document.getElementById('modalNisn').innerText = data.nisn;
+        document.getElementById('modalSekolah').innerText = data.sekolah;
+        document.getElementById('modalSkInfo').innerText = `${data.jenjang} - ${data.kategoriSk} (${data.tahun})`;
+        document.getElementById('modalWilayah').innerText = `${data.provinsi} > ${data.kabupaten} > Kecamatan ${data.kecamatan}`;
+        document.getElementById('modalKendala').innerText = data.kendala;
+
+        let badgeHtml = '';
+        if (data.inputData === 'Sudah Input Seluruh Siswa') {
+            badgeHtml = `<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-black">Sudah Input Seluruh Siswa</span>`;
+        } else if (data.inputData === 'Input Sebagian Siswa') {
+            badgeHtml = `<span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 border border-blue-300 text-xs font-black">Input Sebagian Siswa</span>`;
+        } else {
+            badgeHtml = `<span class="px-3 py-1 rounded-full bg-rose-100 text-rose-800 border border-rose-300 text-xs font-black">Belum Input Siswa</span>`;
+        }
+        document.getElementById('modalInputStatus').innerHTML = badgeHtml;
+
+        let konfirmHtml = data.konfirmasi === 'Ya'
+            ? `<span class="px-3 py-1 rounded-full bg-emerald-500 text-white text-xs font-black">Terkonfirmasi (Ya)</span>`
+            : `<span class="px-3 py-1 rounded-full bg-rose-500 text-white text-xs font-black">Belum Dikonfirmasi</span>`;
+        document.getElementById('modalKonfirmasi').innerHTML = konfirmHtml;
+
+        const modal = document.getElementById('detailModal');
+        const container = document.getElementById('modalContainer');
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+        }, 10);
+    }
+
+    function closeDetailModal() {
+        const modal = document.getElementById('detailModal');
+        const container = document.getElementById('modalContainer');
+        container.classList.remove('scale-100');
+        container.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 200);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         renderPemantauanTable(masterPemantauanData);
     });
 </script>
-</body>
-</html>

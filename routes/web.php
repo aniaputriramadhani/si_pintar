@@ -206,7 +206,7 @@ Route::middleware('auth')->group(function () {
             | Rekap Dinamis & Ekspor Data
             */
             Route::get('/rekap', [RekapDinamisController::class, 'index'])
-                ->name('admin.rekap');
+                ->name('rekap.dinamis'); // Disesuaikan agar cocok dengan file Blade
 
             Route::get('/rekap/export', [RekapDinamisController::class, 'exportExcel'])
                 ->name('admin.rekap.export');

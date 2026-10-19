@@ -193,126 +193,708 @@
             </div>
         </aside>
 
-        <!-- MAIN CONTENT AREA -->
-        <main id="konten-utama" class="min-w-0 flex-1">
-            
-            <!-- Sticky Header Navbar -->
-            <header class="sticky top-0 z-30 border-b border-blue-900/10 bg-white/80 px-5 py-4 backdrop-blur-xl sm:px-8 lg:px-10">
-                <div class="mx-auto flex max-w-[1540px] items-center justify-between gap-4">
-                    <div class="flex items-center gap-3">
-                        <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#071a33] font-extrabold text-[#5ee8d6] lg:hidden">Si</span>
-                        <div>
-                            <p class="mono text-small font-bold uppercase tracking-[.16em] text-[#0055FF]">Sistem</p>
-                    <h1 class="mt-1 text-2xl font-extrabold tracking-tight sm:text-4xl">Pengaturan</h1>
-                        </div>
-                    </div>
+        
+<!-- MAIN CONTENT AREA -->
+<main id="konten-utama" class="min-w-0 flex-1">
 
-                    <div class="flex items-center gap-3">
-                        <div class="hidden text-right sm:block">
-                            <p class="text-lg font-extrabold text-slate-800">Admin Pusat</p>
-                            <p class="text-base font-bold text-emerald-600">Sistem aktif</p>
-                        </div>
-                        <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#0055FF] text-white shadow-lg shadow-blue-600/30" aria-label="Profil Admin Pusat">
-                            <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+    <!-- STICKY HEADER NAVBAR -->
+    <header class="sticky top-0 z-30 border-b border-blue-900/10 bg-white/80 px-5 py-4 backdrop-blur-xl sm:px-8 lg:px-10">
+        <div class="mx-auto flex max-w-[1540px] items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#071a33] font-extrabold text-[#5ee8d6] lg:hidden">Si</span>
+                <div>
+                    <p class="mono text-small font-bold uppercase tracking-[.16em] text-[#0055FF]">Sistem</p>
+                    <h1 class="mt-1 text-2xl font-extrabold tracking-tight sm:text-4xl">Pengaturan</h1>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden text-right sm:block">
+                    <p class="text-lg font-extrabold text-slate-800">Admin Pusat</p>
+                    <p class="text-base font-bold text-emerald-600">Sistem aktif</p>
+                </div>
+
+                <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#0055FF] text-white shadow-lg shadow-blue-600/30" aria-label="Profil Admin Pusat">
+                    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- INNER CONTENT -->
+    <div class="space-y-8 px-4 py-6 sm:px-8 lg:px-12 lg:py-8">
+
+        @if(session('success'))
+        <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-bold text-emerald-700 shadow-sm">
+            {{ session('success') }}
+        </div>
+        @endif
+
+
+        <!-- KARTU PENGATURAN SISTEM -->
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+
+            <!-- CARD 1: BERSIHKAN CACHE -->
+            <div class="flex min-h-[220px] flex-col justify-between space-y-5 rounded-[2rem] border border-slate-100 bg-white p-7 shadow-xl shadow-slate-200/40">
+
+                <div>
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M5.64 18.36A8 8 0 0018.36 5.64M18.36 18.36A8 8 0 005.64 5.64" />
                             </svg>
                         </div>
-                    </div>
-                </div>
-            </header>
 
-            <!-- Inner Content -->
-            <div class="space-y-8 px-4 py-6 sm:px-8 lg:px-12 lg:py-8">
-                
-                @if(session('success'))
-                <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-bold text-emerald-700 shadow-sm">
-                    {{ session('success') }}
-                </div>
-                @endif
-
-                <!-- KARTU PENGATURAN SISTEM (GRID 2 KOLOM UNTUK KESEIMBANGAN TAMPILAN) -->
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    
-                    <!-- Card 1: Bersihkan Cache Aset -->
-                    <div class="flex flex-col justify-between space-y-4 rounded-[2rem] border border-slate-100 bg-white p-6 shadow-xl shadow-slate-200/40">
-                        <div>
-                            <div class="flex items-center justify-between gap-2">
-                                <h3 class="text-base font-extrabold text-[#071a33]">Bersihkan Cache Aset</h3>
-                                <span class="rounded-full bg-emerald-100 px-3 py-0.5 text-xs font-bold text-emerald-700">Normal</span>
-                            </div>
-                            <p class="mt-2 text-xs font-medium leading-relaxed text-slate-500">
-                                Gunakan jika pembaruan tampilan belum muncul pada pengguna.
-                            </p>
-                        </div>
-                        <div class="pt-2">
-                            <button type="button" class="w-auto rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-extrabold text-[#071a33] shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                                Bersihkan Cache
-                            </button>
-                        </div>
+                        <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
+                            Normal
+                        </span>
                     </div>
 
-                    <!-- Card 2: Panduan Pengguna -->
-                    <div class="flex flex-col justify-between space-y-4 rounded-[2rem] border border-slate-100 bg-white p-6 shadow-xl shadow-slate-200/40">
-                        <div>
-                            <div class="flex items-center justify-between gap-2">
-                                <h3 class="text-base font-extrabold text-[#071a33]">Panduan Pengguna</h3>
-                                <span class="rounded-full bg-blue-100 px-3 py-0.5 text-xs font-bold text-[#0055FF]">Dokumentasi</span>
-                            </div>
-                            <p class="mt-2 text-xs font-medium leading-relaxed text-slate-500">
-                                Panduan alur & fungsi operasional untuk Administrator, Dinas, dan Sekolah.
-                            </p>
-                        </div>
-                        <div class="pt-2">
-                            <button type="button" class="w-auto rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-xs font-extrabold text-[#071a33] shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                                Buka Panduan
-                            </button>
-                        </div>
-                    </div>
+                    <h3 class="mt-5 text-lg font-extrabold text-[#071a33]">
+                        Bersihkan Cache Aset
+                    </h3>
 
+                    <p class="mt-2 text-sm font-medium leading-relaxed text-slate-500">
+                        Gunakan jika pembaruan tampilan belum muncul pada pengguna.
+                        Membersihkan cache dapat membantu memuat aset terbaru.
+                    </p>
                 </div>
 
-                <!-- RIWAYAT AKTIVITAS SISTEM -->
-                <div class="space-y-6 rounded-[2rem] border border-slate-100 bg-white p-6 shadow-xl shadow-slate-200/40 sm:p-8">
-                    <div class="flex items-center justify-between">
-                        <h2 class="text-lg font-extrabold text-[#071a33]">Riwayat Aktivitas Sistem</h2>
-                        <span class="mono text-xs font-bold text-slate-400">Log Terbaru</span>
-                    </div>
-                    
-                    <div class="overflow-x-auto">
-                        <table class="w-full border-collapse text-left">
-                            <thead>
-                                <tr class="border-b border-slate-100 text-xs font-extrabold uppercase tracking-wider text-slate-400">
-                                    <th class="px-4 pb-4 pt-2">Waktu</th>
-                                    <th class="px-4 pb-4 pt-2">Aktivitas</th>
-                                    <th class="px-4 pb-4 pt-2">Pelaksana</th>
-                                    <th class="px-4 pb-4 pt-2 text-right">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100 text-sm font-bold text-[#071a33]">
-                                <tr class="hover:bg-slate-50/50 transition">
-                                    <td class="px-4 py-4 text-xs font-medium text-slate-500">15 Jul 2026 09:15</td>
-                                    <td class="px-4 py-4">Generate Rekap SIPINTAR</td>
-                                    <td class="mono px-4 py-4 text-xs text-slate-600">@admin_pusat</td>
-                                    <td class="px-4 py-4 text-right">
-                                        <span class="inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-700">Berhasil</span>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-slate-50/50 transition">
-                                    <td class="px-4 py-4 text-xs font-medium text-slate-500">15 Jul 2026 08:45</td>
-                                    <td class="px-4 py-4">Bersihkan Cache Aset</td>
-                                    <td class="mono px-4 py-4 text-xs text-slate-600">@admin_pusat</td>
-                                    <td class="px-4 py-4 text-right">
-                                        <span class="inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-700">Berhasil</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="pt-2">
+                    <button
+                        type="button"
+                        onclick="bukaModalCache()"
+                        class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-extrabold text-[#071a33] shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    >
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M5.64 18.36A8 8 0 0018.36 5.64M18.36 18.36A8 8 0 005.64 5.64" />
+                        </svg>
+                        Bersihkan Cache
+                    </button>
                 </div>
 
             </div>
-        </main>
+
+
+            <!-- CARD 2: PANDUAN PENGGUNA -->
+            <div class="flex min-h-[220px] flex-col justify-between space-y-5 rounded-[2rem] border border-slate-100 bg-white p-7 shadow-xl shadow-slate-200/40">
+
+                <div>
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-[#0055FF]">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h12a2 2 0 012 2v16l-8-4-8 4V5z" />
+                            </svg>
+                        </div>
+
+                        <span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-[#0055FF]">
+                            Dokumentasi
+                        </span>
+                    </div>
+
+                    <h3 class="mt-5 text-lg font-extrabold text-[#071a33]">
+                        Panduan Pengguna
+                    </h3>
+
+                    <p class="mt-2 text-sm font-medium leading-relaxed text-slate-500">
+                        Panduan alur dan fungsi operasional untuk Administrator,
+                        Dinas, dan Sekolah dalam sistem SIPINTAR.
+                    </p>
+                </div>
+
+                <div class="pt-2">
+                    <button
+                        type="button"
+                        onclick="bukaModalPanduan()"
+                        class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-extrabold text-[#071a33] shadow-sm transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                    >
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h12a2 2 0 012 2v16l-8-4-8 4V5z" />
+                        </svg>
+                        Buka Panduan
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIWAYAT AKTIVITAS SISTEM -->
+        <div class="space-y-6 rounded-[2rem] border border-slate-100 bg-white p-6 shadow-xl shadow-slate-200/40 sm:p-8">
+
+            <div class="flex items-center justify-between">
+                <h2 class="text-lg font-extrabold text-[#071a33]">
+                    Riwayat Aktivitas Sistem
+                </h2>
+
+                <span class="mono text-xs font-bold text-slate-400">
+                    Log Terbaru
+                </span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse text-left">
+                    <thead>
+                        <tr class="border-b border-slate-100 text-xs font-extrabold uppercase tracking-wider text-slate-400">
+                            <th class="px-4 pb-4 pt-2">Waktu</th>
+                            <th class="px-4 pb-4 pt-2">Aktivitas</th>
+                            <th class="px-4 pb-4 pt-2">Pelaksana</th>
+                            <th class="px-4 pb-4 pt-2 text-right">Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="riwayatAktivitasBody" class="divide-y divide-slate-100 text-sm font-bold text-[#071a33]">
+
+                        <tr class="transition hover:bg-slate-50/50">
+                            <td class="px-4 py-4 text-xs font-medium text-slate-500">
+                                15 Jul 2026 09:15
+                            </td>
+                            <td class="px-4 py-4">
+                                Generate Rekap SIPINTAR
+                            </td>
+                            <td class="mono px-4 py-4 text-xs text-slate-600">
+                                @admin_pusat
+                            </td>
+                            <td class="px-4 py-4 text-right">
+                                <span class="inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-700">
+                                    Berhasil
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr class="transition hover:bg-slate-50/50">
+                            <td class="px-4 py-4 text-xs font-medium text-slate-500">
+                                15 Jul 2026 08:45
+                            </td>
+                            <td class="px-4 py-4">
+                                Bersihkan Cache Aset
+                            </td>
+                            <td class="mono px-4 py-4 text-xs text-slate-600">
+                                @admin_pusat
+                            </td>
+                            <td class="px-4 py-4 text-right">
+                                <span class="inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-700">
+                                    Berhasil
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
     </div>
 
+</main>
+
+
+<!-- ================================================= -->
+<!-- MODAL BUKU PANDUAN -->
+<!-- ================================================= -->
+
+<div
+    id="modalPanduan"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="judulModalPanduan"
+>
+    <div class="flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-[2rem] bg-white shadow-2xl">
+
+        <!-- HEADER MODAL -->
+        <div class="flex items-center justify-between border-b border-slate-100 bg-white px-6 py-5 sm:px-8">
+
+            <div class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-50 text-[#0055FF]">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a2 2 0 012-2h12a2 2 0 012 2v16l-8-4-8 4V5z" />
+                    </svg>
+                </div>
+
+                <div>
+                    <p class="text-xs font-extrabold uppercase tracking-wider text-[#0055FF]">
+                        Dokumentasi Sistem
+                    </p>
+                    <h2 id="judulModalPanduan" class="text-xl font-extrabold text-[#071a33]">
+                        Buku Panduan SIPINTAR
+                    </h2>
+                </div>
+            </div>
+
+            <button
+                type="button"
+                onclick="tutupModalPanduan()"
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-xl font-bold text-slate-500 transition hover:bg-slate-200"
+                aria-label="Tutup buku panduan"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <!-- ISI BUKU PANDUAN -->
+        <div class="custom-scrollbar overflow-y-auto px-6 py-6 sm:px-8">
+
+            <div class="mb-6 rounded-2xl border border-blue-100 bg-blue-50 p-5">
+                <p class="text-xs font-extrabold uppercase tracking-wider text-[#0055FF]">
+                    Selamat Datang
+                </p>
+
+                <h3 class="mt-2 text-lg font-extrabold text-[#071a33]">
+                    Panduan Operasional SIPINTAR
+                </h3>
+
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                    Buku panduan ini membantu Administrator memahami menu
+                    dan fungsi dasar dalam sistem pengelolaan Program Indonesia Pintar.
+                </p>
+            </div>
+
+
+            <!-- BAGIAN 1 -->
+            <div class="mb-5 rounded-2xl border border-slate-100 p-5">
+                <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-100 text-sm font-extrabold text-[#0055FF]">
+                        1
+                    </span>
+
+                    <h3 class="text-base font-extrabold text-[#071a33]">
+                        Dashboard
+                    </h3>
+                </div>
+
+                <p class="mt-3 text-sm leading-relaxed text-slate-500">
+                    Dashboard digunakan untuk melihat ringkasan informasi,
+                    statistik, dan kondisi data PIP secara umum.
+                </p>
+            </div>
+
+
+            <!-- BAGIAN 2 -->
+            <div class="mb-5 rounded-2xl border border-slate-100 p-5">
+                <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-100 text-sm font-extrabold text-[#0055FF]">
+                        2
+                    </span>
+
+                    <h3 class="text-base font-extrabold text-[#071a33]">
+                        Data & Pemantauan
+                    </h3>
+                </div>
+
+                <ul class="mt-3 space-y-3 text-sm leading-relaxed text-slate-500">
+                    <li>
+                        <strong class="text-slate-700">Data PIP:</strong>
+                        Mengelola dan melihat informasi data penerima PIP.
+                    </li>
+
+                    <li>
+                        <strong class="text-slate-700">Pemantauan:</strong>
+                        Memantau perkembangan dan status data program.
+                    </li>
+
+                    <li>
+                        <strong class="text-slate-700">Rekap:</strong>
+                        Melihat rangkuman data untuk kebutuhan pelaporan.
+                    </li>
+
+                    <li>
+                        <strong class="text-slate-700">Verifikasi:</strong>
+                        Melakukan pemeriksaan dan verifikasi data sesuai kewenangan.
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- BAGIAN 3 -->
+            <div class="mb-5 rounded-2xl border border-slate-100 p-5">
+                <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-100 text-sm font-extrabold text-[#0055FF]">
+                        3
+                    </span>
+
+                    <h3 class="text-base font-extrabold text-[#071a33]">
+                        Layanan & Berkas
+                    </h3>
+                </div>
+
+                <ul class="mt-3 space-y-3 text-sm leading-relaxed text-slate-500">
+                    <li>
+                        <strong class="text-slate-700">Format Dokumen:</strong>
+                        Mengelola format dokumen usulan dan pengembalian.
+                    </li>
+
+                    <li>
+                        <strong class="text-slate-700">Lampiran SK:</strong>
+                        Mengelola dokumen Surat Keputusan yang tersedia.
+                    </li>
+
+                    <li>
+                        <strong class="text-slate-700">Pemberitahuan:</strong>
+                        Melihat, mencari, dan mengelola arsip pemberitahuan resmi.
+                    </li>
+                </ul>
+            </div>
+
+
+            <!-- BAGIAN 4 -->
+            <div class="mb-5 rounded-2xl border border-slate-100 p-5">
+                <div class="flex items-center gap-3">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-100 text-sm font-extrabold text-[#0055FF]">
+                        4
+                    </span>
+
+                    <h3 class="text-base font-extrabold text-[#071a33]">
+                        Sistem & Pengaturan
+                    </h3>
+                </div>
+
+                <p class="mt-3 text-sm leading-relaxed text-slate-500">
+                    Menu Pengaturan digunakan untuk mengakses panduan sistem
+                    dan menjalankan fungsi pemeliharaan aset tampilan.
+                    Fitur pembersihan cache pada halaman ini merupakan simulasi
+                    frontend jika belum dihubungkan ke backend.
+                </p>
+            </div>
+
+
+            <!-- BAGIAN 5 -->
+            <div class="rounded-2xl border border-amber-100 bg-amber-50 p-5">
+                <div class="flex items-center gap-3">
+                    <svg class="h-5 w-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v4m0 4h.01M10.29 3.86l-8.1 14A2 2 0 003.93 21h16.14a2 2 0 001.74-3.14l-8.1-14a2 2 0 00-3.42 0z" />
+                    </svg>
+
+                    <h3 class="text-sm font-extrabold text-amber-800">
+                        Catatan Penggunaan
+                    </h3>
+                </div>
+
+                <p class="mt-2 text-sm leading-relaxed text-amber-700">
+                    Gunakan menu sesuai dengan hak akses akun.
+                    Pastikan perubahan data penting dilakukan dengan teliti.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER MODAL -->
+        <div class="flex justify-end border-t border-slate-100 bg-slate-50 px-6 py-4 sm:px-8">
+            <button
+                type="button"
+                onclick="tutupModalPanduan()"
+                class="rounded-xl bg-[#0055FF] px-5 py-3 text-sm font-extrabold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-700"
+            >
+                Tutup Panduan
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================================================= -->
+<!-- MODAL KONFIRMASI BERSIHKAN CACHE -->
+<!-- ================================================= -->
+
+<div
+    id="modalCache"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="judulModalCache"
+>
+    <div class="w-full max-w-md rounded-[2rem] bg-white p-6 shadow-2xl sm:p-8">
+
+        <div class="flex items-center justify-between">
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h5M20 20v-5h-5M5.64 18.36A8 8 0 0018.36 5.64M18.36 18.36A8 8 0 005.64 5.64" />
+                </svg>
+            </div>
+
+            <button
+                type="button"
+                onclick="tutupModalCache()"
+                class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-100 text-xl font-bold text-slate-500 hover:bg-slate-200"
+                aria-label="Tutup konfirmasi cache"
+            >
+                &times;
+            </button>
+        </div>
+
+        <h2 id="judulModalCache" class="mt-5 text-xl font-extrabold text-[#071a33]">
+            Bersihkan Cache Aset?
+        </h2>
+
+        <p class="mt-3 text-sm leading-relaxed text-slate-500">
+            Apakah kamu yakin ingin menjalankan proses pembersihan cache aset?
+            Proses ini ditujukan untuk membantu memuat tampilan terbaru.
+        </p>
+
+        <div class="mt-7 flex gap-3">
+            <button
+                type="button"
+                onclick="tutupModalCache()"
+                class="flex-1 rounded-xl bg-slate-100 px-4 py-3 text-sm font-extrabold text-slate-700 transition hover:bg-slate-200"
+            >
+                Batal
+            </button>
+
+            <button
+                type="button"
+                onclick="prosesBersihkanCache()"
+                class="flex-1 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-extrabold text-white shadow-lg shadow-emerald-500/20 transition hover:bg-emerald-700"
+            >
+                Ya, Bersihkan
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- ================================================= -->
+<!-- NOTIFIKASI HASIL AKSI -->
+<!-- ================================================= -->
+
+<div
+    id="notifikasiPengaturan"
+    class="pointer-events-none fixed right-4 top-5 z-[200] hidden max-w-sm rounded-2xl border border-emerald-200 bg-white p-4 shadow-2xl sm:right-8"
+    role="status"
+    aria-live="polite"
+>
+    <div class="flex items-start gap-3">
+        <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+
+        <div>
+            <p class="text-sm font-extrabold text-[#071a33]">
+                Berhasil
+            </p>
+
+            <p id="isiNotifikasiPengaturan" class="mt-1 text-xs font-medium leading-relaxed text-slate-500">
+                Proses berhasil dilakukan.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT PENGATURAN -->
+<!-- ================================================= -->
+
+<script>
+
+    // ==========================================
+    // FUNGSI BUKA BUKU PANDUAN
+    // ==========================================
+
+    function bukaModalPanduan() {
+        const modal = document.getElementById("modalPanduan");
+
+        if (!modal) return;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        document.body.classList.add("overflow-hidden");
+    }
+
+
+    function tutupModalPanduan() {
+        const modal = document.getElementById("modalPanduan");
+
+        if (!modal) return;
+
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        document.body.classList.remove("overflow-hidden");
+    }
+
+
+    // ==========================================
+    // FUNGSI MODAL CACHE
+    // ==========================================
+
+    function bukaModalCache() {
+        const modal = document.getElementById("modalCache");
+
+        if (!modal) return;
+
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
+        document.body.classList.add("overflow-hidden");
+    }
+
+
+    function tutupModalCache() {
+        const modal = document.getElementById("modalCache");
+
+        if (!modal) return;
+
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+
+        document.body.classList.remove("overflow-hidden");
+    }
+
+
+    // ==========================================
+    // PROSES BERSIHKAN CACHE
+    // ==========================================
+
+    function prosesBersihkanCache() {
+
+        // Tutup popup konfirmasi
+        tutupModalCache();
+
+        // Tampilkan notifikasi hasil
+        tampilkanNotifikasi(
+            "Cache aset berhasil dibersihkan"
+        );
+
+        // Tambahkan riwayat aktivitas secara langsung
+        tambahRiwayatAktivitas(
+            "Bersihkan Cache Aset",
+            "Berhasil"
+        );
+    }
+
+
+    // ==========================================
+    // NOTIFIKASI
+    // ==========================================
+
+    function tampilkanNotifikasi(pesan) {
+        const notifikasi = document.getElementById("notifikasiPengaturan");
+        const isi = document.getElementById("isiNotifikasiPengaturan");
+
+        if (!notifikasi || !isi) return;
+
+        isi.textContent = pesan;
+
+        notifikasi.classList.remove("hidden");
+
+        // Notifikasi ditutup otomatis setelah 4 detik
+        setTimeout(() => {
+            notifikasi.classList.add("hidden");
+        }, 4000);
+    }
+
+
+    // ==========================================
+    // TAMBAH RIWAYAT AKTIVITAS
+    // ==========================================
+
+    function tambahRiwayatAktivitas(aktivitas, status) {
+        const tbody = document.getElementById("riwayatAktivitasBody");
+
+        if (!tbody) return;
+
+        const now = new Date();
+
+        const tanggal = now.toLocaleDateString("id-ID", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        });
+
+        const jam = now.toLocaleTimeString("id-ID", {
+            hour: "2-digit",
+            minute: "2-digit"
+        });
+
+        const tr = document.createElement("tr");
+
+        tr.className = "transition hover:bg-slate-50/50";
+
+        tr.innerHTML = `
+            <td class="px-4 py-4 text-xs font-medium text-slate-500">
+                ${tanggal} ${jam}
+            </td>
+
+            <td class="px-4 py-4">
+                ${escapeHTMLPengaturan(aktivitas)}
+            </td>
+
+            <td class="mono px-4 py-4 text-xs text-slate-600">
+                @admin_pusat
+            </td>
+
+            <td class="px-4 py-4 text-right">
+                <span class="inline-block rounded-full bg-emerald-100 px-3 py-1 text-xs font-extrabold text-emerald-700">
+                    ${escapeHTMLPengaturan(status)}
+                </span>
+            </td>
+        `;
+
+        // Tambahkan aktivitas terbaru di baris paling atas
+        tbody.insertBefore(tr, tbody.firstChild);
+    }
+
+
+    // ==========================================
+    // KEAMANAN TEKS HTML
+    // ==========================================
+
+    function escapeHTMLPengaturan(value) {
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    // ==========================================
+    // TUTUP MODAL SAAT KLIK DI LUAR
+    // ==========================================
+
+    document.addEventListener("click", function(event) {
+
+        const modalPanduan = document.getElementById("modalPanduan");
+        const modalCache = document.getElementById("modalCache");
+
+        if (event.target === modalPanduan) {
+            tutupModalPanduan();
+        }
+
+        if (event.target === modalCache) {
+            tutupModalCache();
+        }
+
+    });
+
+
+    // ==========================================
+    // TUTUP MODAL DENGAN TOMBOL ESC
+    // ==========================================
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key !== "Escape") return;
+
+        tutupModalPanduan();
+        tutupModalCache();
+
+    });
+
+</script>
 </body>
 </html>

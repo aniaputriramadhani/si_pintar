@@ -106,8 +106,8 @@
 
                 <!-- Informasi Sekolah Aktif (Widget Sidebar) -->
                 <div class="rounded-2xl border border-slate-200/80 bg-slate-50 p-4">
-                    <p id="sideNamaSekolah" class="text-lg font-black text-slate-800 leading-snug">SDN 1 Bahagia Selatan</p>
-                    <p id="sideNPSN" class="mono text-xs font-bold text-blue-600 mt-1">NPSN: 63948836</p>
+                    <p id="sideNamaSekolah" class="text-lg font-black text-slate-800 leading-snug">SMPN 1 SOREANG</p>
+                    <p id="sideNPSN" class="mono text-xs font-bold text-blue-600 mt-1">NPSN: 20206127</p>
                 </div>
 
                 <!-- Navigation Links -->
@@ -223,7 +223,7 @@
                     <!-- Profil Sekolah / Status -->
                     <div class="flex items-center gap-3">
                         <div class="hidden text-right sm:block">
-                            <p id="topNamaSekolah" class="text-lg font-extrabold text-[#071a33]">SDN 1 Bahagia Selatan</p>
+                            <p id="topNamaSekolah" class="text-lg font-extrabold text-[#071a33]">SMPN 1 Soreang</p>
                             <p class="text-base font-bold text-emerald-600 flex items-center justify-end gap-1.5">
                                 <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span> Terverifikasi
                             </p>
@@ -281,111 +281,39 @@
                         </div>
                     </section>
 
-                    <!-- GRID PEMBERITAHUAN & TABEL PENGADUAN -->
+                    <!-- TABEL PENGADUAN -->
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                        
-                        <!-- KOLOM KIRI: PEMBERITAHUAN TERBARU (5 COL) -->
-<div class="lg:col-span-5 flex flex-col h-full">
-    <div class="flex h-full flex-col justify-between rounded-[2.5rem] border-2 border-slate-200 bg-white p-6 md:p-8 shadow-sm">
-        <div>
-            <!-- Header Section (Di dalam Outer Card) -->
-            <div class="flex items-center justify-between mb-6">
-                <div class="flex items-center gap-2.5">
-                    <h3 class="text-xl font-black text-[#071a33]">Pemberitahuan Terbaru</h3>
-                    <span class="inline-flex items-center justify-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-black text-[#0055FF]">3</span>
-                </div>
-                <a href="#" class="text-xs font-bold text-[#0055FF] hover:underline">Lihat Semua</a>
-            </div>
 
-            <!-- List Item Pemberitahuan -->
-            <div class="space-y-3.5">
-                <!-- Item 1: Batas Konfirmasi Aktivasi -->
-                <div class="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-50/60 p-4 transition-all hover:border-[#0055FF] hover:bg-white hover:shadow-md">
-                    <div class="flex items-start gap-3.5">
-                        <div class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-100 group-hover:bg-amber-100 transition-colors">
-                            <i class="fa-solid fa-clock-rotate-left text-lg"></i>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-center justify-between gap-2">
-                                <span class="inline-block rounded-md bg-amber-100/80 px-2 py-0.5 text-[10px] font-black text-amber-800 uppercase tracking-wider">Penting</span>
-                                <span class="text-[11px] font-bold text-slate-400">20 Juli 2026</span>
+                        <!-- KOLOM PENGADUAN SAYA (12 COL - SEJAJAR PENUH) -->
+                        <div class="lg:col-span-12 flex flex-col h-full">
+                            <div class="flex h-full flex-col justify-between rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50">
+                                <div class="flex flex-col h-full space-y-4">
+                                    <!-- Header Section -->
+                                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                                        <h3 class="text-xl font-black text-[#071a33]">Pengaduan Saya</h3>
+                                    </div>
+
+                                    <!-- TABEL PENGADUAN -->
+                                    <div class="flex-1 overflow-x-auto">
+                                        <table class="w-full text-left border-collapse whitespace-nowrap">
+                                            <thead>
+                                                <tr class="border-b-2 border-slate-200 bg-slate-50/80 text-slate-700">
+                                                    <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider">No. Tiket</th>
+                                                    <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider">Kategori</th>
+                                                    <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider">Status</th>
+                                                    <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider text-center">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="ticketTableBody" class="divide-y divide-slate-100 text-xs font-bold text-slate-800">
+                                                <!-- Rendered dynamically by JavaScript -->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-                            <h4 class="mt-1 text-sm font-black text-[#071a33] group-hover:text-[#0055FF] transition-colors leading-snug">Batas Konfirmasi Aktivasi</h4>
-                            <p class="mt-0.5 text-xs font-medium text-slate-500 leading-relaxed">Konfirmasi tahap aktif ditutup 20 Juli 2026.</p>
                         </div>
+
                     </div>
-                </div>
-
-                <!-- Item 2: Format Pengembalian Negara -->
-                <div class="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-50/60 p-4 transition-all hover:border-[#0055FF] hover:bg-white hover:shadow-md">
-                    <div class="flex items-start gap-3.5">
-                        <div class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF] border border-blue-100 group-hover:bg-blue-100 transition-colors">
-                            <i class="fa-solid fa-file-invoice text-lg"></i>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-center justify-between gap-2">
-                                <span class="inline-block rounded-md bg-blue-100/80 px-2 py-0.5 text-[10px] font-black text-[#0055FF] uppercase tracking-wider">Dokumen</span>
-                                <span class="text-[11px] font-bold text-slate-400">Terbaru</span>
-                            </div>
-                            <h4 class="mt-1 text-sm font-black text-[#071a33] group-hover:text-[#0055FF] transition-colors leading-snug">Format Pengembalian Negara</h4>
-                            <p class="mt-0.5 text-xs font-medium text-slate-500 leading-relaxed">Format terbaru tersedia pada menu Dokumen.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 3: Perbaikan Data Siswa -->
-                <div class="group relative overflow-hidden rounded-2xl border border-slate-200/80 bg-slate-50/60 p-4 transition-all hover:border-[#0055FF] hover:bg-white hover:shadow-md">
-                    <div class="flex items-start gap-3.5">
-                        <div class="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl bg-rose-50 text-rose-600 border border-rose-100 group-hover:bg-rose-100 transition-colors">
-                            <i class="fa-solid fa-user-gear text-lg"></i>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-center justify-between gap-2">
-                                <span class="inline-block rounded-md bg-rose-100/80 px-2 py-0.5 text-[10px] font-black text-rose-700 uppercase tracking-wider">Tindak Lanjut</span>
-                                <span class="text-[11px] font-bold text-rose-600">9 Siswa</span>
-                            </div>
-                            <h4 class="mt-1 text-sm font-black text-[#071a33] group-hover:text-[#0055FF] transition-colors leading-snug">Perbaikan Data Siswa</h4>
-                            <p class="mt-0.5 text-xs font-medium text-slate-500 leading-relaxed">9 siswa memerlukan tindak lanjut.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                        <!-- KOLOM KANAN: PENGADUAN SAYA (7 COL) -->
-<div class="lg:col-span-7 flex flex-col h-full">
-    <div class="flex h-full flex-col justify-between rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50">
-        <div class="flex flex-col h-full space-y-4">
-            <!-- Header Section -->
-            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-                <h3 class="text-xl font-black text-[#071a33]">Pengaduan Saya</h3>
-                <button onclick="openModalUpload()" class="px-5 py-2.5 bg-[#0055FF] hover:bg-blue-700 text-white font-extrabold text-xs rounded-2xl flex items-center gap-1.5 transition-all shadow-md shadow-blue-600/20">
-                    <i class="fa-solid fa-plus"></i>
-                    <span>Buat Pengaduan</span>
-                </button>
-            </div>
-
-            <!-- TABEL PENGADUAN -->
-            <div class="flex-1 overflow-x-auto">
-                <table class="w-full text-left border-collapse whitespace-nowrap">
-                    <thead>
-                        <tr class="border-b-2 border-slate-200 bg-slate-50/80 text-slate-700">
-                            <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider">No. Tiket</th>
-                            <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider">Kategori</th>
-                            <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider">Status</th>
-                            <th class="py-3.5 px-3 font-black text-xs uppercase tracking-wider text-center">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ticketTableBody" class="divide-y divide-slate-100 text-xs font-bold text-slate-800">
-                        <!-- Rendered dynamically by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
                     </div>
 

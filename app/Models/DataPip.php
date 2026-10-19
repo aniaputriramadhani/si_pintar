@@ -14,11 +14,15 @@ class DataPip extends Model
 
     protected $fillable = [
         'tahun',
+        'bulan',
         'nisn',
         'nama_siswa',
         'nama_sekolah',
         'npsn',
         'jenjang',
+        'provinsi',
+        'kabupaten',
+        'kecamatan',
         'no_sk',
         'nominal_dana',
         'status_aktivasi',

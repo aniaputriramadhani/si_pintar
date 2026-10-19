@@ -15,6 +15,9 @@ class DataPipController extends Controller
         $jenjang = $request->input('jenjang');
         $tahun = $request->input('tahun');
         $bulan = $request->input('bulan');
+        $provinsi = $request->input('provinsi', 'Semua');
+        $kabupaten = $request->input('kabupaten', 'Semua');
+        $kecamatan = $request->input('kecamatan', 'Semua');
         $search = $request->input('search');
 
         $query = DB::table('data_pip');
@@ -37,7 +40,16 @@ class DataPipController extends Controller
         }
 
         if (!empty($bulan) && $bulan !== 'Semua') {
-            $query->where('bulan_sk', $bulan);
+            $query->where('bulan', $bulan);
+        }
+        if ($provinsi !== 'Semua') {
+            $query->where('provinsi', $provinsi);
+        }
+        if ($kabupaten !== 'Semua') {
+            $query->where('kabupaten', $kabupaten);
+        }
+        if ($kecamatan !== 'Semua') {
+            $query->where('kecamatan', $kecamatan);
         }
 
         if (!empty($search)) {
@@ -46,11 +58,20 @@ class DataPipController extends Controller
                   ->orWhere('nama_siswa', 'like', "%{$search}%")
                   ->orWhere('no_sk', 'like', "%{$search}%")
                   ->orWhere('npsn', 'like', "%{$search}%")
-                  ->orWhere('nama_sekolah', 'like', "%{$search}%");
+                  ->orWhere('nama_sekolah', 'like', "%{$search}%")
+                  ->orWhere('provinsi', 'like', "%{$search}%")
+                  ->orWhere('kabupaten', 'like', "%{$search}%")
+                  ->orWhere('kecamatan', 'like', "%{$search}%");
             });
         }
 
         $dataPip = $query->latest('id')->paginate(10)->withQueryString();
+        $tahunList = DB::table('data_pip')->distinct()->orderByDesc('tahun')->pluck('tahun');
+        $jenjangList = DB::table('data_pip')->distinct()->orderBy('jenjang')->pluck('jenjang');
+        $statusSkList = DB::table('data_pip')->distinct()->orderBy('status_sk')->pluck('status_sk');
+        $provinsiList = DB::table('data_pip')->whereNotNull('provinsi')->distinct()->orderBy('provinsi')->pluck('provinsi');
+        $kabupatenList = DB::table('data_pip')->when($provinsi !== 'Semua', fn ($q) => $q->where('provinsi', $provinsi))->whereNotNull('kabupaten')->distinct()->orderBy('kabupaten')->pluck('kabupaten');
+        $kecamatanList = DB::table('data_pip')->when($provinsi !== 'Semua', fn ($q) => $q->where('provinsi', $provinsi))->when($kabupaten !== 'Semua', fn ($q) => $q->where('kabupaten', $kabupaten))->whereNotNull('kecamatan')->distinct()->orderBy('kecamatan')->pluck('kecamatan');
 
         return view('admin.datapip', compact(
             'dataPip',
@@ -59,7 +80,8 @@ class DataPipController extends Controller
             'jenjang',
             'tahun',
             'bulan',
-            'search'
+            'search', 'provinsi', 'kabupaten', 'kecamatan', 'tahunList', 'jenjangList',
+            'statusSkList', 'provinsiList', 'kabupatenList', 'kecamatanList'
         ));
     }
 }

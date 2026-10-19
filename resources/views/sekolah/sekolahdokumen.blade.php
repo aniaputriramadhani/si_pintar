@@ -83,426 +83,1131 @@
     <!-- Layout Grid -->
     <div class="min-h-screen lg:flex">
         
-        <!-- SIDEBAR KIRI -->
+        <!-- ================= SIDEBAR KIRI ================= -->
         <aside class="sticky top-0 z-20 hidden h-screen w-96 flex-shrink-0 flex-col justify-between overflow-y-auto no-scrollbar border-r border-slate-200/80 bg-white p-6 shadow-sm lg:flex">
+
             <div class="space-y-8">
-                
-                <!-- Header Brand Card -->
-                <a href="{{ route('public.home') }}" class="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/80 p-4 transition hover:border-slate-200 hover:bg-slate-100/80 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+
+                <!-- HEADER BRAND -->
+                <a href="{{ route('public.home') }}"
+                   class="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50/80 p-4 transition hover:border-slate-200 hover:bg-slate-100/80">
+
                     <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl border border-slate-100 bg-white p-2 shadow-sm">
-                        <img src="https://pip.kemendikdasmen.go.id/img/logo-sipintar.png" 
-                             alt="Logo Kemendikdasmen" 
+                        <img src="https://pip.kemendikdasmen.go.id/img/logo-sipintar.png"
+                             alt="Logo Kemendikdasmen"
                              class="h-full w-full object-contain">
                     </div>
-                    <div class="flex flex-col min-w-0">
-                        <span class="text-3xl font-black tracking-tight text-slate-800 transition-colors group-hover:text-[#0055FF] leading-tight truncate">SIPINTAR</span>
+
+                    <div class="flex min-w-0 flex-col">
+                        <span class="text-3xl font-black tracking-tight text-slate-800 leading-tight">
+                            SIPINTAR
+                        </span>
+
                         <div class="mt-1">
-                            <span class="inline-flex items-center rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-black tracking-wider text-[#0055FF]">PORTAL SEKOLAH</span>
+                            <span class="inline-flex items-center rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-black tracking-wider text-[#0055FF]">
+                                PORTAL SEKOLAH
+                            </span>
                         </div>
                     </div>
                 </a>
 
-                <!-- Informasi Sekolah Aktif (Widget Sidebar) -->
+                <!-- Informasi Sekolah Aktif -->
                 <div class="rounded-2xl border border-slate-200/80 bg-slate-50 p-4">
-                    <p id="sideNamaSekolah" class="text-lg font-black text-slate-800 leading-snug">SDN 1 Bahagia Selatan</p>
-                    <p id="sideNPSN" class="mono text-xs font-bold text-blue-600 mt-1">NPSN: 63948836</p>
+                    <p id="sideNamaSekolah" class="text-lg font-black text-slate-800 leading-snug">SMPN 1 SOREANG</p>
+                    <p id="sideNPSN" class="mono text-xs font-bold text-blue-600 mt-1">NPSN: 20206127</p>
                 </div>
 
-                <!-- Navigation Links -->
+                <!-- NAVIGASI -->
                 <nav class="space-y-6" aria-label="Navigasi Sekolah">
-                    
-                    <!-- Kategori 1: Utama -->
+
+                    <!-- KATEGORI UTAMA -->
                     <div class="space-y-2">
-                        <p class="px-4 text-xs font-black uppercase tracking-wider text-slate-400">Utama</p>
-                        
-                        <!-- Dashboard -->
-                        <a href="{{ Route::has('sekolah.dashboard') ? route('sekolah.dashboard') : url('/sekolah/dashboard') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all {{ request()->is('sekolah/dashboard*') ? 'bg-[#0055FF] text-white shadow-md shadow-blue-500/20' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' }}">
-                            <svg class="h-7 w-7 flex-shrink-0 {{ request()->is('sekolah/dashboard*') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                        <p class="px-4 text-xs font-black uppercase tracking-wider text-slate-400">
+                            Utama
+                        </p>
+
+                        <!-- DASHBOARD -->
+                        <a href="{{ Route::has('sekolah.dashboard') ? route('sekolah.dashboard') : url('/sekolah/dashboard') }}"
+                           class="group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold text-slate-700 transition-all hover:bg-slate-100">
+
+                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                                </path>
+                            </svg>
+
                             <span>Dashboard</span>
                         </a>
                     </div>
 
-                    <!-- Kategori 2: Layanan PIP -->
+                    <!-- KATEGORI LAYANAN PIP -->
                     <div class="space-y-2">
-                        <p class="px-4 text-xs font-black uppercase tracking-wider text-slate-400">Layanan PIP</p>
-                        
-                        <!-- Data PIP -->
-                        <a href="{{ Route::has('sekolah.data-pip') ? route('sekolah.data-pip') : url('/sekolah/data-pip') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all {{ request()->is('sekolah/data-pip*') ? 'bg-[#0055FF] text-white shadow-md shadow-blue-500/20' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' }}">
-                            <svg class="h-7 w-7 flex-shrink-0 {{ request()->is('sekolah/data-pip*') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <p class="px-4 text-xs font-black uppercase tracking-wider text-slate-400">
+                            Layanan PIP
+                        </p>
+
+                        <!-- DATA PIP -->
+                        <a href="{{ Route::has('sekolah.data-pip') ? route('sekolah.data-pip') : url('/sekolah/data-pip') }}"
+                           class="group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold text-slate-700 transition-all hover:bg-slate-100">
+
+                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+
                             <span>Data PIP</span>
                         </a>
 
-                        <!-- Verifikasi -->
-                        <a href="{{ Route::has('sekolah.verifikasi') ? route('sekolah.verifikasi') : url('/sekolah/verifikasi') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all {{ request()->is('sekolah/verifikasi*') ? 'bg-[#0055FF] text-white shadow-md shadow-blue-500/20' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' }}">
-                            <svg class="h-7 w-7 flex-shrink-0 {{ request()->is('sekolah/verifikasi*') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <!-- VERIFIKASI -->
+                        <a href="{{ Route::has('sekolah.verifikasi') ? route('sekolah.verifikasi') : url('/sekolah/verifikasi') }}"
+                           class="group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold text-slate-700 transition-all hover:bg-slate-100">
+
+                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+
                             <span>Verifikasi</span>
                         </a>
 
-                        <!-- Konfirmasi -->
-                        <a href="{{ Route::has('sekolah.konfirmasi') ? route('sekolah.konfirmasi') : url('/sekolah/konfirmasi') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all {{ request()->is('sekolah/konfirmasi*') ? 'bg-[#0055FF] text-white shadow-md shadow-blue-500/20' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' }}">
-                            <svg class="h-7 w-7 flex-shrink-0 {{ request()->is('sekolah/konfirmasi*') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <!-- KONFIRMASI -->
+                        <a href="{{ Route::has('sekolah.konfirmasi') ? route('sekolah.konfirmasi') : url('/sekolah/konfirmasi') }}"
+                           class="group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold text-slate-700 transition-all hover:bg-slate-100">
+
+                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M5 13l4 4L19 7">
+                                </path>
+                            </svg>
+
                             <span>Konfirmasi</span>
                         </a>
 
-                        <!-- Pengembalian Negara -->
-                        <a href="{{ Route::has('sekolah.pengembalian-negara') ? route('sekolah.pengembalian-negara') : url('/sekolah/pengembalian-negara') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all {{ request()->is('sekolah/pengembalian-negara*') ? 'bg-[#0055FF] text-white shadow-md shadow-blue-500/20' : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' }}">
-                            <svg class="h-7 w-7 flex-shrink-0 {{ request()->is('sekolah/pengembalian-negara*') ? 'text-white' : 'text-slate-400 group-hover:text-slate-600' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path></svg>
+                        <!-- PENGEMBALIAN NEGARA -->
+                        <a href="{{ Route::has('sekolah.pengembalian-negara') ? route('sekolah.pengembalian-negara') : url('/sekolah/pengembalian-negara') }}"
+                           class="group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold text-slate-700 transition-all hover:bg-slate-100">
+
+                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6">
+                                </path>
+                            </svg>
+
                             <span>Pengembalian Negara</span>
                         </a>
                     </div>
 
-                    <!-- Kategori 3: Administrasi -->
+                    <!-- KATEGORI ADMINISTRASI -->
                     <div class="space-y-2">
-                        <p class="px-4 text-xs font-black uppercase tracking-wider text-slate-400">Administrasi</p>
 
-                        <!-- Dokumen (Active Menu) -->
-                        <a href="{{ Route::has('sekolah.dokumen') ? route('sekolah.dokumen') : url('/sekolah/dokumen') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all bg-[#0055FF] text-white shadow-md shadow-blue-500/20">
-                            <svg class="h-7 w-7 flex-shrink-0 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                            <span>Dokumen</span>
-                        </a>
+                        <p class="px-4 text-xs font-black uppercase tracking-wider text-slate-400">
+                            Administrasi
+                        </p>
 
-                        <!-- Pengaduan -->
-                        <a href="{{ Route::has('sekolah.pengaduan') ? route('sekolah.pengaduan') : url('/sekolah/pengaduan') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all text-slate-700 hover:bg-slate-100 hover:text-slate-900">
-                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        <!-- DOKUMEN + DROPDOWN -->
+                        <div class="space-y-2">
+
+                            <!-- TOMBOL UTAMA DOKUMEN -->
+                            <button type="button"
+                                    id="btnDokumenSidebar"
+                                    onclick="toggleDokumenSidebar()"
+                                    class="group flex w-full items-center justify-between gap-4 rounded-2xl bg-[#0055FF] px-4 py-3.5 text-left text-xl font-bold text-white shadow-md shadow-blue-500/20 transition-all">
+
+                                <span class="flex items-center gap-4">
+
+                                    <svg class="h-7 w-7 flex-shrink-0"
+                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              stroke-width="2"
+                                              d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z">
+                                        </path>
+                                    </svg>
+
+                                    <span>Dokumen</span>
+                                </span>
+
+                                <svg id="iconDokumenSidebar"
+                                     class="h-5 w-5 transition-transform duration-200"
+                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-width="2"
+                                          d="M19 9l-7 7-7-7">
+                                    </path>
+                                </svg>
+
+                            </button>
+
+                            <!-- SUBMENU DOKUMEN -->
+                            <div id="submenuDokumen"
+                                 class="ml-5 space-y-1 border-l-2 border-blue-100 pl-3">
+
+                                <!-- SUBMENU SK -->
+                                <button type="button"
+                                        id="menuSK"
+                                        onclick="switchDocumentPage('sk')"
+                                        class="submenu-dokumen active-submenu flex w-full items-center gap-3 rounded-xl bg-blue-50 px-4 py-3 text-left text-base font-extrabold text-[#0055FF] transition-all">
+
+                                    <svg class="h-5 w-5 flex-shrink-0"
+                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              stroke-width="2"
+                                              d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2zM9 8h6M9 12h6M9 16h4">
+                                        </path>
+                                    </svg>
+
+                                    <span>SK</span>
+                                </button>
+
+                                <!-- SUBMENU PEMBERITAHUAN -->
+                                <button type="button"
+                                        id="menuPemberitahuan"
+                                        onclick="switchDocumentPage('pemberitahuan')"
+                                        class="submenu-dokumen flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left text-base font-extrabold text-slate-600 transition-all hover:bg-slate-100">
+
+                                    <svg class="h-5 w-5 flex-shrink-0"
+                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              stroke-width="2"
+                                              d="M15 17h5l-1.5-2V9a6.5 6.5 0 00-13 0v6L4 17h5m6 0a3 3 0 01-6 0">
+                                        </path>
+                                    </svg>
+
+                                    <span>Pemberitahuan</span>
+
+                                    <span class="ml-auto rounded-full bg-rose-100 px-2 py-0.5 text-[10px] font-black text-rose-600">
+                                        3
+                                    </span>
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- PENGADUAN -->
+                        <a href="{{ Route::has('sekolah.pengaduan') ? route('sekolah.pengaduan') : url('/sekolah/pengaduan') }}"
+                           class="group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold text-slate-700 transition-all hover:bg-slate-100">
+
+                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                                </path>
+                            </svg>
+
                             <span>Pengaduan</span>
                         </a>
 
-                        <!-- Detail SK Pemberian -->
-                        <a href="{{ Route::has('sekolah.cetak-surat') ? route('sekolah.cetak-surat') : url('/sekolah/cetak-surat') }}" 
-                           class="sidebar-link group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold transition-all text-slate-700 hover:bg-slate-100 hover:text-slate-900">
-                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                        <!-- DETAIL SK PEMBERIAN -->
+                        <a href="{{ Route::has('sekolah.cetak-surat') ? route('sekolah.cetak-surat') : url('/sekolah/cetak-surat') }}"
+                           class="group flex items-center gap-4 rounded-2xl px-4 py-3.5 text-xl font-bold text-slate-700 transition-all hover:bg-slate-100">
+
+                            <svg class="h-7 w-7 flex-shrink-0 text-slate-400"
+                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4H9v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z">
+                                </path>
+                            </svg>
+
                             <span>Detail SK Pemberian</span>
                         </a>
+
                     </div>
 
                 </nav>
             </div>
 
-            <!-- Footer Card & Tombol Logout -->
-            <div class="mt-8 pt-5 border-t border-slate-100 space-y-4">
-                <div class="rounded-2xl bg-slate-50 p-4 border border-slate-100">
-                    <p class="text-base font-bold text-slate-600 leading-snug">Pusat Layanan Pembiayaan Pendidikan</p>
-                    <p class="text-sm font-extrabold text-slate-800 mt-1">Kemendikdasmen RI</p>
+            <!-- FOOTER SIDEBAR -->
+            <div class="mt-8 space-y-4 border-t border-slate-100 pt-5">
+
+                <div class="rounded-2xl border border-slate-100 bg-slate-50 p-4">
+                    <p class="text-base font-bold leading-snug text-slate-600">
+                        Pusat Layanan Pembiayaan Pendidikan
+                    </p>
+
+                    <p class="mt-1 text-sm font-extrabold text-slate-800">
+                        Kemendikdasmen RI
+                    </p>
                 </div>
 
                 <form action="{{ route('logout') }}" method="POST">
-                    @csrf 
-                    <button type="submit" class="flex w-full items-center justify-center gap-3 rounded-2xl border border-red-200/60 bg-red-50/60 px-4 py-3.5 text-xl font-extrabold text-red-600 transition hover:bg-red-100 hover:border-red-200 focus:outline-none focus:ring-2 focus:ring-red-200">
-                        <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    @csrf
+
+                    <button type="submit"
+                            class="flex w-full items-center justify-center gap-3 rounded-2xl border border-red-200/60 bg-red-50/60 px-4 py-3.5 text-xl font-extrabold text-red-600 transition hover:bg-red-100">
+
+                        <svg class="h-7 w-7"
+                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                            </path>
+                        </svg>
+
                         Keluar
                     </button>
                 </form>
+
             </div>
+
         </aside>
 
-        <!-- MAIN KONTEN UTAMA -->
-        <main id="konten-utama" class="flex-1 min-w-0">
-            
-            <!-- TOP NAVBAR HEADER -->
+
+        <!-- ================= MAIN KONTEN ================= -->
+        <main id="konten-utama" class="min-w-0 flex-1 bg-transparent">
+
+            <!-- TOP NAVBAR -->
             <header class="sticky top-0 z-30 border-b border-blue-900/10 bg-white/80 px-5 py-4 backdrop-blur-xl sm:px-8 lg:px-10">
+
                 <div class="mx-auto flex max-w-[1500px] items-center justify-between gap-4">
-                    
-                    <!-- Judul Header -->
+
+                    <!-- JUDUL -->
                     <div class="flex items-center gap-3">
-                        <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#071a33] font-extrabold text-[#5ee8d6] lg:hidden">SD</span>
+
+                        <span class="grid h-11 w-11 place-items-center rounded-xl bg-[#071a33] font-extrabold text-[#5ee8d6] lg:hidden">
+                            SD
+                        </span>
+
                         <div>
                             <p class="mono text-xs font-bold uppercase tracking-[.16em] text-[#0055FF]">Portal Dashboard Sekolah</p>
-                            <h1 class="mt-1 text-2xl font-extrabold tracking-tight sm:text-4xl text-[#071a33]">Dokumen</h1>
+
+                            <h1 id="judulHalaman"
+                                class="mt-1 text-2xl font-extrabold tracking-tight text-[#071a33] sm:text-4xl">
+                                Dokumen
+                            </h1>
                         </div>
+
                     </div>
 
-                    <!-- Profil Sekolah / Status -->
+                    <!-- PROFIL SEKOLAH -->
                     <div class="flex items-center gap-3">
+
                         <div class="hidden text-right sm:block">
-                            <p id="topNamaSekolah" class="text-lg font-extrabold text-[#071a33]">SDN 1 Bahagia Selatan</p>
-                            <p class="text-base font-bold text-emerald-600 flex items-center justify-end gap-1.5">
-                                <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span> Terverifikasi
+
+                            <p id="topNamaSekolah"
+                               class="text-lg font-extrabold text-[#071a33]">
+                                SMPN 1 Soreang
                             </p>
+
+                            <p class="flex items-center justify-end gap-1.5 text-base font-bold text-emerald-600">
+                                <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+                                Terverifikasi
+                            </p>
+
                         </div>
 
-                        <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#0055FF] text-white font-extrabold text-xl shadow-lg shadow-blue-600/30" aria-label="Profil Sekolah">
+                        <div class="grid h-14 w-14 place-items-center rounded-2xl bg-[#0055FF] text-xl font-extrabold text-white shadow-lg shadow-blue-600/30">
                             SD
                         </div>
+
                     </div>
 
                 </div>
+
             </header>
 
-            <!-- KONTEN UTAMA -->
-            <div class="min-h-screen text-[#071a33] relative overflow-hidden px-4 py-6 sm:px-8 lg:px-12 lg:py-10">
+
+            <!-- AREA KONTEN -->
+            <div class="relative min-h-screen overflow-hidden px-4 py-6 text-[#071a33] sm:px-8 lg:px-12 lg:py-10">
+
                 <div class="relative z-10 mx-auto max-w-[1540px] space-y-8">
 
-                    <!-- CARD FILTER & DROPDOWN HALAMAN DETAIL SISWA -->
-                    <div class="card-clean p-6 sm:p-8 space-y-5 w-full">
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 rounded-xl bg-blue-50 text-[#0055FF] flex items-center justify-center font-bold text-lg">
-                                    <i class="fa-solid fa-sliders"></i>
+
+                    <!-- =================================================
+                         HALAMAN SK
+                         ================================================= -->
+                    <section id="pageSK" class="space-y-8">
+
+
+                        <!-- CARD FORMAT DOKUMEN -->
+                        <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+
+                            <!-- FORMAT USULAN -->
+                            <div class="card-clean rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+
+                                <div class="flex items-start justify-between gap-4">
+
+                                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-[#0055FF]">
+                                        <i class="fa-solid fa-file-signature text-2xl"></i>
+                                    </div>
+
+                                    <span class="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-black uppercase text-emerald-600">
+                                        Tersedia
+                                    </span>
+
                                 </div>
+
+                                <h3 class="mt-5 text-xl font-black text-[#071a33]">
+                                    Format Usulan
+                                </h3>
+
+                                <p class="mt-2 min-h-[48px] text-sm font-medium leading-relaxed text-slate-500">
+                                    Unduh format usulan untuk pengajuan dokumen administrasi sekolah.
+                                </p>
+
+                                <div class="mt-6 border-t border-slate-100 pt-5">
+
+                                    <a href="{{ asset('documents/format-usulan.docx') }}"
+                                       download
+                                       class="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#0055FF] px-4 py-3 text-sm font-extrabold text-white shadow-md shadow-blue-500/20 transition hover:bg-blue-700">
+
+                                        <i class="fa-solid fa-download"></i>
+                                        Unduh Format Usulan
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- FORMAT DOKUMEN -->
+                            <div class="card-clean rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+
+                                <div class="flex items-start justify-between gap-4">
+
+                                    <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600">
+                                        <i class="fa-solid fa-file-lines text-2xl"></i>
+                                    </div>
+
+                                    <span class="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-black uppercase text-emerald-600">
+                                        Tersedia
+                                    </span>
+
+                                </div>
+
+                                <h3 class="mt-5 text-xl font-black text-[#071a33]">
+                                    Format Dokumen
+                                </h3>
+
+                                <p class="mt-2 min-h-[48px] text-sm font-medium leading-relaxed text-slate-500">
+                                    Unduh format dokumen resmi yang digunakan untuk kelengkapan administrasi.
+                                </p>
+
+                                <div class="mt-6 border-t border-slate-100 pt-5">
+
+                                    <a href="{{ asset('documents/format-dokumen.docx') }}"
+                                       download
+                                       class="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#0055FF] px-4 py-3 text-sm font-extrabold text-white shadow-md shadow-blue-500/20 transition hover:bg-blue-700">
+
+                                        <i class="fa-solid fa-download"></i>
+                                        Unduh Format Dokumen
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GRID DOKUMEN DAN INFORMASI SISWA -->
+                        <div class="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3">
+
+
+                            <!-- TABEL DOKUMEN SISWA -->
+                            <div class="card-clean flex h-full flex-col justify-between space-y-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm lg:col-span-2 sm:p-7">
+
                                 <div>
-                                    <h2 class="text-xl font-black text-[#071a33]">Filter &amp; Navigasi Siswa</h2>
-                                    <p class="text-xs font-bold text-slate-500">Pilih bagian data atau filter berdasarkan status dokumen</p>
+
+                                    <div class="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
+
+                                        <h2 class="text-2xl font-black text-[#071a33]">
+                                            Dokumen Siswa
+                                        </h2>
+
+                                        <span id="badgeWarningCount"
+                                              class="rounded-full border border-amber-300 bg-amber-100 px-3.5 py-1.5 text-xs font-black text-amber-800">
+                                            1 Perlu Perbaikan
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="custom-scrollbar overflow-x-auto">
+
+                                        <table class="w-full border-collapse whitespace-nowrap text-left">
+
+                                            <thead>
+                                                <tr class="border-b border-slate-200 bg-slate-50 text-xs font-extrabold uppercase tracking-wider text-slate-500">
+
+                                                    <th class="rounded-l-xl p-4">Dokumen</th>
+                                                    <th class="p-4">Status</th>
+                                                    <th class="p-4">Catatan</th>
+                                                    <th class="rounded-r-xl p-4 text-center">Aksi</th>
+
+                                                </tr>
+                                            </thead>
+
+                                            <tbody id="documentTableBody"
+                                                   class="divide-y divide-slate-100 text-sm font-semibold text-slate-800">
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+
                                 </div>
+
+
+                                <div class="flex items-center justify-between border-t border-slate-100 pt-4 text-xs font-bold text-slate-400">
+
+                                    <span>
+                                        Total Item Dokumen:
+                                        <strong id="totalDocCount" class="font-black text-slate-700">
+                                            3
+                                        </strong>
+                                    </span>
+
+                                    <span class="font-black text-emerald-600">
+                                        <i class="fa-solid fa-shield-halved mr-1"></i>
+                                        Terverifikasi Sistem
+                                    </span>
+
+                                </div>
+
                             </div>
-                            <button onclick="resetFilterDokumen()" class="text-xs font-extrabold text-[#0055FF] hover:text-blue-800 flex items-center gap-1.5 transition">
-                                <i class="fa-solid fa-rotate-right"></i> Reset Filter
-                            </button>
+
+
+                            <!-- INFORMASI SISWA -->
+                            <div class="card-clean flex h-full flex-col justify-between space-y-5 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-7">
+
+                                <div>
+
+                                    <div class="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
+
+                                        <h2 class="text-xl font-black text-[#071a33]">
+                                            Informasi Siswa
+                                        </h2>
+
+                                        <span class="rounded-xl bg-slate-100 px-3 py-1 text-[10px] font-black uppercase tracking-wider text-slate-500">
+                                            DATA SIMULASI
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="space-y-3.5">
+
+                                        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-4">
+
+                                            <span class="block text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
+                                                NAMA SISWA
+                                            </span>
+
+                                            <p class="mt-0.5 text-lg font-black text-slate-900">
+                                                Budi Santoso
+                                            </p>
+
+                                        </div>
+
+
+                                        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-4">
+
+                                            <span class="block text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
+                                                NISN
+                                            </span>
+
+                                            <p class="mt-0.5 font-mono text-base font-black text-slate-800">
+                                                0102******
+                                            </p>
+
+                                        </div>
+
+
+                                        <div class="rounded-2xl border border-slate-200/80 bg-slate-50/80 p-4">
+
+                                            <span class="block text-[11px] font-extrabold uppercase tracking-wider text-slate-400">
+                                                STATUS SK
+                                            </span>
+
+                                            <p class="mt-0.5 text-base font-black text-blue-600">
+                                                SK Pemberian Tahap 43
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="border-t border-slate-100 pt-4">
+
+                                    <button type="button"
+                                            onclick="alert('Memuat data riwayat lengkap...')"
+                                            class="w-full rounded-xl border border-slate-200 py-2.5 text-xs font-extrabold text-slate-600 transition hover:bg-slate-50">
+
+                                        <i class="fa-solid fa-address-card mr-1.5"></i>
+                                        Lihat Detail Biodata
+                                    </button>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-1 items-end">
-                            
-                            <!-- Dropdown 1: Halaman Detail Siswa -->
-                            <div>
-                                <label for="selectTabNav" class="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-2">HALAMAN DETAIL SISWA</label>
-                                <div class="relative">
-                                    <select id="selectTabNav" onchange="navigateToTab(this.value)" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-4 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer appearance-none">
-                                        <option value="ringkasan">Ringkasan</option>
-                                        <option value="identitas">Identitas</option>
-                                        <option value="riwayat-sk">Riwayat SK</option>
-                                        <option value="rekening">Rekening &amp; Aktivasi</option>
-                                        <option value="dokumen" selected>Dokumen (Aktif)</option>
-                                        <option value="riwayat-perubahan">Riwayat Perubahan</option>
-                                    </select>
-                                    <i class="fa-solid fa-chevron-down absolute right-4 top-4 text-slate-400 pointer-events-none text-xs"></i>
-                                </div>
-                            </div>
+                    </section>
 
-                            <!-- Dropdown 2: Filter Status Dokumen -->
-                            <div>
-                                <label for="filterStatusDoc" class="text-xs font-extrabold text-slate-500 uppercase tracking-wider block mb-2">KATEGORI STATUS DOKUMEN</label>
-                                <div class="relative">
-                                    <select id="filterStatusDoc" onchange="applyDocFilter()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-4 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer appearance-none">
-                                        <option value="Semua" selected>Semua Status Dokumen</option>
-                                        <option value="Lengkap">Lengkap</option>
-                                        <option value="Perlu Perbaikan">Perlu Perbaikan</option>
-                                        <option value="Belum Ada">Belum Ada</option>
-                                    </select>
-                                    <i class="fa-solid fa-chevron-down absolute right-4 top-4 text-slate-400 pointer-events-none text-xs"></i>
-                                </div>
-                            </div>
 
-                            <!-- Tombol Action Filter -->
-                            <div>
-                                <button onclick="applyDocFilter()" class="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-extrabold rounded-2xl text-sm transition-all shadow-md shadow-blue-600/20">
-                                    <i class="fa-solid fa-magnifying-glass mr-1.5"></i> Terapkan Filter
-                                </button>
-                            </div>
+                    <!-- =================================================
+                         HALAMAN PEMBERITAHUAN
+                         ================================================= -->
+                    <section id="pagePemberitahuan" class="hidden space-y-8">
 
-                        </div>
-                    </div>
-
-                    <!-- MAIN GRID CONTENT (EQUAL HEIGHT 2 KOLOM) -->
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
                         
-                        <!-- KOLOM KIRI (DOKUMEN SISWA) -->
-                        <div class="lg:col-span-2 card-clean p-6 sm:p-7 h-full flex flex-col justify-between space-y-5">
-                            <div>
-                                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                                    <h2 class="text-2xl font-black text-[#071a33]">Dokumen Siswa</h2>
-                                    <span id="badgeWarningCount" class="px-3.5 py-1.5 rounded-full bg-amber-100 border border-amber-300 text-amber-800 text-xs font-black">
-                                        1 Perlu Perbaikan
-                                    </span>
-                                </div>
+                        <!-- CARD HEADER -->
+                        <div class="card-clean overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
 
-                                <!-- TABEL DOKUMEN -->
-                                <div class="overflow-x-auto custom-scrollbar">
-                                    <table class="w-full text-left border-collapse whitespace-nowrap">
-                                        <thead>
-                                            <tr class="bg-slate-50 text-slate-500 font-extrabold text-xs uppercase tracking-wider border-b border-slate-200">
-                                                <th class="p-4 rounded-l-xl">Dokumen</th>
-                                                <th class="p-4">Status</th>
-                                                <th class="p-4">Catatan</th>
-                                                <th class="p-4 text-center rounded-r-xl">Aksi</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="documentTableBody" class="divide-y divide-slate-100 text-sm font-semibold text-slate-800">
-                                            <!-- Rendered dynamically by JS -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <div class="flex items-center justify-between border-b border-slate-100 px-6 py-5 sm:px-8">
 
-                            <!-- Status Footer Tambahan di Dalam Card -->
-                            <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-bold">
-                                <span>Total Item Dokumen: <strong class="text-slate-700 font-black" id="totalDocCount">3</strong></span>
-                                <span class="text-emerald-600 font-black"><i class="fa-solid fa-shield-halved mr-1"></i> Terverifikasi Sistem</span>
-                            </div>
-                        </div>
+                                <div class="flex items-center gap-3">
 
-                        <!-- KOLOM KANAN (INFORMASI SISWA - DISESUAIKAN TINGGINYA) -->
-                        <div class="card-clean p-6 sm:p-7 h-full flex flex-col justify-between space-y-5">
-                            <div>
-                                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
-                                    <h2 class="text-xl font-black text-[#071a33]">Informasi Siswa</h2>
-                                    <span class="px-3 py-1 rounded-xl bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wider">
-                                        DATA SIMULASI
-                                    </span>
-                                </div>
-
-                                <div class="space-y-3.5">
-                                    <!-- Item Nama -->
-                                    <div class="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4">
-                                        <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider block">NAMA SISWA</span>
-                                        <p class="text-lg font-black text-slate-900 mt-0.5">Budi Santoso</p>
+                                    <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-50 text-xl text-[#0055FF]">
+                                        <i class="fa-solid fa-bell"></i>
                                     </div>
 
-                                    <!-- Item NISN -->
-                                    <div class="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4">
-                                        <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider block">NISN</span>
-                                        <p class="text-base font-black font-mono text-slate-800 mt-0.5">0102******</p>
+                                    <div>
+                                        <h2 class="text-2xl font-black text-[#071a33]">
+                                            Pemberitahuan Terbaru
+                                        </h2>
+
+                                        <p class="mt-1 text-xs font-bold text-slate-400">
+                                            Informasi penting dari sistem SIPINTAR
+                                        </p>
                                     </div>
 
-                                    <!-- Item Status SK -->
-                                    <div class="bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4">
-                                        <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider block">STATUS SK</span>
-                                        <p class="text-base font-black text-blue-600 mt-0.5">SK Pemberian Tahap 43</p>
-                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Footer Card Informasi Kanan -->
-                            <div class="pt-4 border-t border-slate-100">
-                                <button onclick="alert('Memuat data riwayat lengkap...')" class="w-full py-2.5 rounded-xl border border-slate-200 text-slate-600 font-extrabold text-xs hover:bg-slate-50 transition">
-                                    <i class="fa-solid fa-address-card mr-1.5"></i> Lihat Detail Biodata
+                                <button type="button"
+                                        onclick="markNotificationsRead()"
+                                        class="hidden text-xs font-extrabold text-[#0055FF] hover:text-blue-800 sm:block">
+                                    Tandai dibaca
                                 </button>
+
                             </div>
+
+
+                            <!-- DAFTAR PEMBERITAHUAN -->
+                            <div class="space-y-4 p-6 sm:p-8">
+
+
+                                <!-- CARD 1 BATAS KONFIRMASI -->
+                                <div class="notification-card rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-200 hover:shadow-sm sm:p-6">
+
+                                    <div class="flex items-start gap-4">
+
+                                        <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-2xl text-amber-500">
+                                            <i class="fa-solid fa-clock"></i>
+                                        </div>
+
+                                        <div class="min-w-0 flex-1">
+
+                                            <div class="flex flex-wrap items-start justify-between gap-2">
+
+                                                <span class="rounded-md bg-amber-100 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-amber-700">
+                                                    Penting
+                                                </span>
+
+                                                <span class="text-xs font-bold text-slate-400">
+                                                    20 Juli 2026
+                                                </span>
+
+                                            </div>
+
+                                            <h3 class="mt-3 text-lg font-black text-[#071a33]">
+                                                Batas Konfirmasi Aktivasi
+                                            </h3>
+
+                                            <p class="mt-1 text-sm font-medium leading-relaxed text-slate-500">
+                                                Konfirmasi tahap aktivasi harus dilakukan sebelum batas waktu yang telah ditentukan.
+                                            </p>
+
+                                            <button type="button"
+                                                    onclick="openNotificationDetail('Batas Konfirmasi Aktivasi')"
+                                                    class="mt-4 text-xs font-extrabold text-[#0055FF] hover:underline">
+
+                                                Lihat selengkapnya
+                                                <i class="fa-solid fa-arrow-right ml-1"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- CARD 2 FORMAT PENGEMBALIAN NEGARA -->
+                                <div class="notification-card rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-200 hover:shadow-sm sm:p-6">
+
+                                    <div class="flex items-start gap-4">
+
+                                        <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-2xl text-blue-500">
+                                            <i class="fa-solid fa-file-arrow-down"></i>
+                                        </div>
+
+                                        <div class="min-w-0 flex-1">
+
+                                            <div class="flex flex-wrap items-start justify-between gap-2">
+
+                                                <span class="rounded-md bg-blue-100 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-blue-700">
+                                                    Dokumen
+                                                </span>
+
+                                                <span class="text-xs font-bold text-slate-400">
+                                                    Terbaru
+                                                </span>
+
+                                            </div>
+
+                                            <h3 class="mt-3 text-lg font-black text-[#071a33]">
+                                                Format Pengembalian Negara
+                                            </h3>
+
+                                            <p class="mt-1 text-sm font-medium leading-relaxed text-slate-500">
+                                                Format terbaru untuk keperluan pengembalian dana negara telah tersedia pada menu dokumen.
+                                            </p>
+
+                                            <button type="button"
+                                                    onclick="openNotificationDetail('Format Pengembalian Negara')"
+                                                    class="mt-4 text-xs font-extrabold text-[#0055FF] hover:underline">
+
+                                                Lihat selengkapnya
+                                                <i class="fa-solid fa-arrow-right ml-1"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- CARD 3 PERBAIKAN DATA SISWA -->
+                                <div class="notification-card rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-blue-200 hover:shadow-sm sm:p-6">
+
+                                    <div class="flex items-start gap-4">
+
+                                        <div class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-rose-50 text-2xl text-rose-500">
+                                            <i class="fa-solid fa-users"></i>
+                                        </div>
+
+                                        <div class="min-w-0 flex-1">
+
+                                            <div class="flex flex-wrap items-start justify-between gap-2">
+
+                                                <span class="rounded-md bg-rose-100 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-rose-700">
+                                                    Tindak Lanjut
+                                                </span>
+
+                                                <span class="text-xs font-black text-rose-500">
+                                                    9 Siswa
+                                                </span>
+
+                                            </div>
+
+                                            <h3 class="mt-3 text-lg font-black text-[#071a33]">
+                                                Perbaikan Data Siswa
+                                            </h3>
+
+                                            <p class="mt-1 text-sm font-medium leading-relaxed text-slate-500">
+                                                Terdapat 9 siswa yang memerlukan tindak lanjut perbaikan data.
+                                            </p>
+
+                                            <button type="button"
+                                                    onclick="openNotificationDetail('Perbaikan Data Siswa')"
+                                                    class="mt-4 text-xs font-extrabold text-[#0055FF] hover:underline">
+
+                                                Lihat selengkapnya
+                                                <i class="fa-solid fa-arrow-right ml-1"></i>
+
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                         </div>
 
-                    </div>
+                    </section>
+
 
                     <!-- FOOTER -->
-                    <div class="text-sm font-bold text-slate-400 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-slate-200/60">
+                    <div class="flex flex-col items-center justify-between gap-2 border-t border-slate-200/60 pt-6 text-center text-sm font-bold text-slate-400 sm:flex-row sm:text-left">
+
                         <span>© 2020–2026 Puslapdik · Kemendikdasmen RI</span>
-                        <span>SIPINTAR - Sistem Informasi Program Indonesia Pintar</span>
+
+                        <span>
+                            SIPINTAR - Sistem Informasi Program Indonesia Pintar
+                        </span>
+
                     </div>
 
                 </div>
+
             </div>
 
         </main>
+
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
+
+    <!-- =========================================================
+         JAVASCRIPT LOGIC
+         ========================================================= -->
+
     <script>
+
+        /* ================= DATA DOKUMEN ================= */
+
         const masterDocuments = [
             {
                 nama: "Identitas Siswa",
                 status: "Lengkap",
                 catatan: "-",
-                aksi: "Lihat",
                 aksiType: "view"
             },
             {
                 nama: "Halaman Mutasi Tabungan",
                 status: "Perlu Perbaikan",
                 catatan: "Foto kurang jelas",
-                aksi: "Unggah Ulang",
                 aksiType: "reupload"
             },
             {
                 nama: "Bukti Tarik ATM",
                 status: "Belum Ada",
                 catatan: "Jika tersedia",
-                aksi: "Unggah",
                 aksiType: "upload"
             }
         ];
 
+
+        /* ================= DROPDOWN SIDEBAR ================= */
+
+        let dokumenSidebarOpen = true;
+
+        function toggleDokumenSidebar() {
+
+            dokumenSidebarOpen = !dokumenSidebarOpen;
+
+            const submenu = document.getElementById('submenuDokumen');
+            const icon = document.getElementById('iconDokumenSidebar');
+
+            if (dokumenSidebarOpen) {
+
+                submenu.classList.remove('hidden');
+                icon.classList.remove('rotate-180');
+
+            } else {
+
+                submenu.classList.add('hidden');
+                icon.classList.add('rotate-180');
+
+            }
+
+        }
+
+
+        /* ================= PERPINDAHAN HALAMAN ================= */
+
+        function switchDocumentPage(page) {
+
+            const pageSK = document.getElementById('pageSK');
+            const pagePemberitahuan = document.getElementById('pagePemberitahuan');
+
+            const menuSK = document.getElementById('menuSK');
+            const menuPemberitahuan = document.getElementById('menuPemberitahuan');
+
+            const judul = document.getElementById('judulHalaman');
+
+            const activeClass = [
+                'active-submenu',
+                'bg-blue-50',
+                'text-[#0055FF]'
+            ];
+
+            const inactiveClass = [
+                'text-slate-600'
+            ];
+
+            if (page === 'sk') {
+
+                pageSK.classList.remove('hidden');
+                pagePemberitahuan.classList.add('hidden');
+
+                judul.textContent = 'Dokumen';
+
+                menuSK.classList.add(...activeClass);
+                menuSK.classList.remove(...inactiveClass);
+
+                menuPemberitahuan.classList.remove(...activeClass);
+                menuPemberitahuan.classList.add(...inactiveClass);
+
+            } else if (page === 'pemberitahuan') {
+
+                pageSK.classList.add('hidden');
+                pagePemberitahuan.classList.remove('hidden');
+
+                judul.textContent = 'Pemberitahuan';
+
+                menuPemberitahuan.classList.add(...activeClass);
+                menuPemberitahuan.classList.remove(...inactiveClass);
+
+                menuSK.classList.remove(...activeClass);
+                menuSK.classList.add(...inactiveClass);
+
+            }
+
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+        }
+
+
+        /* ================= RENDER TABEL DOKUMEN ================= */
+
         function renderDocuments(docs) {
+
             const tbody = document.getElementById('documentTableBody');
+
             tbody.innerHTML = '';
 
             document.getElementById('totalDocCount').innerText = docs.length;
 
-            const warningCount = docs.filter(d => d.status === "Perlu Perbaikan").length;
+            const warningCount = docs.filter(
+                doc => doc.status === 'Perlu Perbaikan'
+            ).length;
+
             const warningBadge = document.getElementById('badgeWarningCount');
+
             if (warningCount > 0) {
+
                 warningBadge.innerText = `${warningCount} Perlu Perbaikan`;
                 warningBadge.classList.remove('hidden');
+
             } else {
+
                 warningBadge.classList.add('hidden');
+
             }
 
+
             if (docs.length === 0) {
+
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="4" class="text-center py-8 text-slate-400 font-bold text-sm">
-                            Tidak ada dokumen yang sesuai dengan status filter.
+                        <td colspan="4"
+                            class="py-8 text-center text-sm font-bold text-slate-400">
+                            Tidak ada dokumen yang sesuai dengan filter.
                         </td>
                     </tr>
                 `;
+
                 return;
+
             }
+
 
             docs.forEach(item => {
+
                 const tr = document.createElement('tr');
-                tr.className = 'hover:bg-slate-50/80 transition-all border-b border-slate-100';
+
+                tr.className = 'border-b border-slate-100 transition-all hover:bg-slate-50/80';
+
 
                 let statusBadge = '';
+
                 if (item.status === 'Lengkap') {
-                    statusBadge = `<span class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-black border border-emerald-200">Lengkap</span>`;
+
+                    statusBadge = `
+                        <span class="rounded-full border border-emerald-200 bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-700">
+                            Lengkap
+                        </span>
+                    `;
+
                 } else if (item.status === 'Perlu Perbaikan') {
-                    statusBadge = `<span class="px-3 py-1 rounded-full bg-rose-100 text-rose-700 text-xs font-black border border-rose-200">Perlu Perbaikan</span>`;
+
+                    statusBadge = `
+                        <span class="rounded-full border border-rose-200 bg-rose-100 px-3 py-1 text-xs font-black text-rose-700">
+                            Perlu Perbaikan
+                        </span>
+                    `;
+
                 } else {
-                    statusBadge = `<span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-black border border-amber-200">Belum Ada</span>`;
+
+                    statusBadge = `
+                        <span class="rounded-full border border-amber-200 bg-amber-100 px-3 py-1 text-xs font-black text-amber-700">
+                            Belum Ada
+                        </span>
+                    `;
+
                 }
+
 
                 let actionBtn = '';
+
                 if (item.aksiType === 'view') {
-                    actionBtn = `<button onclick="handleAction('${item.nama}')" class="text-blue-600 font-extrabold hover:text-blue-800 text-sm">Lihat</button>`;
+
+                    actionBtn = `
+                        <button type="button"
+                                onclick="handleAction('${item.nama}')"
+                                class="text-sm font-extrabold text-blue-600 hover:text-blue-800">
+                            Lihat
+                        </button>
+                    `;
+
                 } else if (item.aksiType === 'reupload') {
-                    actionBtn = `<button onclick="handleAction('${item.nama}')" class="text-amber-600 font-extrabold hover:text-amber-800 text-sm">Unggah Ulang</button>`;
+
+                    actionBtn = `
+                        <button type="button"
+                                onclick="handleAction('${item.nama}')"
+                                class="text-sm font-extrabold text-amber-600 hover:text-amber-800">
+                            Unggah Ulang
+                        </button>
+                    `;
+
                 } else {
-                    actionBtn = `<button onclick="handleAction('${item.nama}')" class="text-emerald-600 font-extrabold hover:text-emerald-800 text-sm">Unggah</button>`;
+
+                    actionBtn = `
+                        <button type="button"
+                                onclick="handleAction('${item.nama}')"
+                                class="text-sm font-extrabold text-emerald-600 hover:text-emerald-800">
+                            Unggah
+                        </button>
+                    `;
+
                 }
 
+
                 tr.innerHTML = `
-                    <td class="p-4 font-black text-slate-900">${item.nama}</td>
-                    <td class="p-4">${statusBadge}</td>
-                    <td class="p-4 text-slate-500 font-medium">${item.catatan}</td>
-                    <td class="p-4 text-center">${actionBtn}</td>
+                    <td class="p-4 font-black text-slate-900">
+                        ${item.nama}
+                    </td>
+
+                    <td class="p-4">
+                        ${statusBadge}
+                    </td>
+
+                    <td class="p-4 font-medium text-slate-500">
+                        ${item.catatan}
+                    </td>
+
+                    <td class="p-4 text-center">
+                        ${actionBtn}
+                    </td>
                 `;
+
                 tbody.appendChild(tr);
+
             });
+
         }
+
+
+        /* ================= FILTER DOKUMEN ================= */
 
         function applyDocFilter() {
+
             const selectedStatus = document.getElementById('filterStatusDoc').value;
-            if (selectedStatus === "Semua") {
+
+            if (selectedStatus === 'Semua') {
+
                 renderDocuments(masterDocuments);
+
             } else {
-                const filtered = masterDocuments.filter(d => d.status === selectedStatus);
+
+                const filtered = masterDocuments.filter(
+                    doc => doc.status === selectedStatus
+                );
+
                 renderDocuments(filtered);
+
             }
+
         }
+
 
         function resetFilterDokumen() {
-            document.getElementById('filterStatusDoc').value = "Semua";
-            document.getElementById('selectTabNav').value = "dokumen";
+
+            document.getElementById('filterStatusDoc').value = 'Semua';
+
             renderDocuments(masterDocuments);
+
         }
 
-        function navigateToTab(tabValue) {
-            if (tabValue !== 'dokumen') {
-                alert(`Mengarahkan ke halaman/tab: ${tabValue}`);
-            }
-        }
+
+        /* ================= AKSI DOKUMEN ================= */
 
         function handleAction(docName) {
+
             alert(`Aksi diproses untuk dokumen: ${docName}`);
+
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            renderDocuments(masterDocuments);
-        });
-    </script>
 
+        /* ================= PEMBERITAHUAN ================= */
+
+        function openNotificationDetail(title) {
+
+            alert(`Detail pemberitahuan: ${title}`);
+
+        }
+
+
+        function markNotificationsRead() {
+
+            const notificationCards = document.querySelectorAll('.notification-card');
+
+            notificationCards.forEach(card => {
+
+                card.classList.remove('border-slate-200');
+                card.classList.add('border-slate-100');
+
+            });
+
+            alert('Pemberitahuan ditandai sebagai telah dibaca.');
+
+        }
+
+
+        /* ================= INISIALISASI ================= */
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            renderDocuments(masterDocuments);
+
+            switchDocumentPage('sk');
+
+        });
+
+    </script>
 </body>
 </html>

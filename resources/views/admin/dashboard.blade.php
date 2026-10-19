@@ -235,559 +235,684 @@
 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
     
     <!-- 01 / TOTAL ALOKASI (Aksen Biru Utama) -->
-    <div class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-[#0055FF]/40 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
-        <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#0055FF]/10 pointer-events-none"></div>
-        <span class="font-['DM_Mono'] text-small font-bold uppercase tracking-widest text-[#0055FF]">01 / TOTAL ALOKASI</span>
-        <div class="mt-4">
-            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">Rp 23.657.087.527</h4>
+        <div id="card-alokasi" class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-[#0055FF]/40 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
+            <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#0055FF]/10 pointer-events-none"></div>
+            <span class="font-['DM_Mono'] text-xs font-bold uppercase tracking-widest text-[#0055FF]">01 / TOTAL ALOKASI</span>
+            <div class="mt-4">
+                <h4 id="val-total-alokasi" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">Rp {{ number_format($totalAlokasi, 0, ',', '.') }}</h4>
+            </div>
+            <div class="mt-5 flex items-center gap-2">
+                <span id="val-jumlah-siswa-alokasi" class="rounded-xl bg-blue-50 px-3.5 py-1.5 text-sm font-bold text-[#0055FF] border border-blue-100">
+                    {{ number_format($alokasiSiswa, 0, ',', '.') }} Siswa
+                </span>
+            </div>
         </div>
-        <div class="mt-5 flex items-center gap-2">
-            <span class="rounded-xl bg-blue-50 px-3.5 py-1.5 text-large font-bold text-[#0055FF] border border-blue-100">
-                27.676 Siswa
-            </span>
+
+        <!-- 02 / TOTAL PENYALURAN (Aksen Teal/Toska) -->
+        <div id="card-penyaluran" class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-[#5ee8d6]/50 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
+            <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#5ee8d6]/10 pointer-events-none"></div>
+            <span class="font-['DM_Mono'] text-xs font-bold uppercase tracking-widest text-teal-600">02 / TOTAL PENYALURAN</span>
+            <div class="mt-4">
+                <h4 id="val-total-penyaluran" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">Rp {{ number_format($totalDanaDisalurkan, 0, ',', '.') }}</h4>
+            </div>
+            <div class="mt-5 flex items-center gap-2">
+                <span id="val-jumlah-siswa-penyaluran" class="rounded-xl bg-teal-50 px-3.5 py-1.5 text-sm font-bold text-teal-700 border border-teal-100">
+                    {{ number_format($penyaluranSiswa, 0, ',', '.') }} Siswa
+                </span>
+            </div>
+        </div>
+
+        <!-- 03 / PERSENTASE AKTIVASI (Aksen Ungu/Indigo) -->
+        <div id="card-aktivasi" class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-indigo-200 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
+            <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-indigo-50 pointer-events-none"></div>
+            <span class="font-['DM_Mono'] text-xs font-bold uppercase tracking-widest text-indigo-600">03 / PERSENTASE AKTIVASI</span>
+            <div class="mt-4">
+                <h4 id="val-persentase-aktivasi" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">{{ number_format($persentaseAktivasi, 1, ',', '.') }}%</h4>
+            </div>
+            <div class="mt-5 flex items-center gap-2">
+                <span class="rounded-xl bg-indigo-50 px-3.5 py-1.5 text-sm font-bold text-indigo-700 border border-indigo-100">
+                    Keaktifan Rekening
+                </span>
+            </div>
+        </div>
+
+        <!-- 04 / SK PEMBATALAN (Aksen Merah/Rose) -->
+        <div id="card-pembatalan" class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-rose-200 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
+            <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-rose-50 pointer-events-none"></div>
+            <span class="font-['DM_Mono'] text-xs font-bold uppercase tracking-widest text-rose-600">04 / SK PEMBATALAN</span>
+            <div class="mt-4">
+                <h4 id="val-sk-pembatalan" class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">{{ number_format($totalSkPembatalan, 0, ',', '.') }}</h4>
+            </div>
+            <div class="mt-5 flex items-center gap-2">
+                <span class="rounded-xl bg-rose-50 px-3.5 py-1.5 text-sm font-bold text-rose-700 border border-rose-100">
+                    Kasus Dibatalkan
+                </span>
+            </div>
         </div>
     </div>
 
-    <!-- 02 / TOTAL PENYALURAN (Aksen Teal/Toska) -->
-    <div class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-[#5ee8d6]/50 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
-        <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[#5ee8d6]/10 pointer-events-none"></div>
-        <span class="font-['DM_Mono'] text-small font-bold uppercase tracking-widest text-teal-600">02 / TOTAL PENYALURAN</span>
-        <div class="mt-4">
-            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">Rp 18.828.261.405</h4>
-        </div>
-        <div class="mt-5 flex items-center gap-2">
-            <span class="rounded-xl bg-teal-50 px-3.5 py-1.5 text-large font-bold text-teal-700 border border-teal-100">
-                22.723 Siswa
-            </span>
-        </div>
-    </div>
-
-    <!-- 03 / PERSENTASE AKTIVASI (Aksen Ungu/Indigo) -->
-    <div class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-indigo-200 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
-        <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-indigo-50 pointer-events-none"></div>
-        <span class="font-['DM_Mono'] text-small font-bold uppercase tracking-widest text-indigo-600">03 / PERSENTASE AKTIVASI</span>
-        <div class="mt-4">
-            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">72,8%</h4>
-        </div>
-        <div class="mt-5 flex items-center gap-2">
-            <span class="rounded-xl bg-indigo-50 px-3.5 py-1.5 text-large font-bold text-indigo-700 border border-indigo-100">
-                Keaktifan Rekening
-            </span>
-        </div>
-    </div>
-
-    <!-- 04 / SK PEMBATALAN (Aksen Merah/Rose) -->
-    <div class="relative overflow-hidden rounded-[2rem] bg-white border-2 border-rose-200 p-7 shadow-lg shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
-        <div class="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-rose-50 pointer-events-none"></div>
-        <span class="font-['DM_Mono'] text-small font-bold uppercase tracking-widest text-rose-600">04 / SK PEMBATALAN</span>
-        <div class="mt-4">
-            <h4 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#071a33]">279</h4>
-        </div>
-        <div class="mt-5 flex items-center gap-2">
-            <span class="rounded-xl bg-rose-50 px-3.5 py-1.5 text-large font-bold text-rose-700 border border-rose-100">
-                Kasus Dibatalkan
-            </span>
-        </div>
-    </div>
-
-</div>
-
-<!-- BARIS FORM FILTER PENCARIAN -->
-<section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 mt-8 shadow-xl shadow-slate-200/50">
-    <form id="filter-form" action="{{ route('admin.dashboard') }}" method="GET" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 items-end">
+    <!-- ================= BAGIAN FILTER GLOBAL / DASHBOARD ================= -->
+<form id="dashboard-filter" class="rounded-[2rem] bg-white p-6 sm:p-8 border-2 border-slate-200 shadow-xl shadow-slate-200/50">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
         <div>
-            <label class="block text-base font-black text-slate-800 mb-2">Tahun</label>
-            <select name="tahun" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-4 py-3 text-base sm:text-lg font-bold text-slate-900 focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-200">
-                <option value="2026" {{ request('tahun', '2026') == '2026' ? 'selected' : '' }}>2026</option>
-                <option value="2025" {{ request('tahun') == '2025' ? 'selected' : '' }}>2025</option>
-                <option value="2024" {{ request('tahun') == '2024' ? 'selected' : '' }}>2024</option>
-            </select>
+            <span class="font-['DM_Mono'] text-sm sm:text-base font-black uppercase tracking-widest text-[#0055FF]">Filter Data</span>
+            <h3 class="text-xl sm:text-2xl font-black text-[#071a33] mt-1">Penyaringan Dashboard</h3>
+            <p class="text-xs sm:text-sm font-semibold text-slate-400 mt-1">Pilih kriteria yang diperlukan, lalu tekan satu tombol <b>Filter</b>.</p>
         </div>
-        <div>
-            <label class="block text-base font-black text-slate-800 mb-2">Bulan</label>
-            <select name="bulan" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-4 py-3 text-base sm:text-lg font-bold text-slate-900 focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-200">
-                <option value="">Semua Bulan</option>
-                <option value="1" {{ request('bulan') == '1' ? 'selected' : '' }}>Januari</option>
-                <option value="2" {{ request('bulan') == '2' ? 'selected' : '' }}>Februari</option>
-                <option value="3" {{ request('bulan') == '3' ? 'selected' : '' }}>Maret</option>
-                <option value="4" {{ request('bulan') == '4' ? 'selected' : '' }}>April</option>
-                <option value="5" {{ request('bulan') == '5' ? 'selected' : '' }}>Mei</option>
-                <option value="6" {{ request('bulan') == '6' ? 'selected' : '' }}>Juni</option>
-                <option value="7" {{ request('bulan') == '7' ? 'selected' : '' }}>Juli</option>
-                <option value="8" {{ request('bulan') == '8' ? 'selected' : '' }}>Agustus</option>
-                <option value="9" {{ request('bulan') == '9' ? 'selected' : '' }}>September</option>
-                <option value="10" {{ request('bulan') == '10' ? 'selected' : '' }}>Oktober</option>
-                <option value="11" {{ request('bulan') == '11' ? 'selected' : '' }}>November</option>
-                <option value="12" {{ request('bulan') == '12' ? 'selected' : '' }}>Desember</option>
-            </select>
-        </div>
-        <div>
-            <label class="block text-base font-black text-slate-800 mb-2">Jenjang</label>
-            <select name="jenjang" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-4 py-3 text-base sm:text-lg font-bold text-slate-900 focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-200">
-                <option value="">Semua Jenjang</option>
-                <option value="SD" {{ request('jenjang') == 'SD' ? 'selected' : '' }}>Sekolah Dasar</option>
-                <option value="SMP" {{ request('jenjang') == 'SMP' ? 'selected' : '' }}>Sekolah Menengah Pertama</option>
-                <option value="SMA" {{ request('jenjang') == 'SMA' ? 'selected' : '' }}>Sekolah Menengah Atas</option>
-                <option value="SMK" {{ request('jenjang') == 'SMK' ? 'selected' : '' }}>Sekolah Menengah Kejuruan</option>
-            </select>
-        </div>
-        <div>
-            <label class="block text-base font-black text-slate-800 mb-2">Pencarian</label>
-            <input type="text" id="filter-search" name="search" value="{{ request('search') }}" placeholder="Cari sekolah / NPSN..." class="w-full rounded-2xl border-2 border-slate-300 bg-white px-4 py-3 text-base sm:text-lg font-bold text-slate-900 placeholder:text-slate-400 focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-200">
-        </div>
-        <div>
-            <button type="submit" class="w-full rounded-2xl bg-[#0055FF] px-5 py-3.5 text-lg font-black text-white shadow-lg transition hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
-                Filter Data
+        <div class="flex items-center gap-3">
+            <button type="button" id="btn-reset" class="px-5 py-2.5 rounded-xl border-2 border-slate-300 hover:border-[#0055FF] text-slate-700 hover:text-[#0055FF] font-black text-sm transition-all">
+                Reset
+            </button>
+            <button id="btn-apply" type="button" class="px-6 py-2.5 rounded-xl bg-[#0055FF] hover:bg-[#0040cc] text-white font-black text-sm shadow-lg shadow-[#0055FF]/30 transition-all">
+                Terapkan Filter
             </button>
         </div>
-    </form>
-</section>
-
-<!-- BAGIAN GRAFIK & TABEL VISUALISASI -->
-<div class="rounded-[2.5rem] bg-white p-8 sm:p-10 border-2 border-slate-200 shadow-xl shadow-slate-200/50 w-full flex flex-col justify-between mt-8">
-    <!-- Header Card -->
-    <div>
-        <span class="font-['DM_Mono'] text-sm sm:text-base font-black uppercase tracking-widest text-[#0055FF]">Visualisasi Bulanan</span>
-        <h3 class="text-2xl sm:text-3xl font-black text-[#071a33] mt-2 mb-2">Persentase Dana Penyaluran</h3>
-        <p class="text-base sm:text-lg font-bold text-slate-600 mb-8">Grafik tren bulanan beserta rincian data persentase tiap jenjang pendidikan</p>
-    </div>
-    
-    <!-- Container Canvas Grafik (Tinggi ditingkatkan) -->
-    <div class="relative h-96 w-full mb-8">
-        <canvas id="barChart"></canvas>
     </div>
 
-    <!-- TABEL DATA DI BAWAH GRAFIK (Teks & Cell Lebih Besar) -->
-    <div class="overflow-x-auto rounded-2xl border-2 border-slate-300 mt-2">
-        <table class="w-full text-center text-sm sm:text-base font-bold text-slate-800">
-            <!-- Header Bulan -->
-            <thead class="bg-slate-100 text-slate-900 border-b-2 border-slate-300">
-                <tr>
-                    <th class="py-4 px-4 text-left bg-slate-200 font-black border-r-2 border-slate-300 text-base">Jenjang</th>
-                    <th class="py-4 px-3">Jan</th>
-                    <th class="py-4 px-3">Feb</th>
-                    <th class="py-4 px-3">Mar</th>
-                    <th class="py-4 px-3">Apr</th>
-                    <th class="py-4 px-3">Mei</th>
-                    <th class="py-4 px-3">Jun</th>
-                    <th class="py-4 px-3">Jul</th>
-                    <th class="py-4 px-3">Agu</th>
-                    <th class="py-4 px-3">Sep</th>
-                    <th class="py-4 px-3">Okt</th>
-                    <th class="py-4 px-3">Nov</th>
-                    <th class="py-4 px-3">Des</th>
-                </tr>
-            </thead>
-            <!-- Isi Data Persentase -->
-            <tbody class="divide-y-2 divide-slate-200">
-                <!-- Baris SD -->
-                <tr class="hover:bg-slate-100">
-                    <td class="py-3.5 px-4 text-left font-black text-[#C0504D] bg-slate-50 border-r-2 border-slate-300 text-base">
-                        <span class="inline-block w-3.5 h-3.5 rounded-sm bg-[#C0504D] mr-2"></span>SD
-                    </td>
-                    <td class="py-3.5 px-2">7.5%</td>
-                    <td class="py-3.5 px-2">8.6%</td>
-                    <td class="py-3.5 px-2">8.8%</td>
-                    <td class="py-3.5 px-2">7.8%</td>
-                    <td class="py-3.5 px-2">5.3%</td>
-                    <td class="py-3.5 px-2">3.8%</td>
-                    <td class="py-3.5 px-2">7.9%</td>
-                    <td class="py-3.5 px-2">6.4%</td>
-                    <td class="py-3.5 px-2">9.6%</td>
-                    <td class="py-3.5 px-2">4.2%</td>
-                    <td class="py-3.5 px-2">4.7%</td>
-                    <td class="py-3.5 px-2">6.3%</td>
-                </tr>
-                <!-- Baris SMP -->
-                <tr class="hover:bg-slate-100">
-                    <td class="py-3.5 px-4 text-left font-black text-[#2b5c9e] bg-slate-50 border-r-2 border-slate-300 text-base">
-                        <span class="inline-block w-3.5 h-3.5 rounded-sm bg-[#4F81BD] mr-2"></span>SMP
-                    </td>
-                    <td class="py-3.5 px-2">9.5%</td>
-                    <td class="py-3.5 px-2">8.1%</td>
-                    <td class="py-3.5 px-2">7.2%</td>
-                    <td class="py-3.5 px-2">6.9%</td>
-                    <td class="py-3.5 px-2">5.3%</td>
-                    <td class="py-3.5 px-2">6.1%</td>
-                    <td class="py-3.5 px-2">7.6%</td>
-                    <td class="py-3.5 px-2">7.8%</td>
-                    <td class="py-3.5 px-2">7.2%</td>
-                    <td class="py-3.5 px-2">4.0%</td>
-                    <td class="py-3.5 px-2">6.7%</td>
-                    <td class="py-3.5 px-2">7.9%</td>
-                </tr>
-                <!-- Baris SMA -->
-                <tr class="hover:bg-slate-100">
-                    <td class="py-3.5 px-4 text-left font-black text-[#68822d] bg-slate-50 border-r-2 border-slate-300 text-base">
-                        <span class="inline-block w-3.5 h-3.5 rounded-sm bg-[#9BBB59] mr-2"></span>SMA
-                    </td>
-                    <td class="py-3.5 px-2">10.3%</td>
-                    <td class="py-3.5 px-2">8.8%</td>
-                    <td class="py-3.5 px-2">8.0%</td>
-                    <td class="py-3.5 px-2">5.0%</td>
-                    <td class="py-3.5 px-2">5.1%</td>
-                    <td class="py-3.5 px-2">6.3%</td>
-                    <td class="py-3.5 px-2">8.7%</td>
-                    <td class="py-3.5 px-2">7.9%</td>
-                    <td class="py-3.5 px-2">6.9%</td>
-                    <td class="py-3.5 px-2">4.0%</td>
-                    <td class="py-3.5 px-2">4.2%</td>
-                    <td class="py-3.5 px-2">8.9%</td>
-                </tr>
-                <!-- Baris SMK -->
-                <tr class="hover:bg-slate-100">
-                    <td class="py-3.5 px-4 text-left font-black text-[#5b437a] bg-slate-50 border-r-2 border-slate-300 text-base">
-                        <span class="inline-block w-3.5 h-3.5 rounded-sm bg-[#8064A2] mr-2"></span>SMK
-                    </td>
-                    <td class="py-3.5 px-2">6.8%</td>
-                    <td class="py-3.5 px-2">6.5%</td>
-                    <td class="py-3.5 px-2">10.4%</td>
-                    <td class="py-3.5 px-2">5.4%</td>
-                    <td class="py-3.5 px-2">3.2%</td>
-                    <td class="py-3.5 px-2">8.4%</td>
-                    <td class="py-3.5 px-2">6.6%</td>
-                    <td class="py-3.5 px-2">11.0%</td>
-                    <td class="py-3.5 px-2">9.3%</td>
-                    <td class="py-3.5 px-2">2.5%</td>
-                    <td class="py-3.5 px-2">5.4%</td>
-                    <td class="py-3.5 px-2">4.0%</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<!-- TABEL PIVOT DISTRIBUSI WILAYAH -->
-<div class="rounded-[2.5rem] bg-white p-8 sm:p-10 border-2 border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between mt-8">
-    <div>
-        <span class="font-['DM_Mono'] text-sm sm:text-base font-black uppercase tracking-widest text-[#0055FF]">Distribusi Wilayah</span>
-        <h3 class="text-2xl sm:text-3xl font-black text-[#071a33] mt-2 mb-2">Provinsi Dana Disalurkan Terendah</h3>
-        <p class="text-base sm:text-lg font-bold text-slate-600 mb-8">Rincian alokasi nominal wilayah terendah</p>
-    </div>
-    
-    <!-- Tabel Pivot Style -->
-<div class="overflow-x-auto rounded-2xl border-2 border-slate-300">
-    <table class="w-full text-base sm:text-lg text-slate-900 font-bold">
-        <!-- Header Pivot -->
-        <thead class="bg-slate-200 text-slate-900 border-b-2 border-slate-300">
-            <tr>
-                <th class="py-4 px-6 text-left font-black border-r-2 border-slate-300">
-                    <div class="flex items-center justify-between">
-                        <span>Row Labels</span>
-                        <span class="text-slate-600 text-sm">▼</span>
-                    </div>
-                </th>
-                <th class="py-4 px-6 text-right font-black">Sum of Dana Disalurkan (Rp)</th>
-            </tr>
-        </thead>
-        <!-- Body Data -->
-        <tbody class="divide-y-2 divide-slate-200">
-            <tr class="data-row hover:bg-slate-100" data-tahun="2026" data-jenjang="SD" data-[#sekolah]="sd n 1 jakarta">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Banten</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 1.808.572.861
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Kalimantan Selatan</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 2.209.059.644
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Lampung</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 2.087.192.873
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Maluku Utara</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 1.848.103.253
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Papua Barat Daya</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 1.802.687.688
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Papua Selatan</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 1.824.503.461
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Papua Tengah</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 2.024.086.190
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Sulawesi Barat</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 1.897.269.165
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Sulawesi Tengah</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 1.723.869.675
-                </td>
-            </tr>
-            <tr class="hover:bg-slate-100">
-                <td class="py-3.5 px-6 border-r-2 border-slate-200">Sulawesi Tenggara</td>
-                <td class="py-3.5 px-6 text-right font-mono font-extrabold">
-                    <span class="float-left text-slate-500 font-sans font-bold">Rp</span> 2.012.329.922
-                </td>
-            </tr>
-        </tbody>
-        <!-- Footer / Grand Total -->
-        <tfoot class="bg-slate-200 font-black text-slate-900 border-t-4 border-slate-400">
-            <tr>
-                <td class="py-4 px-6 border-r-2 border-slate-300 text-lg">Grand Total</td>
-                <td class="py-4 px-6 text-right font-mono text-xl font-black">
-                    <span class="float-left text-slate-700 font-sans font-bold">Rp</span> 19.237.674.732
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-
-    <!-- Catatan kaki -->
-    <div class="mt-6 text-right">
-        <span class="text-sm font-black italic text-slate-500 font-['DM_Mono']">* Data bahan evaluasi resmi</span>
-    </div>
-</div>
-
-<!-- PANEL ANALISA DATA (Diperbesar dengan Kontras Maksimal) -->
-<div class="relative overflow-hidden rounded-[2.5rem] bg-blue-50/60 border-4 border-blue-200 p-8 sm:p-10 text-[#071a33] shadow-xl shadow-slate-200/50 mt-8">
-    <div class="relative z-10 flex items-start gap-6">
-        <div class="rounded-2xl bg-[#0055FF] p-4 text-white shrink-0 shadow-md">
-            <svg class="h-8 w-8 sm:h-10 sm:w-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-            </svg>
-        </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
-            <h4 class="font-['DM_Mono'] text-sm sm:text-base font-black uppercase tracking-widest text-[#0055FF]">
-                PANEL ANALISA DATA
-            </h4>
-            <p class="text-lg sm:text-xl font-bold text-slate-800 mt-3 leading-relaxed">
-                Secara nasional, penyaluran mencapai <span class="bg-teal-200/80 px-2 py-0.5 rounded-lg font-black text-[#071a33]">82% dari alokasi</span> (22.723 dari 27.676 siswa), dengan total dana disalurkan <span class="font-black text-[#0055FF] text-xl sm:text-2xl">Rp18.828.261.405</span>. Aktivasi mencapai <span class="font-black text-[#071a33]">73%</span>, dengan 5.913 siswa belum aktivasi dan 279 kasus dibatalkan.
-            </p>
+            <label for="filter-tahun" class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-2">Tahun Anggaran</label>
+            <select id="filter-tahun" class="w-full rounded-xl border-2 border-slate-300 p-3 font-bold text-slate-800 focus:border-[#0055FF] focus:outline-none">
+                <option value="all">Semua Tahun</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="filter-bulan" class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-2">Bulan</label>
+            <select id="filter-bulan" class="w-full rounded-xl border-2 border-slate-300 p-3 font-bold text-slate-800 focus:border-[#0055FF] focus:outline-none">
+                <option value="all">Semua Bulan</option>
+                <option value="1">Januari</option>
+                <option value="2">Februari</option>
+                <option value="3">Maret</option>
+                <option value="4">April</option>
+                <option value="5">Mei</option>
+                <option value="6">Juni</option>
+                <option value="7">Juli</option>
+                <option value="8">Agustus</option>
+                <option value="9">September</option>
+                <option value="10">Oktober</option>
+                <option value="11">November</option>
+                <option value="12">Desember</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="filter-jenjang" class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-2">Jenjang Pendidikan</label>
+            <select id="filter-jenjang" class="w-full rounded-xl border-2 border-slate-300 p-3 font-bold text-slate-800 focus:border-[#0055FF] focus:outline-none">
+                <option value="all">Semua Jenjang</option>
+                <option value="SD">SD</option>
+                <option value="SMP">SMP</option>
+                <option value="SMA">SMA</option>
+                <option value="SMK">SMK</option>
+            </select>
+        </div>
+
+        <div class="relative" id="filter-wilayah-wrapper">
+            <label for="filter-wilayah-button" class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-2">Wilayah</label>
+
+            <!-- Tetap SATU filter Wilayah. Isi dropdown dibuat bertingkat di dalamnya. -->
+            <input type="hidden" id="filter-wilayah" value="all">
+
+            <button type="button" id="filter-wilayah-button"
+                class="w-full rounded-xl border-2 border-slate-300 bg-white p-3 text-left font-bold text-slate-800 focus:border-[#0055FF] focus:outline-none flex items-center justify-between gap-3">
+                <span id="filter-wilayah-label">Semua Wilayah</span>
+                <svg id="filter-wilayah-chevron" class="h-5 w-5 flex-shrink-0 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"></path>
+                </svg>
+            </button>
+
+            <div id="filter-wilayah-menu" class="absolute left-0 right-0 top-full z-50 mt-2 hidden max-h-[28rem] overflow-y-auto rounded-2xl border-2 border-slate-200 bg-white p-2 shadow-2xl">
+                <!-- Opsi Wilayah diisi JavaScript secara hierarkis: Provinsi > Kab/Kota > Kecamatan -->
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <label for="filter-search" class="block text-xs font-black uppercase tracking-wider text-slate-500 mb-2">Pencarian</label>
+        <input type="text" id="filter-search" placeholder="Cari nama sekolah, provinsi, kabupaten/kota, kecamatan..." class="w-full rounded-xl border-2 border-slate-300 p-3 font-bold text-slate-800 focus:border-[#0055FF] focus:outline-none placeholder:text-slate-400">
+    </div>
+</form>
+
+    <!-- ================= BAGIAN GRAFIK & TABEL VISUALISASI ================= -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- Kolom Kiri: Visualisasi Bulanan (Line Chart & Tabel Rincian) -->
+        <div class="lg:col-span-7 rounded-[2.5rem] bg-white p-6 sm:p-8 border-2 border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between">
+            <div>
+                <span class="font-['DM_Mono'] text-sm sm:text-base font-black uppercase tracking-widest text-[#0055FF]">Visualisasi Bulanan</span>
+                <h3 class="text-2xl sm:text-3xl font-black text-[#071a33] mt-2 mb-2">Persentase Serapan</h3>
+                <p id="chart-subtitle" class="text-base sm:text-lg font-bold text-slate-600 mb-6">Grafik tren bulanan total persentase serapan (Tahun: {{ $tahun === 'all' ? 'Semua' : $tahun }})</p>
+            </div>
+            
+            <!-- Container Canvas Line Chart -->
+            <div class="relative h-80 w-full mb-6">
+                <canvas id="lineChart"></canvas>
+            </div>
+
+            <!-- Tabel Rincian Bulanan -->
+            <div class="overflow-x-auto rounded-2xl border-2 border-slate-300">
+                <table class="w-full text-center text-sm font-bold text-slate-800">
+                    <thead class="bg-slate-100 text-slate-900 border-b-2 border-slate-300">
+                        <tr>
+                            <th class="py-3 px-3 text-left bg-slate-200 font-black border-r-2 border-slate-300">Bulan</th>
+                            <th class="py-3 px-2">Jan</th>
+                            <th class="py-3 px-2">Feb</th>
+                            <th class="py-3 px-2">Mar</th>
+                            <th class="py-3 px-2">Apr</th>
+                            <th class="py-3 px-2">Mei</th>
+                            <th class="py-3 px-2">Jun</th>
+                            <th class="py-3 px-2">Jul</th>
+                            <th class="py-3 px-2">Agu</th>
+                            <th class="py-3 px-2">Sep</th>
+                            <th class="py-3 px-2">Okt</th>
+                            <th class="py-3 px-2">Nov</th>
+                            <th class="py-3 px-2">Des</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y-2 divide-slate-200">
+                        <tr class="hover:bg-slate-100">
+                            <td class="py-2.5 px-3 text-left font-black text-[#0055FF] bg-slate-50 border-r-2 border-slate-300">Total</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="0">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="1">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="2">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="3">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="4">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="5">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="6">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="7">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="8">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="9">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="10">0,00</td>
+                            <td class="py-2.5 px-2 val-bulan" data-index="11">0,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Kolom Kanan: Top 10 Provinsi / Distribusi Wilayah -->
+        <div class="lg:col-span-5 rounded-[2.5rem] bg-white p-6 sm:p-8 border-2 border-slate-200 shadow-xl shadow-slate-200/50 flex flex-col justify-between">
+            <div>
+                <span class="font-['DM_Mono'] text-sm sm:text-base font-black uppercase tracking-widest text-[#0055FF]">Distribusi Wilayah</span>
+                <h3 class="text-xl sm:text-2xl font-black text-[#071a33] mt-2 mb-2">Top 10 Provinsi — Jumlah Siswa Penerima Terbanyak</h3>
+                <p class="text-sm sm:text-base font-bold text-slate-600 mb-6">Rincian alokasi berdasarkan jumlah siswa penerima</p>
+            </div>
+            
+            <!-- Tabel Provinsi -->
+            <div class="overflow-x-auto rounded-2xl border-2 border-slate-300 max-h-[360px] overflow-y-auto">
+                <table id="table-provinsi" class="w-full text-sm sm:text-base text-slate-900 font-bold">
+                    <thead class="bg-slate-200 text-slate-900 border-b-2 border-slate-300 sticky top-0">
+                        <tr>
+                            <th class="py-3 px-4 text-left font-black border-r-2 border-slate-300">Provinsi</th>
+                            <th class="py-3 px-4 text-right font-black">Jumlah Siswa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-distribusi-wilayah" class="divide-y-2 divide-slate-200">
+                        <tr><td colspan="2" class="py-5 px-4 text-center text-slate-500">Memuat data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 text-right">
+                <span class="text-xs font-black italic text-slate-500 font-['DM_Mono']">* Data menyesuaikan filter tahun & wilayah</span>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- Library Chart.js & DataLabels -->
+<!-- ================= SCRIPT JAVASCRIPT FILTER & CHART INTERAKTIF ================= -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        Chart.register(ChartDataLabels);
+document.addEventListener("DOMContentLoaded", function () {
+    Chart.register(ChartDataLabels);
 
-        // --- 1. GROUPED BAR CHART ---
-        const ctxBar = document.getElementById('barChart')?.getContext('2d');
-        let barChart = null;
+    /*
+     * DATA SUMBER:
+     * - ADM_Data_PIP       : jumlah SK Nominasi + nominal + SK Pembatalan
+     * - ADM_Rekap_Dinamis  : penyaluran, aktivasi, bulan, dan serapan
+     *
+     * Dataset sudah dipadatkan per sekolah-tahun, sehingga UI tidak perlu
+     * membawa ribuan baris mentah ke browser.
+     */
+    const dashboardData = [{"y":2024,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMA","s":"SMAN 5 Darul Imarah","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMA","s":"SMAN 5 Darul Imarah","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2026,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMA","s":"SMAN 5 Darul Imarah","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMK","s":"SMKN 3 Darul Imarah","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2025,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMK","s":"SMKN 3 Darul Imarah","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMK","s":"SMKN 3 Darul Imarah","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMP","s":"SMPN 1 Darul Imarah","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMP","s":"SMPN 1 Darul Imarah","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":4,"sr":0.7142857142857143},{"y":2026,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Darul Imarah","j":"SMP","s":"SMPN 1 Darul Imarah","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SD","s":"SDN 3 Ingin Jaya","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SD","s":"SDN 3 Ingin Jaya","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SD","s":"SDN 3 Ingin Jaya","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SMA","s":"SMAN 2 Ingin Jaya","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2025,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SMA","s":"SMAN 2 Ingin Jaya","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SMA","s":"SMAN 2 Ingin Jaya","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SMP","s":"SMPN 4 Ingin Jaya","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2025,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SMP","s":"SMPN 4 Ingin Jaya","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":6,"sr":0.2857142857142857},{"y":2026,"p":"Aceh","k":"Kabupaten Aceh Besar","c":"Ingin Jaya","j":"SMP","s":"SMPN 4 Ingin Jaya","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SD","s":"SDN 3 Baiturrahman","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SD","s":"SDN 3 Baiturrahman","n":5,"an":2250000,"d":900000,"sa":2,"ba":5,"x":2,"m":6,"sr":0.2857142857142857},{"y":2026,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SD","s":"SDN 3 Baiturrahman","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SMA","s":"SMAN 1 Baiturrahman","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SMA","s":"SMAN 1 Baiturrahman","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SMA","s":"SMAN 1 Baiturrahman","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SMP","s":"SMPN 1 Baiturrahman","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SMP","s":"SMPN 1 Baiturrahman","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"Aceh","k":"Kota Banda Aceh","c":"Baiturrahman","j":"SMP","s":"SMPN 1 Baiturrahman","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Aceh","k":"Kota Banda Aceh","c":"Kuta Alam","j":"SMA","s":"SMAN 4 Kuta Alam","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kota Banda Aceh","c":"Kuta Alam","j":"SMA","s":"SMAN 4 Kuta Alam","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2026,"p":"Aceh","k":"Kota Banda Aceh","c":"Kuta Alam","j":"SMA","s":"SMAN 4 Kuta Alam","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Aceh","k":"Kota Banda Aceh","c":"Kuta Alam","j":"SMK","s":"SMKN 5 Kuta Alam","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2025,"p":"Aceh","k":"Kota Banda Aceh","c":"Kuta Alam","j":"SMK","s":"SMKN 5 Kuta Alam","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Aceh","k":"Kota Banda Aceh","c":"Kuta Alam","j":"SMK","s":"SMKN 5 Kuta Alam","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2024,"p":"Aceh","k":"Kota Banda Aceh","c":"Syiah Kuala","j":"SMA","s":"SMAN 5 Syiah Kuala","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Aceh","k":"Kota Banda Aceh","c":"Syiah Kuala","j":"SMA","s":"SMAN 5 Syiah Kuala","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":2,"sr":0.7142857142857143},{"y":2026,"p":"Aceh","k":"Kota Banda Aceh","c":"Syiah Kuala","j":"SMA","s":"SMAN 5 Syiah Kuala","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"Aceh","k":"Kota Banda Aceh","c":"Syiah Kuala","j":"SMK","s":"SMKN 1 Syiah Kuala","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":4,"sr":0.2857142857142857},{"y":2025,"p":"Aceh","k":"Kota Banda Aceh","c":"Syiah Kuala","j":"SMK","s":"SMKN 1 Syiah Kuala","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Aceh","k":"Kota Banda Aceh","c":"Syiah Kuala","j":"SMK","s":"SMKN 1 Syiah Kuala","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SD","s":"SDN 5 Kuta Utara","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SD","s":"SDN 5 Kuta Utara","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":6,"sr":0.7142857142857143},{"y":2026,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SD","s":"SDN 5 Kuta Utara","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":1,"sr":0.7142857142857143},{"y":2024,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SMA","s":"SMAN 4 Kuta Utara","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SMA","s":"SMAN 4 Kuta Utara","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2026,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SMA","s":"SMAN 4 Kuta Utara","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SMP","s":"SMPN 3 Kuta Utara","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":12,"sr":0.2857142857142857},{"y":2025,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SMP","s":"SMPN 3 Kuta Utara","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"Bali","k":"Kabupaten Badung","c":"Kuta Utara","j":"SMP","s":"SMPN 3 Kuta Utara","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Bali","k":"Kabupaten Badung","c":"Mengwi","j":"SMK","s":"SMKN 1 Mengwi","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Bali","k":"Kabupaten Badung","c":"Mengwi","j":"SMK","s":"SMKN 1 Mengwi","n":5,"an":9000000,"d":9000000,"sa":5,"ba":2,"x":2,"m":8,"sr":0.7142857142857143},{"y":2026,"p":"Bali","k":"Kabupaten Badung","c":"Mengwi","j":"SMK","s":"SMKN 1 Mengwi","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Bali","k":"Kabupaten Badung","c":"Mengwi","j":"SMP","s":"SMPN 3 Mengwi","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Bali","k":"Kabupaten Badung","c":"Mengwi","j":"SMP","s":"SMPN 3 Mengwi","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2026,"p":"Bali","k":"Kabupaten Badung","c":"Mengwi","j":"SMP","s":"SMPN 3 Mengwi","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SD","s":"SDN 3 Denpasar Barat","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2025,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SD","s":"SDN 3 Denpasar Barat","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SD","s":"SDN 3 Denpasar Barat","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SMA","s":"SMAN 3 Denpasar Barat","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SMA","s":"SMAN 3 Denpasar Barat","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2026,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SMA","s":"SMAN 3 Denpasar Barat","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":11,"sr":0.42857142857142855},{"y":2024,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SMP","s":"SMPN 4 Denpasar Barat","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2025,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SMP","s":"SMPN 4 Denpasar Barat","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":11,"sr":0.2857142857142857},{"y":2026,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Barat","j":"SMP","s":"SMPN 4 Denpasar Barat","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2024,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMA","s":"SMAN 1 Denpasar Selatan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2025,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMA","s":"SMAN 1 Denpasar Selatan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2026,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMA","s":"SMAN 1 Denpasar Selatan","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMK","s":"SMKN 1 Denpasar Selatan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMK","s":"SMKN 1 Denpasar Selatan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMK","s":"SMKN 1 Denpasar Selatan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMP","s":"SMPN 4 Denpasar Selatan","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":10,"sr":0.2857142857142857},{"y":2025,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMP","s":"SMPN 4 Denpasar Selatan","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2026,"p":"Bali","k":"Kota Denpasar","c":"Denpasar Selatan","j":"SMP","s":"SMPN 4 Denpasar Selatan","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Banten","k":"Kabupaten Serang","c":"Ciruas","j":"SD","s":"SDN 4 Ciruas","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Banten","k":"Kabupaten Serang","c":"Ciruas","j":"SD","s":"SDN 4 Ciruas","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Banten","k":"Kabupaten Serang","c":"Ciruas","j":"SD","s":"SDN 4 Ciruas","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"Banten","k":"Kabupaten Serang","c":"Ciruas","j":"SMA","s":"SMAN 3 Ciruas","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Banten","k":"Kabupaten Serang","c":"Ciruas","j":"SMA","s":"SMAN 3 Ciruas","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2026,"p":"Banten","k":"Kabupaten Serang","c":"Ciruas","j":"SMA","s":"SMAN 3 Ciruas","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2024,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMA","s":"SMAN 5 Kramatwatu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMA","s":"SMAN 5 Kramatwatu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMA","s":"SMAN 5 Kramatwatu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMK","s":"SMKN 2 Kramatwatu","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":1,"sr":0.7142857142857143},{"y":2025,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMK","s":"SMKN 2 Kramatwatu","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMK","s":"SMKN 2 Kramatwatu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2024,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMP","s":"SMPN 3 Kramatwatu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMP","s":"SMPN 3 Kramatwatu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2026,"p":"Banten","k":"Kabupaten Serang","c":"Kramatwatu","j":"SMP","s":"SMPN 3 Kramatwatu","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Banten","k":"Kota Tangerang","c":"Cipondoh","j":"SMA","s":"SMAN 4 Cipondoh","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Banten","k":"Kota Tangerang","c":"Cipondoh","j":"SMA","s":"SMAN 4 Cipondoh","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Banten","k":"Kota Tangerang","c":"Cipondoh","j":"SMA","s":"SMAN 4 Cipondoh","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Banten","k":"Kota Tangerang","c":"Cipondoh","j":"SMP","s":"SMPN 2 Cipondoh","n":5,"an":3750000,"d":1500000,"sa":2,"ba":5,"x":2,"m":9,"sr":0.2857142857142857},{"y":2025,"p":"Banten","k":"Kota Tangerang","c":"Cipondoh","j":"SMP","s":"SMPN 2 Cipondoh","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2026,"p":"Banten","k":"Kota Tangerang","c":"Cipondoh","j":"SMP","s":"SMPN 2 Cipondoh","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2024,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMA","s":"SMAN 4 Karawaci","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMA","s":"SMAN 4 Karawaci","n":5,"an":9000000,"d":3600000,"sa":2,"ba":5,"x":2,"m":3,"sr":0.2857142857142857},{"y":2026,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMA","s":"SMAN 4 Karawaci","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2024,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMK","s":"SMKN 1 Karawaci","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2025,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMK","s":"SMKN 1 Karawaci","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMK","s":"SMKN 1 Karawaci","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMP","s":"SMPN 3 Karawaci","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMP","s":"SMPN 3 Karawaci","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2026,"p":"Banten","k":"Kota Tangerang","c":"Karawaci","j":"SMP","s":"SMPN 3 Karawaci","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Depok","j":"SMA","s":"SMAN 3 Depok","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2025,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Depok","j":"SMA","s":"SMAN 3 Depok","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2026,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Depok","j":"SMA","s":"SMAN 3 Depok","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Depok","j":"SMK","s":"SMKN 5 Depok","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Depok","j":"SMK","s":"SMKN 5 Depok","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Depok","j":"SMK","s":"SMKN 5 Depok","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2024,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Mlati","j":"SD","s":"SDN 1 Mlati","n":5,"an":2250000,"d":1350000,"sa":3,"ba":4,"x":2,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Mlati","j":"SD","s":"SDN 1 Mlati","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Mlati","j":"SD","s":"SDN 1 Mlati","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":10,"sr":0.2857142857142857},{"y":2024,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Mlati","j":"SMP","s":"SMPN 4 Mlati","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Mlati","j":"SMP","s":"SMPN 4 Mlati","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2026,"p":"DI Yogyakarta","k":"Kabupaten Sleman","c":"Mlati","j":"SMP","s":"SMPN 4 Mlati","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Gondokusuman","j":"SD","s":"SDN 3 Gondokusuman","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2025,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Gondokusuman","j":"SD","s":"SDN 3 Gondokusuman","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Gondokusuman","j":"SD","s":"SDN 3 Gondokusuman","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Gondokusuman","j":"SMA","s":"SMAN 3 Gondokusuman","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2025,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Gondokusuman","j":"SMA","s":"SMAN 3 Gondokusuman","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2026,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Gondokusuman","j":"SMA","s":"SMAN 3 Gondokusuman","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2024,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Umbulharjo","j":"SD","s":"SDN 1 Umbulharjo","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":12,"sr":0.7142857142857143},{"y":2025,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Umbulharjo","j":"SD","s":"SDN 1 Umbulharjo","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Umbulharjo","j":"SD","s":"SDN 1 Umbulharjo","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Umbulharjo","j":"SMA","s":"SMAN 3 Umbulharjo","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":2,"sr":0.7142857142857143},{"y":2025,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Umbulharjo","j":"SMA","s":"SMAN 3 Umbulharjo","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"DI Yogyakarta","k":"Kota Yogyakarta","c":"Umbulharjo","j":"SMA","s":"SMAN 3 Umbulharjo","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SD","s":"SDN 2 Cilandak","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SD","s":"SDN 2 Cilandak","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SD","s":"SDN 2 Cilandak","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SMA","s":"SMAN 5 Cilandak","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SMA","s":"SMAN 5 Cilandak","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SMA","s":"SMAN 5 Cilandak","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SMP","s":"SMPN 4 Cilandak","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SMP","s":"SMPN 4 Cilandak","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Cilandak","j":"SMP","s":"SMPN 4 Cilandak","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Kebayoran Baru","j":"SMA","s":"SMAN 3 Kebayoran Baru","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Kebayoran Baru","j":"SMA","s":"SMAN 3 Kebayoran Baru","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Kebayoran Baru","j":"SMA","s":"SMAN 3 Kebayoran Baru","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Kebayoran Baru","j":"SMK","s":"SMKN 2 Kebayoran Baru","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Kebayoran Baru","j":"SMK","s":"SMKN 2 Kebayoran Baru","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Kebayoran Baru","j":"SMK","s":"SMKN 2 Kebayoran Baru","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Pasar Minggu","j":"SMA","s":"SMAN 5 Pasar Minggu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Pasar Minggu","j":"SMA","s":"SMAN 5 Pasar Minggu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Pasar Minggu","j":"SMA","s":"SMAN 5 Pasar Minggu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Pasar Minggu","j":"SMK","s":"SMKN 5 Pasar Minggu","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":1,"sr":0.7142857142857143},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Pasar Minggu","j":"SMK","s":"SMKN 5 Pasar Minggu","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Selatan","c":"Pasar Minggu","j":"SMK","s":"SMKN 5 Pasar Minggu","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SD","s":"SDN 2 Cakung","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SD","s":"SDN 2 Cakung","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":5,"sr":0.2857142857142857},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SD","s":"SDN 2 Cakung","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":1,"sr":0.7142857142857143},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SMK","s":"SMKN 3 Cakung","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SMK","s":"SMKN 3 Cakung","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SMK","s":"SMKN 3 Cakung","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SMP","s":"SMPN 5 Cakung","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SMP","s":"SMPN 5 Cakung","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Cakung","j":"SMP","s":"SMPN 5 Cakung","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SD","s":"SDN 1 Duren Sawit","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":6,"sr":0.2857142857142857},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SD","s":"SDN 1 Duren Sawit","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SD","s":"SDN 1 Duren Sawit","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SMA","s":"SMAN 1 Duren Sawit","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SMA","s":"SMAN 1 Duren Sawit","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SMA","s":"SMAN 1 Duren Sawit","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SMK","s":"SMKN 4 Duren Sawit","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2025,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SMK","s":"SMKN 4 Duren Sawit","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"DKI Jakarta","k":"Kota Jakarta Timur","c":"Duren Sawit","j":"SMK","s":"SMKN 4 Duren Sawit","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SD","s":"SDN 2 Arjasari","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SD","s":"SDN 2 Arjasari","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SD","s":"SDN 2 Arjasari","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SMA","s":"SMAN 2 Arjasari","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SMA","s":"SMAN 2 Arjasari","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":12,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SMA","s":"SMAN 2 Arjasari","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SMP","s":"SMPN 2 Arjasari","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SMP","s":"SMPN 2 Arjasari","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Arjasari","j":"SMP","s":"SMPN 2 Arjasari","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Baleendah","j":"SD","s":"SDN 1 Baleendah","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Baleendah","j":"SD","s":"SDN 1 Baleendah","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Baleendah","j":"SD","s":"SDN 1 Baleendah","n":5,"an":2250000,"d":1350000,"sa":3,"ba":4,"x":2,"m":10,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Baleendah","j":"SMP","s":"SMPN 2 Baleendah","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Baleendah","j":"SMP","s":"SMPN 2 Baleendah","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Baleendah","j":"SMP","s":"SMPN 2 Baleendah","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SD","s":"SDN 1 Banjaran","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SD","s":"SDN 1 Banjaran","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SD","s":"SDN 1 Banjaran","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SMA","s":"SMAN 3 Banjaran","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SMA","s":"SMAN 3 Banjaran","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SMA","s":"SMAN 3 Banjaran","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":12,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SMP","s":"SMPN 1 Banjaran","n":5,"an":3750000,"d":3000000,"sa":4,"ba":3,"x":2,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SMP","s":"SMPN 1 Banjaran","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Banjaran","j":"SMP","s":"SMPN 1 Banjaran","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SD","s":"SDN 1 Bojongsoang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SD","s":"SDN 1 Bojongsoang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SD","s":"SDN 1 Bojongsoang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SMA","s":"SMAN 3 Bojongsoang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SMA","s":"SMAN 3 Bojongsoang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SMA","s":"SMAN 3 Bojongsoang","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":9,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SMP","s":"SMPN 2 Bojongsoang","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SMP","s":"SMPN 2 Bojongsoang","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Bojongsoang","j":"SMP","s":"SMPN 2 Bojongsoang","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cicalengka","j":"SD","s":"SDN 2 Cicalengka","n":5,"an":2250000,"d":1350000,"sa":3,"ba":4,"x":2,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cicalengka","j":"SD","s":"SDN 2 Cicalengka","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":1,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cicalengka","j":"SD","s":"SDN 2 Cicalengka","n":8,"an":3600000,"d":3150000,"sa":7,"ba":2,"x":1,"m":7,"sr":0.7777777777777778},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cicalengka","j":"SMP","s":"SMPN 3 Cicalengka","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cicalengka","j":"SMP","s":"SMPN 3 Cicalengka","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cicalengka","j":"SMP","s":"SMPN 3 Cicalengka","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cileunyi","j":"SD","s":"SDN 2 Cileunyi","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":7,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cileunyi","j":"SD","s":"SDN 2 Cileunyi","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cileunyi","j":"SD","s":"SDN 2 Cileunyi","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cileunyi","j":"SMP","s":"SMPN 3 Cileunyi","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cileunyi","j":"SMP","s":"SMPN 3 Cileunyi","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":4,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cileunyi","j":"SMP","s":"SMPN 3 Cileunyi","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cimenyan","j":"SD","s":"SDN 2 Cimenyan","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cimenyan","j":"SD","s":"SDN 2 Cimenyan","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":4,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cimenyan","j":"SD","s":"SDN 2 Cimenyan","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cimenyan","j":"SMP","s":"SMPN 2 Cimenyan","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cimenyan","j":"SMP","s":"SMPN 2 Cimenyan","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Cimenyan","j":"SMP","s":"SMPN 2 Cimenyan","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciparay","j":"SD","s":"SDN 2 Ciparay","n":5,"an":2250000,"d":1350000,"sa":3,"ba":4,"x":2,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciparay","j":"SD","s":"SDN 2 Ciparay","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciparay","j":"SD","s":"SDN 2 Ciparay","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciparay","j":"SMP","s":"SMPN 2 Ciparay","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciparay","j":"SMP","s":"SMPN 2 Ciparay","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciparay","j":"SMP","s":"SMPN 2 Ciparay","n":7,"an":5250000,"d":3750000,"sa":5,"ba":3,"x":1,"m":12,"sr":0.625},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SD","s":"SDN 3 Ciwidey","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":11,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SD","s":"SDN 3 Ciwidey","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SD","s":"SDN 3 Ciwidey","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SMA","s":"SMAN 1 Ciwidey","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SMA","s":"SMAN 1 Ciwidey","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SMA","s":"SMAN 1 Ciwidey","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SMP","s":"SMPN 1 Ciwidey","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SMP","s":"SMPN 1 Ciwidey","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Ciwidey","j":"SMP","s":"SMPN 1 Ciwidey","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SD","s":"SDN 1 Dayeuhkolot","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SD","s":"SDN 1 Dayeuhkolot","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SD","s":"SDN 1 Dayeuhkolot","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SMA","s":"SMAN 1 Dayeuhkolot","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SMA","s":"SMAN 1 Dayeuhkolot","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":12,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SMA","s":"SMAN 1 Dayeuhkolot","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SMP","s":"SMPN 3 Dayeuhkolot","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SMP","s":"SMPN 3 Dayeuhkolot","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Dayeuhkolot","j":"SMP","s":"SMPN 3 Dayeuhkolot","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":9,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SD","s":"SDN 3 Katapang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SD","s":"SDN 3 Katapang","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":9,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SD","s":"SDN 3 Katapang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SMA","s":"SMAN 1 Katapang","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":6,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SMA","s":"SMAN 1 Katapang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SMA","s":"SMAN 1 Katapang","n":8,"an":14400000,"d":9000000,"sa":5,"ba":4,"x":1,"m":4,"sr":0.5555555555555556},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SMP","s":"SMPN 1 Katapang","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SMP","s":"SMPN 1 Katapang","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Katapang","j":"SMP","s":"SMPN 1 Katapang","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SD","s":"SDN 2 Kutawaringin","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SD","s":"SDN 2 Kutawaringin","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SD","s":"SDN 2 Kutawaringin","n":5,"an":2250000,"d":1800000,"sa":4,"ba":3,"x":2,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SMA","s":"SMAN 3 Kutawaringin","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SMA","s":"SMAN 3 Kutawaringin","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SMA","s":"SMAN 3 Kutawaringin","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SMP","s":"SMPN 2 Kutawaringin","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SMP","s":"SMPN 2 Kutawaringin","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Kutawaringin","j":"SMP","s":"SMPN 2 Kutawaringin","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":4,"sr":0.2857142857142857},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Majalaya","j":"SD","s":"SDN 2 Majalaya","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Majalaya","j":"SD","s":"SDN 2 Majalaya","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Majalaya","j":"SD","s":"SDN 2 Majalaya","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Majalaya","j":"SMP","s":"SMPN 3 Majalaya","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Majalaya","j":"SMP","s":"SMPN 3 Majalaya","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Majalaya","j":"SMP","s":"SMPN 3 Majalaya","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Margahayu","j":"SD","s":"SDN 2 Margahayu","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Margahayu","j":"SD","s":"SDN 2 Margahayu","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Margahayu","j":"SD","s":"SDN 2 Margahayu","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Margahayu","j":"SMP","s":"SMPN 2 Margahayu","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Margahayu","j":"SMP","s":"SMPN 2 Margahayu","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Margahayu","j":"SMP","s":"SMPN 2 Margahayu","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SD","s":"SDN 3 Pacet","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SD","s":"SDN 3 Pacet","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SD","s":"SDN 3 Pacet","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SMA","s":"SMAN 3 Pacet","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SMA","s":"SMAN 3 Pacet","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SMA","s":"SMAN 3 Pacet","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SMP","s":"SMPN 1 Pacet","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SMP","s":"SMPN 1 Pacet","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pacet","j":"SMP","s":"SMPN 1 Pacet","n":7,"an":5250000,"d":4500000,"sa":6,"ba":2,"x":1,"m":6,"sr":0.75},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SD","s":"SDN 2 Pangalengan","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SD","s":"SDN 2 Pangalengan","n":5,"an":2250000,"d":1350000,"sa":3,"ba":4,"x":2,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SD","s":"SDN 2 Pangalengan","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SMA","s":"SMAN 2 Pangalengan","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":6,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SMA","s":"SMAN 2 Pangalengan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SMA","s":"SMAN 2 Pangalengan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SMP","s":"SMPN 3 Pangalengan","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SMP","s":"SMPN 3 Pangalengan","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pangalengan","j":"SMP","s":"SMPN 3 Pangalengan","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SD","s":"SDN 1 Pasirjambu","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SD","s":"SDN 1 Pasirjambu","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SD","s":"SDN 1 Pasirjambu","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SMA","s":"SMAN 1 Pasirjambu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SMA","s":"SMAN 1 Pasirjambu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SMA","s":"SMAN 1 Pasirjambu","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SMP","s":"SMPN 2 Pasirjambu","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SMP","s":"SMPN 2 Pasirjambu","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Pasirjambu","j":"SMP","s":"SMPN 2 Pasirjambu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SD","s":"SDN 1 Rancaekek","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SD","s":"SDN 1 Rancaekek","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SD","s":"SDN 1 Rancaekek","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SMA","s":"SMAN 2 Rancaekek","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SMA","s":"SMAN 2 Rancaekek","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":7,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SMA","s":"SMAN 2 Rancaekek","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":4,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SMP","s":"SMPN 1 Rancaekek","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SMP","s":"SMPN 1 Rancaekek","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Rancaekek","j":"SMP","s":"SMPN 1 Rancaekek","n":5,"an":3750000,"d":2250000,"sa":3,"ba":4,"x":2,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SD","s":"SDN 2 Solokanjeruk","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SD","s":"SDN 2 Solokanjeruk","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SD","s":"SDN 2 Solokanjeruk","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SMA","s":"SMAN 2 Solokanjeruk","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SMA","s":"SMAN 2 Solokanjeruk","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SMA","s":"SMAN 2 Solokanjeruk","n":3,"an":5400000,"d":3600000,"sa":2,"ba":5,"x":4,"m":5,"sr":0.2857142857142857},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SMP","s":"SMPN 1 Solokanjeruk","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SMP","s":"SMPN 1 Solokanjeruk","n":5,"an":3750000,"d":2250000,"sa":3,"ba":4,"x":2,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Solokanjeruk","j":"SMP","s":"SMPN 1 Solokanjeruk","n":5,"an":3750000,"d":1500000,"sa":2,"ba":5,"x":2,"m":10,"sr":0.2857142857142857},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SD","s":"SDN 3 Soreang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SD","s":"SDN 3 Soreang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SD","s":"SDN 3 Soreang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMA","s":"SMAN 2 Soreang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMA","s":"SMAN 2 Soreang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMA","s":"SMAN 2 Soreang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMP","s":"SMPN 1 Soreang","n":11,"an":8250000,"d":6000000,"sa":8,"ba":4,"x":1,"m":3,"sr":0.6666666666666666},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMP","s":"SMPN 1 Soreang","n":13,"an":9750000,"d":7500000,"sa":10,"ba":8,"x":5,"m":9,"sr":0.5555555555555556},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMP","s":"SMPN 1 Soreang","n":22,"an":16500000,"d":11250000,"sa":15,"ba":11,"x":4,"m":1,"sr":0.5769230769230769},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMP","s":"SMPN 2 Soreang","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMP","s":"SMPN 2 Soreang","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":1,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bandung","c":"Soreang","j":"SMP","s":"SMPN 2 Soreang","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Cibinong","j":"SD","s":"SDN 1 Cibinong","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Cibinong","j":"SD","s":"SDN 1 Cibinong","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Cibinong","j":"SD","s":"SDN 1 Cibinong","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Cibinong","j":"SMP","s":"SMPN 5 Cibinong","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Cibinong","j":"SMP","s":"SMPN 5 Cibinong","n":5,"an":3750000,"d":1500000,"sa":2,"ba":5,"x":2,"m":1,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Cibinong","j":"SMP","s":"SMPN 5 Cibinong","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SD","s":"SDN 2 Citeureup","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SD","s":"SDN 2 Citeureup","n":5,"an":2250000,"d":900000,"sa":2,"ba":5,"x":2,"m":10,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SD","s":"SDN 2 Citeureup","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SMK","s":"SMKN 5 Citeureup","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SMK","s":"SMKN 5 Citeureup","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SMK","s":"SMKN 5 Citeureup","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":4,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SMP","s":"SMPN 2 Citeureup","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SMP","s":"SMPN 2 Citeureup","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Bogor","c":"Citeureup","j":"SMP","s":"SMPN 2 Citeureup","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Cikajang","j":"SD","s":"SDN 4 Cikajang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Cikajang","j":"SD","s":"SDN 4 Cikajang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Cikajang","j":"SD","s":"SDN 4 Cikajang","n":5,"an":2250000,"d":900000,"sa":2,"ba":5,"x":2,"m":3,"sr":0.2857142857142857},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Cikajang","j":"SMA","s":"SMAN 1 Cikajang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Cikajang","j":"SMA","s":"SMAN 1 Cikajang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Cikajang","j":"SMA","s":"SMAN 1 Cikajang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Tarogong Kidul","j":"SMA","s":"SMAN 4 Tarogong Kidul","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Tarogong Kidul","j":"SMA","s":"SMAN 4 Tarogong Kidul","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Tarogong Kidul","j":"SMA","s":"SMAN 4 Tarogong Kidul","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Tarogong Kidul","j":"SMK","s":"SMKN 3 Tarogong Kidul","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Tarogong Kidul","j":"SMK","s":"SMKN 3 Tarogong Kidul","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Barat","k":"Kabupaten Garut","c":"Tarogong Kidul","j":"SMK","s":"SMKN 3 Tarogong Kidul","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMA","s":"SMAN 4 Cibeunying Kidul","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":9,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMA","s":"SMAN 4 Cibeunying Kidul","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":3,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMA","s":"SMAN 4 Cibeunying Kidul","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMK","s":"SMKN 3 Cibeunying Kidul","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMK","s":"SMKN 3 Cibeunying Kidul","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMK","s":"SMKN 3 Cibeunying Kidul","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMP","s":"SMPN 1 Cibeunying Kidul","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMP","s":"SMPN 1 Cibeunying Kidul","n":7,"an":5250000,"d":4500000,"sa":6,"ba":2,"x":1,"m":1,"sr":0.75},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Cibeunying Kidul","j":"SMP","s":"SMPN 1 Cibeunying Kidul","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SD","s":"SDN 3 Coblong","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SD","s":"SDN 3 Coblong","n":5,"an":2250000,"d":900000,"sa":2,"ba":5,"x":2,"m":12,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SD","s":"SDN 3 Coblong","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":12,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SMK","s":"SMKN 1 Coblong","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SMK","s":"SMKN 1 Coblong","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":3,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SMK","s":"SMKN 1 Coblong","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SMP","s":"SMPN 1 Coblong","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SMP","s":"SMPN 1 Coblong","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Coblong","j":"SMP","s":"SMPN 1 Coblong","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SD","s":"SDN 5 Kiaracondong","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SD","s":"SDN 5 Kiaracondong","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SD","s":"SDN 5 Kiaracondong","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SMA","s":"SMAN 5 Kiaracondong","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SMA","s":"SMAN 5 Kiaracondong","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":3,"sr":0.2857142857142857},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SMA","s":"SMAN 5 Kiaracondong","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2024,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SMK","s":"SMKN 2 Kiaracondong","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SMK","s":"SMKN 2 Kiaracondong","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Barat","k":"Kota Bandung","c":"Kiaracondong","j":"SMK","s":"SMKN 2 Kiaracondong","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Purwokerto Timur","j":"SD","s":"SDN 2 Purwokerto Timur","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Purwokerto Timur","j":"SD","s":"SDN 2 Purwokerto Timur","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Purwokerto Timur","j":"SD","s":"SDN 2 Purwokerto Timur","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Purwokerto Timur","j":"SMP","s":"SMPN 3 Purwokerto Timur","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Purwokerto Timur","j":"SMP","s":"SMPN 3 Purwokerto Timur","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Purwokerto Timur","j":"SMP","s":"SMPN 3 Purwokerto Timur","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Sokaraja","j":"SD","s":"SDN 3 Sokaraja","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Sokaraja","j":"SD","s":"SDN 3 Sokaraja","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Sokaraja","j":"SD","s":"SDN 3 Sokaraja","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Sokaraja","j":"SMA","s":"SMAN 5 Sokaraja","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":10,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Sokaraja","j":"SMA","s":"SMAN 5 Sokaraja","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Tengah","k":"Kabupaten Banyumas","c":"Sokaraja","j":"SMA","s":"SMAN 5 Sokaraja","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Tengah","k":"Kota Semarang","c":"Banyumanik","j":"SD","s":"SDN 3 Banyumanik","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Tengah","k":"Kota Semarang","c":"Banyumanik","j":"SD","s":"SDN 3 Banyumanik","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Tengah","k":"Kota Semarang","c":"Banyumanik","j":"SD","s":"SDN 3 Banyumanik","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Tengah","k":"Kota Semarang","c":"Banyumanik","j":"SMP","s":"SMPN 4 Banyumanik","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Tengah","k":"Kota Semarang","c":"Banyumanik","j":"SMP","s":"SMPN 4 Banyumanik","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Tengah","k":"Kota Semarang","c":"Banyumanik","j":"SMP","s":"SMPN 4 Banyumanik","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SD","s":"SDN 2 Tembalang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SD","s":"SDN 2 Tembalang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SD","s":"SDN 2 Tembalang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SMK","s":"SMKN 1 Tembalang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SMK","s":"SMKN 1 Tembalang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SMK","s":"SMKN 1 Tembalang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SMP","s":"SMPN 2 Tembalang","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SMP","s":"SMPN 2 Tembalang","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Tengah","k":"Kota Semarang","c":"Tembalang","j":"SMP","s":"SMPN 2 Tembalang","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Kepanjen","j":"SD","s":"SDN 1 Kepanjen","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Kepanjen","j":"SD","s":"SDN 1 Kepanjen","n":5,"an":2250000,"d":1350000,"sa":3,"ba":4,"x":2,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Kepanjen","j":"SD","s":"SDN 1 Kepanjen","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Kepanjen","j":"SMK","s":"SMKN 3 Kepanjen","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Kepanjen","j":"SMK","s":"SMKN 3 Kepanjen","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Kepanjen","j":"SMK","s":"SMKN 3 Kepanjen","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Singosari","j":"SD","s":"SDN 5 Singosari","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Singosari","j":"SD","s":"SDN 5 Singosari","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Singosari","j":"SD","s":"SDN 5 Singosari","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Singosari","j":"SMA","s":"SMAN 5 Singosari","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Singosari","j":"SMA","s":"SMAN 5 Singosari","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":4,"sr":0.7142857142857143},{"y":2026,"p":"Jawa Timur","k":"Kabupaten Malang","c":"Singosari","j":"SMA","s":"SMAN 5 Singosari","n":7,"an":12600000,"d":10800000,"sa":6,"ba":2,"x":1,"m":9,"sr":0.75},{"y":2024,"p":"Jawa Timur","k":"Kota Surabaya","c":"Rungkut","j":"SMA","s":"SMAN 2 Rungkut","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2025,"p":"Jawa Timur","k":"Kota Surabaya","c":"Rungkut","j":"SMA","s":"SMAN 2 Rungkut","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Timur","k":"Kota Surabaya","c":"Rungkut","j":"SMA","s":"SMAN 2 Rungkut","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Jawa Timur","k":"Kota Surabaya","c":"Rungkut","j":"SMP","s":"SMPN 3 Rungkut","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Jawa Timur","k":"Kota Surabaya","c":"Rungkut","j":"SMP","s":"SMPN 3 Rungkut","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"Jawa Timur","k":"Kota Surabaya","c":"Rungkut","j":"SMP","s":"SMPN 3 Rungkut","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SD","s":"SDN 3 Sukolilo","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SD","s":"SDN 3 Sukolilo","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SD","s":"SDN 3 Sukolilo","n":5,"an":2250000,"d":900000,"sa":2,"ba":5,"x":2,"m":8,"sr":0.2857142857142857},{"y":2024,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SMK","s":"SMKN 4 Sukolilo","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":5,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SMK","s":"SMKN 4 Sukolilo","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SMK","s":"SMKN 4 Sukolilo","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2024,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SMP","s":"SMPN 1 Sukolilo","n":5,"an":3750000,"d":1500000,"sa":2,"ba":5,"x":2,"m":7,"sr":0.2857142857142857},{"y":2025,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SMP","s":"SMPN 1 Sukolilo","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Jawa Timur","k":"Kota Surabaya","c":"Sukolilo","j":"SMP","s":"SMPN 1 Sukolilo","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SD","s":"SDN 5 Pontianak Kota","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SD","s":"SDN 5 Pontianak Kota","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2026,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SD","s":"SDN 5 Pontianak Kota","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2024,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SMK","s":"SMKN 2 Pontianak Kota","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SMK","s":"SMKN 2 Pontianak Kota","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SMK","s":"SMKN 2 Pontianak Kota","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SMP","s":"SMPN 2 Pontianak Kota","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SMP","s":"SMPN 2 Pontianak Kota","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Kota","j":"SMP","s":"SMPN 2 Pontianak Kota","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Selatan","j":"SMK","s":"SMKN 2 Pontianak Selatan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Selatan","j":"SMK","s":"SMKN 2 Pontianak Selatan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2026,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Selatan","j":"SMK","s":"SMKN 2 Pontianak Selatan","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Selatan","j":"SMP","s":"SMPN 2 Pontianak Selatan","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Selatan","j":"SMP","s":"SMPN 2 Pontianak Selatan","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":7,"sr":0.7142857142857143},{"y":2026,"p":"Kalimantan Barat","k":"Kota Pontianak","c":"Pontianak Selatan","j":"SMP","s":"SMPN 2 Pontianak Selatan","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SD","s":"SDN 2 Astambul","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SD","s":"SDN 2 Astambul","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2026,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SD","s":"SDN 2 Astambul","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":6,"sr":0.7142857142857143},{"y":2024,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SMA","s":"SMAN 5 Astambul","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SMA","s":"SMAN 5 Astambul","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SMA","s":"SMAN 5 Astambul","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":2,"sr":0.2857142857142857},{"y":2024,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SMP","s":"SMPN 1 Astambul","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SMP","s":"SMPN 1 Astambul","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2026,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Astambul","j":"SMP","s":"SMPN 1 Astambul","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":4,"sr":0.2857142857142857},{"y":2024,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Martapura","j":"SD","s":"SDN 5 Martapura","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Martapura","j":"SD","s":"SDN 5 Martapura","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Martapura","j":"SD","s":"SDN 5 Martapura","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Martapura","j":"SMP","s":"SMPN 4 Martapura","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Martapura","j":"SMP","s":"SMPN 4 Martapura","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":2,"sr":0.7142857142857143},{"y":2026,"p":"Kalimantan Selatan","k":"Kabupaten Banjar","c":"Martapura","j":"SMP","s":"SMPN 4 Martapura","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":7,"sr":0.7142857142857143},{"y":2024,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Samarinda Ulu","j":"SMA","s":"SMAN 5 Samarinda Ulu","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2025,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Samarinda Ulu","j":"SMA","s":"SMAN 5 Samarinda Ulu","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2026,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Samarinda Ulu","j":"SMA","s":"SMAN 5 Samarinda Ulu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Samarinda Ulu","j":"SMP","s":"SMPN 3 Samarinda Ulu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Samarinda Ulu","j":"SMP","s":"SMPN 3 Samarinda Ulu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2026,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Samarinda Ulu","j":"SMP","s":"SMPN 3 Samarinda Ulu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Sungai Kunjang","j":"SD","s":"SDN 2 Sungai Kunjang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Sungai Kunjang","j":"SD","s":"SDN 2 Sungai Kunjang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Sungai Kunjang","j":"SD","s":"SDN 2 Sungai Kunjang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Sungai Kunjang","j":"SMA","s":"SMAN 4 Sungai Kunjang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Sungai Kunjang","j":"SMA","s":"SMAN 4 Sungai Kunjang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Kalimantan Timur","k":"Kota Samarinda","c":"Sungai Kunjang","j":"SMA","s":"SMAN 4 Sungai Kunjang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Lampung","k":"Kota Bandar Lampung","c":"Kedaton","j":"SD","s":"SDN 5 Kedaton","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Lampung","k":"Kota Bandar Lampung","c":"Kedaton","j":"SD","s":"SDN 5 Kedaton","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2026,"p":"Lampung","k":"Kota Bandar Lampung","c":"Kedaton","j":"SD","s":"SDN 5 Kedaton","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"Lampung","k":"Kota Bandar Lampung","c":"Kedaton","j":"SMP","s":"SMPN 5 Kedaton","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2025,"p":"Lampung","k":"Kota Bandar Lampung","c":"Kedaton","j":"SMP","s":"SMPN 5 Kedaton","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2026,"p":"Lampung","k":"Kota Bandar Lampung","c":"Kedaton","j":"SMP","s":"SMPN 5 Kedaton","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":2,"sr":0.7142857142857143},{"y":2024,"p":"Lampung","k":"Kota Bandar Lampung","c":"Tanjung Karang Pusat","j":"SD","s":"SDN 5 Tanjung Karang Pusat","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Lampung","k":"Kota Bandar Lampung","c":"Tanjung Karang Pusat","j":"SD","s":"SDN 5 Tanjung Karang Pusat","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2026,"p":"Lampung","k":"Kota Bandar Lampung","c":"Tanjung Karang Pusat","j":"SD","s":"SDN 5 Tanjung Karang Pusat","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Lampung","k":"Kota Bandar Lampung","c":"Tanjung Karang Pusat","j":"SMP","s":"SMPN 1 Tanjung Karang Pusat","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Lampung","k":"Kota Bandar Lampung","c":"Tanjung Karang Pusat","j":"SMP","s":"SMPN 1 Tanjung Karang Pusat","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2026,"p":"Lampung","k":"Kota Bandar Lampung","c":"Tanjung Karang Pusat","j":"SMP","s":"SMPN 1 Tanjung Karang Pusat","n":5,"an":3750000,"d":3000000,"sa":4,"ba":3,"x":2,"m":10,"sr":0.5714285714285714},{"y":2024,"p":"Maluku","k":"Kota Ambon","c":"Nusaniwe","j":"SD","s":"SDN 4 Nusaniwe","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"Maluku","k":"Kota Ambon","c":"Nusaniwe","j":"SD","s":"SDN 4 Nusaniwe","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2026,"p":"Maluku","k":"Kota Ambon","c":"Nusaniwe","j":"SD","s":"SDN 4 Nusaniwe","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":3,"sr":0.2857142857142857},{"y":2024,"p":"Maluku","k":"Kota Ambon","c":"Nusaniwe","j":"SMK","s":"SMKN 3 Nusaniwe","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Maluku","k":"Kota Ambon","c":"Nusaniwe","j":"SMK","s":"SMKN 3 Nusaniwe","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":12,"sr":0.2857142857142857},{"y":2026,"p":"Maluku","k":"Kota Ambon","c":"Nusaniwe","j":"SMK","s":"SMKN 3 Nusaniwe","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SD","s":"SDN 5 Sirimau","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2025,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SD","s":"SDN 5 Sirimau","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SD","s":"SDN 5 Sirimau","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2024,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SMA","s":"SMAN 2 Sirimau","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SMA","s":"SMAN 2 Sirimau","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SMA","s":"SMAN 2 Sirimau","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2024,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SMP","s":"SMPN 5 Sirimau","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SMP","s":"SMPN 5 Sirimau","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":5,"sr":0.2857142857142857},{"y":2026,"p":"Maluku","k":"Kota Ambon","c":"Sirimau","j":"SMP","s":"SMPN 5 Sirimau","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2024,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Cakranegara","j":"SMA","s":"SMAN 1 Cakranegara","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Cakranegara","j":"SMA","s":"SMAN 1 Cakranegara","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2026,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Cakranegara","j":"SMA","s":"SMAN 1 Cakranegara","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Cakranegara","j":"SMP","s":"SMPN 1 Cakranegara","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2025,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Cakranegara","j":"SMP","s":"SMPN 1 Cakranegara","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2026,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Cakranegara","j":"SMP","s":"SMPN 1 Cakranegara","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Selaparang","j":"SD","s":"SDN 1 Selaparang","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":6,"sr":0.7142857142857143},{"y":2025,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Selaparang","j":"SD","s":"SDN 1 Selaparang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2026,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Selaparang","j":"SD","s":"SDN 1 Selaparang","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2024,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Selaparang","j":"SMA","s":"SMAN 5 Selaparang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2025,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Selaparang","j":"SMA","s":"SMAN 5 Selaparang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2026,"p":"Nusa Tenggara Barat","k":"Kota Mataram","c":"Selaparang","j":"SMA","s":"SMAN 5 Selaparang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SD","s":"SDN 3 Kelapa Lima","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SD","s":"SDN 3 Kelapa Lima","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2026,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SD","s":"SDN 3 Kelapa Lima","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SMK","s":"SMKN 4 Kelapa Lima","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SMK","s":"SMKN 4 Kelapa Lima","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SMK","s":"SMKN 4 Kelapa Lima","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SMP","s":"SMPN 4 Kelapa Lima","n":4,"an":3000000,"d":1500000,"sa":2,"ba":5,"x":3,"m":8,"sr":0.2857142857142857},{"y":2025,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SMP","s":"SMPN 4 Kelapa Lima","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Kelapa Lima","j":"SMP","s":"SMPN 4 Kelapa Lima","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2024,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Oebobo","j":"SMA","s":"SMAN 5 Oebobo","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2025,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Oebobo","j":"SMA","s":"SMAN 5 Oebobo","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Oebobo","j":"SMA","s":"SMAN 5 Oebobo","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Oebobo","j":"SMP","s":"SMPN 3 Oebobo","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Oebobo","j":"SMP","s":"SMPN 3 Oebobo","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2026,"p":"Nusa Tenggara Timur","k":"Kota Kupang","c":"Oebobo","j":"SMP","s":"SMPN 3 Oebobo","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SD","s":"SDN 3 Abepura","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SD","s":"SDN 3 Abepura","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2026,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SD","s":"SDN 3 Abepura","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SMA","s":"SMAN 2 Abepura","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":1,"sr":0.7142857142857143},{"y":2025,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SMA","s":"SMAN 2 Abepura","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SMA","s":"SMAN 2 Abepura","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SMK","s":"SMKN 3 Abepura","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2025,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SMK","s":"SMKN 3 Abepura","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2026,"p":"Papua","k":"Kota Jayapura","c":"Abepura","j":"SMK","s":"SMKN 3 Abepura","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SD","s":"SDN 1 Jayapura Utara","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SD","s":"SDN 1 Jayapura Utara","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SD","s":"SDN 1 Jayapura Utara","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SMA","s":"SMAN 2 Jayapura Utara","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SMA","s":"SMAN 2 Jayapura Utara","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SMA","s":"SMAN 2 Jayapura Utara","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SMP","s":"SMPN 5 Jayapura Utara","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SMP","s":"SMPN 5 Jayapura Utara","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2026,"p":"Papua","k":"Kota Jayapura","c":"Jayapura Utara","j":"SMP","s":"SMPN 5 Jayapura Utara","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2024,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SD","s":"SDN 4 Sukajadi","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2025,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SD","s":"SDN 4 Sukajadi","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SD","s":"SDN 4 Sukajadi","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SMA","s":"SMAN 4 Sukajadi","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SMA","s":"SMAN 4 Sukajadi","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2026,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SMA","s":"SMAN 4 Sukajadi","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":8,"sr":0.42857142857142855},{"y":2024,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SMP","s":"SMPN 5 Sukajadi","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2025,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SMP","s":"SMPN 5 Sukajadi","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2026,"p":"Riau","k":"Kota Pekanbaru","c":"Sukajadi","j":"SMP","s":"SMPN 5 Sukajadi","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Riau","k":"Kota Pekanbaru","c":"Tampan","j":"SMA","s":"SMAN 4 Tampan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"Riau","k":"Kota Pekanbaru","c":"Tampan","j":"SMA","s":"SMAN 4 Tampan","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Riau","k":"Kota Pekanbaru","c":"Tampan","j":"SMA","s":"SMAN 4 Tampan","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Riau","k":"Kota Pekanbaru","c":"Tampan","j":"SMP","s":"SMPN 5 Tampan","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Riau","k":"Kota Pekanbaru","c":"Tampan","j":"SMP","s":"SMPN 5 Tampan","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":12,"sr":0.2857142857142857},{"y":2026,"p":"Riau","k":"Kota Pekanbaru","c":"Tampan","j":"SMP","s":"SMPN 5 Tampan","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SD","s":"SDN 4 Pallangga","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SD","s":"SDN 4 Pallangga","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2026,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SD","s":"SDN 4 Pallangga","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2024,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SMK","s":"SMKN 1 Pallangga","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SMK","s":"SMKN 1 Pallangga","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SMK","s":"SMKN 1 Pallangga","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SMP","s":"SMPN 2 Pallangga","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SMP","s":"SMPN 2 Pallangga","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Pallangga","j":"SMP","s":"SMPN 2 Pallangga","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2024,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMA","s":"SMAN 4 Somba Opu","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2025,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMA","s":"SMAN 4 Somba Opu","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2026,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMA","s":"SMAN 4 Somba Opu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMK","s":"SMKN 5 Somba Opu","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMK","s":"SMKN 5 Somba Opu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMK","s":"SMKN 5 Somba Opu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMP","s":"SMPN 5 Somba Opu","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":1,"sr":0.2857142857142857},{"y":2025,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMP","s":"SMPN 5 Somba Opu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Selatan","k":"Kabupaten Gowa","c":"Somba Opu","j":"SMP","s":"SMPN 5 Somba Opu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SD","s":"SDN 2 Rappocini","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SD","s":"SDN 2 Rappocini","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SD","s":"SDN 2 Rappocini","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":6,"sr":0.7142857142857143},{"y":2024,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SMA","s":"SMAN 3 Rappocini","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":6,"sr":0.7142857142857143},{"y":2025,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SMA","s":"SMAN 3 Rappocini","n":5,"an":9000000,"d":5400000,"sa":3,"ba":4,"x":2,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SMA","s":"SMAN 3 Rappocini","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SMP","s":"SMPN 3 Rappocini","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SMP","s":"SMPN 3 Rappocini","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Rappocini","j":"SMP","s":"SMPN 3 Rappocini","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Tamalanrea","j":"SMA","s":"SMAN 2 Tamalanrea","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Tamalanrea","j":"SMA","s":"SMAN 2 Tamalanrea","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":10,"sr":0.2857142857142857},{"y":2026,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Tamalanrea","j":"SMA","s":"SMAN 2 Tamalanrea","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Tamalanrea","j":"SMP","s":"SMPN 5 Tamalanrea","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Tamalanrea","j":"SMP","s":"SMPN 5 Tamalanrea","n":5,"an":3750000,"d":1500000,"sa":2,"ba":5,"x":2,"m":4,"sr":0.2857142857142857},{"y":2026,"p":"Sulawesi Selatan","k":"Kota Makassar","c":"Tamalanrea","j":"SMP","s":"SMPN 5 Tamalanrea","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2024,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SD","s":"SDN 3 Malalayang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SD","s":"SDN 3 Malalayang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SD","s":"SDN 3 Malalayang","n":6,"an":2700000,"d":900000,"sa":2,"ba":5,"x":1,"m":3,"sr":0.2857142857142857},{"y":2024,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SMA","s":"SMAN 3 Malalayang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SMA","s":"SMAN 3 Malalayang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2026,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SMA","s":"SMAN 3 Malalayang","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2024,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SMK","s":"SMKN 1 Malalayang","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":5,"sr":0.7142857142857143},{"y":2025,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SMK","s":"SMKN 1 Malalayang","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2026,"p":"Sulawesi Utara","k":"Kota Manado","c":"Malalayang","j":"SMK","s":"SMKN 1 Malalayang","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2024,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SD","s":"SDN 2 Wanea","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SD","s":"SDN 2 Wanea","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SD","s":"SDN 2 Wanea","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2024,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SMA","s":"SMAN 5 Wanea","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2025,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SMA","s":"SMAN 5 Wanea","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SMA","s":"SMAN 5 Wanea","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SMP","s":"SMPN 1 Wanea","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2025,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SMP","s":"SMPN 1 Wanea","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2026,"p":"Sulawesi Utara","k":"Kota Manado","c":"Wanea","j":"SMP","s":"SMPN 1 Wanea","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMA","s":"SMAN 3 Lubuk Basung","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMA","s":"SMAN 3 Lubuk Basung","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMA","s":"SMAN 3 Lubuk Basung","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMK","s":"SMKN 5 Lubuk Basung","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMK","s":"SMKN 5 Lubuk Basung","n":5,"an":9000000,"d":7200000,"sa":4,"ba":3,"x":2,"m":5,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMK","s":"SMKN 5 Lubuk Basung","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMP","s":"SMPN 5 Lubuk Basung","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":3,"sr":0.2857142857142857},{"y":2025,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMP","s":"SMPN 5 Lubuk Basung","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Lubuk Basung","j":"SMP","s":"SMPN 5 Lubuk Basung","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SD","s":"SDN 1 Tilatang Kamang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SD","s":"SDN 1 Tilatang Kamang","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SD","s":"SDN 1 Tilatang Kamang","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SMK","s":"SMKN 3 Tilatang Kamang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SMK","s":"SMKN 3 Tilatang Kamang","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SMK","s":"SMKN 3 Tilatang Kamang","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SMP","s":"SMPN 3 Tilatang Kamang","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SMP","s":"SMPN 3 Tilatang Kamang","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Barat","k":"Kabupaten Agam","c":"Tilatang Kamang","j":"SMP","s":"SMPN 3 Tilatang Kamang","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SD","s":"SDN 1 Koto Tangah","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":5,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SD","s":"SDN 1 Koto Tangah","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SD","s":"SDN 1 Koto Tangah","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SMK","s":"SMKN 2 Koto Tangah","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SMK","s":"SMKN 2 Koto Tangah","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SMK","s":"SMKN 2 Koto Tangah","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SMP","s":"SMPN 4 Koto Tangah","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SMP","s":"SMPN 4 Koto Tangah","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":4,"sr":0.2857142857142857},{"y":2026,"p":"Sumatera Barat","k":"Kota Padang","c":"Koto Tangah","j":"SMP","s":"SMPN 4 Koto Tangah","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kota Padang","c":"Padang Barat","j":"SD","s":"SDN 1 Padang Barat","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Barat","k":"Kota Padang","c":"Padang Barat","j":"SD","s":"SDN 1 Padang Barat","n":6,"an":2700000,"d":2250000,"sa":5,"ba":2,"x":1,"m":9,"sr":0.7142857142857143},{"y":2026,"p":"Sumatera Barat","k":"Kota Padang","c":"Padang Barat","j":"SD","s":"SDN 1 Padang Barat","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Barat","k":"Kota Padang","c":"Padang Barat","j":"SMP","s":"SMPN 5 Padang Barat","n":4,"an":3000000,"d":2250000,"sa":3,"ba":4,"x":3,"m":5,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Barat","k":"Kota Padang","c":"Padang Barat","j":"SMP","s":"SMPN 5 Padang Barat","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Barat","k":"Kota Padang","c":"Padang Barat","j":"SMP","s":"SMPN 5 Padang Barat","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMA","s":"SMAN 4 Indralaya","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMA","s":"SMAN 4 Indralaya","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":9,"sr":0.7142857142857143},{"y":2026,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMA","s":"SMAN 4 Indralaya","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":10,"sr":0.2857142857142857},{"y":2024,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMK","s":"SMKN 3 Indralaya","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":3,"sr":0.7142857142857143},{"y":2025,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMK","s":"SMKN 3 Indralaya","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMK","s":"SMKN 3 Indralaya","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMP","s":"SMPN 1 Indralaya","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":2,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMP","s":"SMPN 1 Indralaya","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Indralaya","j":"SMP","s":"SMPN 1 Indralaya","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SD","s":"SDN 2 Tanjung Batu","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SD","s":"SDN 2 Tanjung Batu","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":10,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SD","s":"SDN 2 Tanjung Batu","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SMK","s":"SMKN 4 Tanjung Batu","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SMK","s":"SMKN 4 Tanjung Batu","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":10,"sr":0.7142857142857143},{"y":2026,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SMK","s":"SMKN 4 Tanjung Batu","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SMP","s":"SMPN 1 Tanjung Batu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SMP","s":"SMPN 1 Tanjung Batu","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Selatan","k":"Kabupaten Ogan Ilir","c":"Tanjung Batu","j":"SMP","s":"SMPN 1 Tanjung Batu","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SD","s":"SDN 4 Ilir Timur I","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SD","s":"SDN 4 Ilir Timur I","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":1,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SD","s":"SDN 4 Ilir Timur I","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":7,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SMA","s":"SMAN 3 Ilir Timur I","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SMA","s":"SMAN 3 Ilir Timur I","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":6,"sr":0.7142857142857143},{"y":2026,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SMA","s":"SMAN 3 Ilir Timur I","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SMK","s":"SMKN 3 Ilir Timur I","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SMK","s":"SMKN 3 Ilir Timur I","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":6,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Ilir Timur I","j":"SMK","s":"SMKN 3 Ilir Timur I","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":11,"sr":0.7142857142857143},{"y":2024,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Seberang Ulu I","j":"SMA","s":"SMAN 3 Seberang Ulu I","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Seberang Ulu I","j":"SMA","s":"SMAN 3 Seberang Ulu I","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Seberang Ulu I","j":"SMA","s":"SMAN 3 Seberang Ulu I","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Seberang Ulu I","j":"SMK","s":"SMKN 5 Seberang Ulu I","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":12,"sr":0.2857142857142857},{"y":2025,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Seberang Ulu I","j":"SMK","s":"SMKN 5 Seberang Ulu I","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Selatan","k":"Kota Palembang","c":"Seberang Ulu I","j":"SMK","s":"SMKN 5 Seberang Ulu I","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":10,"sr":0.2857142857142857},{"y":2024,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Lubuk Pakam","j":"SMA","s":"SMAN 4 Lubuk Pakam","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Lubuk Pakam","j":"SMA","s":"SMAN 4 Lubuk Pakam","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Lubuk Pakam","j":"SMA","s":"SMAN 4 Lubuk Pakam","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2024,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Lubuk Pakam","j":"SMK","s":"SMKN 5 Lubuk Pakam","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":4,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Lubuk Pakam","j":"SMK","s":"SMKN 5 Lubuk Pakam","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Lubuk Pakam","j":"SMK","s":"SMKN 5 Lubuk Pakam","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMA","s":"SMAN 5 Tanjung Morawa","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":3,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMA","s":"SMAN 5 Tanjung Morawa","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMA","s":"SMAN 5 Tanjung Morawa","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMK","s":"SMKN 1 Tanjung Morawa","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMK","s":"SMKN 1 Tanjung Morawa","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMK","s":"SMKN 1 Tanjung Morawa","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMP","s":"SMPN 5 Tanjung Morawa","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMP","s":"SMPN 5 Tanjung Morawa","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kabupaten Deli Serdang","c":"Tanjung Morawa","j":"SMP","s":"SMPN 5 Tanjung Morawa","n":6,"an":4500000,"d":3750000,"sa":5,"ba":2,"x":1,"m":4,"sr":0.7142857142857143},{"y":2024,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Baru","j":"SMA","s":"SMAN 4 Medan Baru","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":11,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Baru","j":"SMA","s":"SMAN 4 Medan Baru","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":12,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Baru","j":"SMA","s":"SMAN 4 Medan Baru","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":6,"sr":0.5714285714285714},{"y":2024,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Baru","j":"SMP","s":"SMPN 2 Medan Baru","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":10,"sr":0.42857142857142855},{"y":2025,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Baru","j":"SMP","s":"SMPN 2 Medan Baru","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":8,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Baru","j":"SMP","s":"SMPN 2 Medan Baru","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":11,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Denai","j":"SMA","s":"SMAN 4 Medan Denai","n":6,"an":10800000,"d":3600000,"sa":2,"ba":5,"x":1,"m":12,"sr":0.2857142857142857},{"y":2025,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Denai","j":"SMA","s":"SMAN 4 Medan Denai","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Denai","j":"SMA","s":"SMAN 4 Medan Denai","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":1,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Denai","j":"SMK","s":"SMKN 5 Medan Denai","n":6,"an":10800000,"d":9000000,"sa":5,"ba":2,"x":1,"m":8,"sr":0.7142857142857143},{"y":2025,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Denai","j":"SMK","s":"SMKN 5 Medan Denai","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":3,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Denai","j":"SMK","s":"SMKN 5 Medan Denai","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":9,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SD","s":"SDN 3 Medan Johor","n":6,"an":2700000,"d":1800000,"sa":4,"ba":3,"x":1,"m":12,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SD","s":"SDN 3 Medan Johor","n":5,"an":2250000,"d":900000,"sa":2,"ba":5,"x":2,"m":3,"sr":0.2857142857142857},{"y":2026,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SD","s":"SDN 3 Medan Johor","n":6,"an":2700000,"d":1350000,"sa":3,"ba":4,"x":1,"m":2,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SMA","s":"SMAN 4 Medan Johor","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":8,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SMA","s":"SMAN 4 Medan Johor","n":6,"an":10800000,"d":7200000,"sa":4,"ba":3,"x":1,"m":4,"sr":0.5714285714285714},{"y":2026,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SMA","s":"SMAN 4 Medan Johor","n":6,"an":10800000,"d":5400000,"sa":3,"ba":4,"x":1,"m":5,"sr":0.42857142857142855},{"y":2024,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SMP","s":"SMPN 4 Medan Johor","n":6,"an":4500000,"d":3000000,"sa":4,"ba":3,"x":1,"m":9,"sr":0.5714285714285714},{"y":2025,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SMP","s":"SMPN 4 Medan Johor","n":6,"an":4500000,"d":2250000,"sa":3,"ba":4,"x":1,"m":7,"sr":0.42857142857142855},{"y":2026,"p":"Sumatera Utara","k":"Kota Medan","c":"Medan Johor","j":"SMP","s":"SMPN 4 Medan Johor","n":6,"an":4500000,"d":1500000,"sa":2,"ba":5,"x":1,"m":7,"sr":0.2857142857142857}];
 
-        if (ctxBar) {
-            barChart = new Chart(ctxBar, {
-                type: 'bar',
-                data: {
-                    labels: @json($labelsBar ?? []),
-                    datasets: [
-                        {
-                            label: 'SD',
-                            data: @json($dataBar['SD'] ?? []),
-                            backgroundColor: '#C0504D',
-                            borderRadius: 4
-                        },
-                        {
-                            label: 'SMP',
-                            data: @json($dataBar['SMP'] ?? []),
-                            backgroundColor: '#4F81BD',
-                            borderRadius: 4
-                        },
-                        {
-                            label: 'SMA',
-                            data: @json($dataBar['SMA'] ?? []),
-                            backgroundColor: '#9BBB59',
-                            borderRadius: 4
-                        },
-                        {
-                            label: 'SMK',
-                            data: @json($dataBar['SMK'] ?? []),
-                            backgroundColor: '#8064A2',
-                            borderRadius: 4
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        x: {
-                            stacked: false,
-                            grid: { display: false },
-                            ticks: { 
-                                font: { weight: 'bold', size: 11 }, 
-                                color: '#64748B' 
-                            }
-                        },
-                        y: {
-                            stacked: false,
-                            min: 0,
-                            max: 12,
-                            ticks: {
-                                stepSize: 2,
-                                callback: function(value) { 
-                                    return value.toFixed(1).replace('.', ',') + '%'; 
-                                },
-                                font: { weight: 'bold', size: 11 },
-                                color: '#64748B'
+    // Nilai default harus sama dengan sheet DASHBOARD_ADMIN / NASIONAL_LP.
+    const defaultChart = [29.1840659341, 30, 29.9523809524, 29.6984126984, 30, 29.4642857143, 30.2063492063, 30.4285714286, 30.3055555556, 31, 31.7142857143, 29.3392857143];
+
+    const bulanNama = [
+        "Januari","Februari","Maret","April","Mei","Juni",
+        "Juli","Agustus","September","Oktober","November","Desember"
+    ];
+
+    const el = {
+        tahun: document.getElementById("filter-tahun"),
+        bulan: document.getElementById("filter-bulan"),
+        jenjang: document.getElementById("filter-jenjang"),
+        wilayah: document.getElementById("filter-wilayah"),
+        search: document.getElementById("filter-search"),
+        apply: document.getElementById("btn-apply"),
+        reset: document.getElementById("btn-reset"),
+        totalAlokasi: document.getElementById("val-total-alokasi"),
+        siswaAlokasi: document.getElementById("val-jumlah-siswa-alokasi"),
+        totalPenyaluran: document.getElementById("val-total-penyaluran"),
+        siswaPenyaluran: document.getElementById("val-jumlah-siswa-penyaluran"),
+        aktivasi: document.getElementById("val-persentase-aktivasi"),
+        pembatalan: document.getElementById("val-sk-pembatalan"),
+        subtitle: document.getElementById("chart-subtitle"),
+        tbodyProvinsi: document.getElementById("tbody-distribusi-wilayah")
+    };
+
+    function rupiah(n) {
+        return "Rp " + Math.round(n || 0).toLocaleString("id-ID");
+    }
+
+    function angka(n) {
+        return Math.round(n || 0).toLocaleString("id-ID");
+    }
+
+    function persen(n) {
+        return (n || 0).toLocaleString("id-ID", {
+            minimumFractionDigits: 1,
+            maximumFractionDigits: 1
+        }) + "%";
+    }
+
+    function escapeHtml(value) {
+        return String(value ?? "").replace(/[&<>"']/g, function (m) {
+            return ({
+                "&":"&amp;",
+                "<":"&lt;",
+                ">":"&gt;",
+                '"':"&quot;",
+                "'":"&#039;"
+            })[m];
+        });
+    }
+
+    function uniqueValues(field) {
+        return [...new Set(dashboardData.map(r => r[field]).filter(Boolean))].sort((a,b) =>
+            String(a).localeCompare(String(b), "id")
+        );
+    }
+
+    // Satu dropdown Wilayah dengan struktur bertingkat:
+    // Provinsi -> Kabupaten/Kota -> Kecamatan.
+    // Bukan tiga filter terpisah. Perubahan pilihan tidak langsung menerapkan filter.
+    function buildWilayahOptions() {
+        const menu = document.getElementById("filter-wilayah-menu");
+        if (!menu) return;
+
+        menu.innerHTML = "";
+
+        const makeRow = (text, value, level, expandable, parentKey) => {
+            const row = document.createElement("div");
+            row.className = "wilayah-item flex items-center gap-2 rounded-xl px-3 py-2.5 hover:bg-blue-50 transition";
+            row.dataset.value = value;
+            row.dataset.level = level;
+            row.dataset.parent = parentKey || "";
+
+            const indent = document.createElement("span");
+            indent.className = level === 0 ? "w-0" : (level === 1 ? "w-5" : "w-10");
+
+            const arrow = document.createElement("button");
+            arrow.type = "button";
+            arrow.className = "grid h-7 w-7 flex-shrink-0 place-items-center rounded-lg text-slate-400 hover:bg-white hover:text-[#0055FF]";
+            arrow.innerHTML = expandable
+                ? '<svg class="wilayah-arrow h-4 w-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"></path></svg>'
+                : '';
+            arrow.addEventListener("click", function(e) {
+                e.stopPropagation();
+                toggleWilayahChildren(value, level);
+            });
+
+            const select = document.createElement("button");
+            select.type = "button";
+            select.className = "min-w-0 flex-1 text-left font-bold text-slate-700";
+            select.textContent = text;
+            select.addEventListener("click", function() {
+                selectWilayah(value, text);
+            });
+
+            row.appendChild(indent);
+            row.appendChild(arrow);
+            row.appendChild(select);
+            return row;
+        };
+
+        const allRow = makeRow("Semua Wilayah", "all", 0, false, "");
+        allRow.classList.add("mb-1", "border-b", "border-slate-100", "pb-3");
+        menu.appendChild(allRow);
+
+        const provinces = uniqueValues("p");
+        provinces.forEach(province => {
+            const provinceKey = "p:" + province;
+            const provinceRows = dashboardData.filter(r => r.p === province);
+            const kabupaten = [...new Set(provinceRows.map(r => r.k).filter(Boolean))].sort((a,b) => String(a).localeCompare(String(b), "id"));
+            const row = makeRow(province, province, 0, kabupaten.length > 0, "");
+            row.dataset.key = provinceKey;
+            menu.appendChild(row);
+
+            kabupaten.forEach(kab => {
+                const kabRows = provinceRows.filter(r => r.k === kab);
+                const kecamatan = [...new Set(kabRows.map(r => r.c).filter(Boolean))].sort((a,b) => String(a).localeCompare(String(b), "id"));
+                const kabKey = "k:" + province + "|" + kab;
+                const kabRow = makeRow(kab, kab, 1, kecamatan.length > 0, provinceKey);
+                kabRow.dataset.key = kabKey;
+                kabRow.style.display = "none";
+                menu.appendChild(kabRow);
+
+                kecamatan.forEach(kec => {
+                    const kecKey = "c:" + province + "|" + kab + "|" + kec;
+                    const kecRow = makeRow(kec, kec, 2, false, kabKey);
+                    kecRow.dataset.key = kecKey;
+                    kecRow.style.display = "none";
+                    menu.appendChild(kecRow);
+                });
+            });
+        });
+    }
+
+    function toggleWilayahChildren(value, level) {
+        const menu = document.getElementById("filter-wilayah-menu");
+        if (!menu) return;
+
+        const rows = [...menu.querySelectorAll(".wilayah-item")];
+        let parentKey = level === 0 ? "p:" + value : null;
+
+        if (level === 1) {
+            const parentRow = rows.find(r => r.dataset.level === "1" && r.dataset.value === value);
+            parentKey = parentRow ? parentRow.dataset.key : null;
+        }
+        if (!parentKey) return;
+
+        const parentRow = rows.find(r => r.dataset.key === parentKey);
+        const arrow = parentRow?.querySelector(".wilayah-arrow");
+        const willOpen = arrow ? !arrow.classList.contains("rotate-90") : false;
+
+        rows.forEach(row => {
+            if (row.dataset.parent === parentKey) {
+                row.style.display = willOpen ? "flex" : "none";
+
+                if (!willOpen && row.dataset.level === "1") {
+                    const childKey = row.dataset.key;
+                    const childArrow = row.querySelector(".wilayah-arrow");
+                    if (childArrow) childArrow.classList.remove("rotate-90");
+                    rows.forEach(child => {
+                        if (child.dataset.parent === childKey) child.style.display = "none";
+                    });
+                }
+            }
+        });
+
+        if (arrow) arrow.classList.toggle("rotate-90", willOpen);
+    }
+
+    function selectWilayah(value, label) {
+        el.wilayah.value = value;
+        const labelEl = document.getElementById("filter-wilayah-label");
+        if (labelEl) labelEl.textContent = value === "all" ? "Semua Wilayah" : label;
+        closeWilayahMenu();
+        // Sengaja tidak memanggil applyDashboardFilter().
+        // Filter baru diterapkan hanya ketika tombol "Terapkan Filter" ditekan.
+    }
+
+    function closeWilayahMenu() {
+        const menu = document.getElementById("filter-wilayah-menu");
+        const chevron = document.getElementById("filter-wilayah-chevron");
+        if (menu) menu.classList.add("hidden");
+        if (chevron) chevron.classList.remove("rotate-180");
+    }
+
+    function getFilteredData() {
+        const tahun = el.tahun.value;
+        const jenjang = el.jenjang.value;
+        const wilayah = el.wilayah.value;
+        const search = el.search.value.toLowerCase().trim();
+
+        return dashboardData.filter(row => {
+            const matchTahun = tahun === "all" || String(row.y) === tahun;
+            const matchJenjang = jenjang === "all" || row.j === jenjang;
+            const matchWilayah = wilayah === "all" || row.p === wilayah || row.k === wilayah || row.c === wilayah;
+
+            const haystack = [
+                row.s, row.p, row.k, row.c, row.j
+            ].join(" ").toLowerCase();
+
+            const matchSearch = !search || haystack.includes(search);
+
+            return matchTahun && matchJenjang && matchWilayah && matchSearch;
+        });
+    }
+
+    function calculateMetrics(data) {
+        const totalNominasi = data.reduce((sum, r) => sum + r.n, 0);
+        const totalNominal = data.reduce((sum, r) => sum + r.an, 0);
+        const totalDisalurkan = data.reduce((sum, r) => sum + r.d, 0);
+        const totalSudah = data.reduce((sum, r) => sum + r.sa, 0);
+        const totalBatal = data.reduce((sum, r) => sum + r.x, 0);
+
+        const sekolah = new Set(data.map(r => r.s).filter(Boolean));
+        const aktivasiPersen = totalNominasi ? (totalSudah / totalNominasi) * 100 : 0;
+
+        return {
+            totalNominasi,
+            totalNominal,
+            totalDisalurkan,
+            totalSudah,
+            totalBatal,
+            jumlahSekolah: sekolah.size,
+            jumlahProvinsi: new Set(data.map(r => r.p).filter(Boolean)).size,
+            aktivasiPersen
+        };
+    }
+
+    function calculateChart(data, useDefault) {
+        if (useDefault) return [...defaultChart];
+
+        return bulanNama.map((_, index) => {
+            const month = index + 1;
+            const monthRows = data.filter(r => Number(r.m) === month);
+            if (!monthRows.length) return 0;
+
+            // Rata-rata % serapan sekolah pada bulan tersebut.
+            const total = monthRows.reduce((sum, r) => sum + (Number(r.sr) || 0), 0);
+            return (total / monthRows.length) * 100;
+        });
+    }
+
+    function renderProvinceTable(data) {
+        const byProvince = new Map();
+
+        data.forEach(row => {
+            byProvince.set(row.p, (byProvince.get(row.p) || 0) + row.n);
+        });
+
+        const top = [...byProvince.entries()]
+            .filter(([name]) => name)
+            .sort((a,b) => b[1] - a[1])
+            .slice(0, 10);
+
+        if (!top.length) {
+            el.tbodyProvinsi.innerHTML =
+                '<tr><td colspan="2" class="py-5 px-4 text-center text-slate-500">Tidak ada data sesuai filter.</td></tr>';
+            return;
+        }
+
+        el.tbodyProvinsi.innerHTML = top.map(([province, count]) => `
+            <tr class="hover:bg-slate-100 provinsi-row" data-provinsi="${escapeHtml(province)}">
+                <td class="py-2.5 px-4 border-r-2 border-slate-200">${escapeHtml(province)}</td>
+                <td class="py-2.5 px-4 text-right font-mono font-extrabold">${angka(count)}</td>
+            </tr>
+        `).join("");
+    }
+
+    function updateMonthlyTable(chartData, selectedMonth) {
+        document.querySelectorAll(".val-bulan").forEach((cell, index) => {
+            cell.textContent = Number(chartData[index] || 0).toLocaleString("id-ID", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+
+            cell.style.backgroundColor = "";
+            cell.style.color = "";
+
+            if (selectedMonth !== "all" && Number(selectedMonth) === index + 1) {
+                cell.style.backgroundColor = "#dbeafe";
+                cell.style.color = "#0055FF";
+            }
+        });
+    }
+
+    const ctxLine = document.getElementById("lineChart")?.getContext("2d");
+    let lineChart = null;
+
+    if (ctxLine) {
+        lineChart = new Chart(ctxLine, {
+            type: "line",
+            data: {
+                labels: bulanNama,
+                datasets: [{
+                    label: "Total Serapan (%)",
+                    data: defaultChart,
+                    borderColor: "#0055FF",
+                    backgroundColor: "#0055FF",
+                    borderWidth: 3,
+                    pointRadius: 5,
+                    pointBackgroundColor: "#0055FF",
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { font: { weight: "bold", size: 10 }, color: "#64748B" }
+                    },
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                return Number(value).toFixed(2).replace(".", ",") + "%";
                             },
-                            grid: { color: '#E2E8F0' }
+                            font: { weight: "bold", size: 10 },
+                            color: "#64748B"
+                        },
+                        grid: { color: "#E2E8F0" }
+                    }
+                },
+                plugins: {
+                    datalabels: {
+                        align: "top",
+                        font: { weight: "bold", size: 10 },
+                        color: "#071A33",
+                        formatter: function(value) {
+                            return Number(value).toFixed(2).replace(".", ",");
                         }
                     },
-                    plugins: {
-                        datalabels: { display: false },
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                font: { weight: 'bold', size: 12 },
-                                usePointStyle: true,
-                                pointStyle: 'rectRounded',
-                                padding: 16
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: '#071A33',
-                            titleFont: { size: 13, weight: 'bold' },
-                            bodyFont: { size: 12 },
-                            padding: 10,
-                            cornerRadius: 8,
-                            callbacks: {
-                                label: function(context) {
-                                    let val = context.raw ? context.raw.toString().replace('.', ',') : '0';
-                                    return context.dataset.label + ': ' + val + '%';
-                                }
+                    legend: {
+                        position: "bottom",
+                        labels: {
+                            font: { weight: "bold", size: 11 },
+                            usePointStyle: true,
+                            pointStyle: "line"
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: "#071A33",
+                        callbacks: {
+                            label: function(context) {
+                                return " Serapan: " + Number(context.raw).toFixed(2).replace(".", ",") + "%";
                             }
                         }
                     }
                 }
-            });
+            }
+        });
+    }
+
+    function applyDashboardFilter() {
+        const filtered = getFilteredData();
+        const metrics = calculateMetrics(filtered);
+
+        el.totalAlokasi.textContent = rupiah(metrics.totalNominal);
+        el.siswaAlokasi.textContent = angka(metrics.totalNominasi) + " Siswa";
+        el.totalPenyaluran.textContent = rupiah(metrics.totalDisalurkan);
+        el.siswaPenyaluran.textContent = angka(metrics.totalSudah) + " Siswa";
+        el.aktivasi.textContent = persen(metrics.aktivasiPersen);
+        el.pembatalan.textContent = angka(metrics.totalBatal);
+
+        const isDefault =
+            el.tahun.value === "all" &&
+            el.jenjang.value === "all" &&
+            el.wilayah.value === "all" &&
+            !el.search.value.trim();
+
+        const chartData = calculateChart(filtered, isDefault);
+        const selectedMonth = el.bulan.value;
+
+        if (lineChart) {
+            lineChart.data.datasets[0].data = chartData;
+            lineChart.update();
         }
 
-        // --- 2. PIE CHART ---
-        const ctxPie = document.getElementById('pieChart');
-        let pieChart = null;
-        
-        if (ctxPie) {
-            const isMobile = window.innerWidth < 640;
-            pieChart = new Chart(ctxPie.getContext('2d'), {
-                type: 'pie',
-                data: {
-                    labels: [
-                        'Banten', 'Kalimantan Selatan', 'Lampung', 'Maluku Utara', 'Papua Barat Daya',
-                        'Papua Selatan', 'Papua Tengah', 'Sulawesi Barat', 'Sulawesi Tengah', 'Sulawesi Tenggara'
-                    ],
-                    datasets: [{
-                        data: [1808572861, 2209059644, 2087192873, 1848103253, 1802687688, 1824503461, 2024086190, 1897269165, 1723869675, 2012329922],
-                        backgroundColor: [
-                            '#0055FF', '#FB7185', '#5EE8D6', '#C084FC', '#FBBF24',
-                            '#34D399', '#F472B6', '#60A5FA', '#A78BFA', '#F87171'
-                        ],
-                        borderWidth: 3,
-                        borderColor: '#FFFFFF',
-                        hoverOffset: 8
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    layout: { padding: 10 },
-                    plugins: {
-                        datalabels: {
-                            color: '#FFFFFF',
-                            font: { weight: '900', size: 11 },
-                            formatter: function(value, context) {
-                                let total = context.chart._metasets[0].total;
-                                return total ? ((value / total) * 100).toFixed(1) + '%' : '0%';
-                            },
-                            anchor: 'center',
-                            align: 'center'
-                        },
-                        legend: {
-                            position: isMobile ? 'bottom' : 'right',
-                            labels: {
-                                font: { weight: 'bold', size: 11 },
-                                usePointStyle: true,
-                                pointStyle: 'circle',
-                                padding: 12
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: '#071A33',
-                            padding: 14,
-                            cornerRadius: 16,
-                            titleFont: { size: 14, weight: 'bold' },
-                            bodyFont: { size: 13, weight: 'bold' },
-                            callbacks: {
-                                title: function(tooltipItems) {
-                                    return '📍 ' + tooltipItems[0].label;
-                                },
-                                label: function(context) {
-                                    let formattedCurrency = new Intl.NumberFormat('id-ID', { 
-                                        style: 'currency', 
-                                        currency: 'IDR', 
-                                        maximumFractionDigits: 0 
-                                    }).format(context.raw);
+        updateMonthlyTable(chartData, selectedMonth);
+        renderProvinceTable(filtered);
 
-                                    return ' Nominal: ' + formattedCurrency;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
+        const tahunText = el.tahun.value === "all" ? "Semua" : el.tahun.value;
+        const wilayahText = el.wilayah.value === "all" ? "Nasional" : el.wilayah.value;
 
-        // --- 3. LOGIKA FILTER & PENCARIAN TEKS REAL-TIME ---
-        
-        // A. Fitur Pencarian Tabel secara Real-time (tanpa perlu submit form)
-        const searchInput = document.getElementById('filter-search');
-        if (searchInput) {
-            searchInput.addEventListener('input', function () {
-                const searchText = this.value.toLowerCase().trim();
-                const tableRows = document.querySelectorAll('tbody tr');
-                
-                tableRows.forEach(row => {
-                    const rowText = row.textContent.toLowerCase();
-                    row.style.display = (!searchText || rowText.includes(searchText)) ? '' : 'none';
-                });
-            });
-        }
+        el.subtitle.textContent =
+            `Grafik tren bulanan total persentase serapan (Tahun: ${tahunText}, Wilayah: ${wilayahText})`;
 
-        // B. Filter Dataset Bar Chart saat Dropdown Jenjang Mengalami Perubahan
-        const jenjangSelect = document.querySelector('select[name="jenjang"]');
-        if (jenjangSelect && barChart) {
-            jenjangSelect.addEventListener('change', function () {
-                const selectedJenjang = this.value;
-                barChart.data.datasets.forEach(dataset => {
-                    if (!selectedJenjang || dataset.label === selectedJenjang) {
-                        dataset.hidden = false;
-                    } else {
-                        dataset.hidden = true;
-                    }
-                });
-                barChart.update();
-            });
-        }
+        // Jangan submit/reload halaman. Semua perubahan angka + grafik + distribusi
+        // diproses oleh satu tombol ini.
+    }
+
+    el.apply.addEventListener("click", applyDashboardFilter);
+
+    el.reset.addEventListener("click", function () {
+        el.tahun.value = "all";
+        el.bulan.value = "all";
+        el.jenjang.value = "all";
+        el.wilayah.value = "all";
+        const wilayahLabel = document.getElementById("filter-wilayah-label");
+        if (wilayahLabel) wilayahLabel.textContent = "Semua Wilayah";
+        el.search.value = "";
+        applyDashboardFilter();
     });
+
+    buildWilayahOptions();
+
+    const wilayahButton = document.getElementById("filter-wilayah-button");
+    const wilayahMenu = document.getElementById("filter-wilayah-menu");
+    const wilayahChevron = document.getElementById("filter-wilayah-chevron");
+
+    if (wilayahButton && wilayahMenu) {
+        wilayahButton.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const opening = wilayahMenu.classList.contains("hidden");
+            wilayahMenu.classList.toggle("hidden", !opening);
+            if (wilayahChevron) wilayahChevron.classList.toggle("rotate-180", opening);
+        });
+
+        wilayahMenu.addEventListener("click", function(e) {
+            e.stopPropagation();
+        });
+
+        document.addEventListener("click", function() {
+            closeWilayahMenu();
+        });
+    }
+
+    // Tampilan awal = angka DASHBOARD_ADMIN:
+    // 4.784.850.000 alokasi, 4.297 siswa, 2.857.800.000 tersalurkan,
+    // 2.555 siswa aktivasi, 59,5% aktivasi, 765 pembatalan.
+    applyDashboardFilter();
+});
 </script>
-              </main>
-            </div>
-</body>
-</html>

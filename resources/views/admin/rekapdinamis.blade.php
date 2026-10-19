@@ -52,22 +52,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen overflow-x-hidden">
-    @php
-        $dataRekap = [
-            (object)['jenjang' => 'SD',  'alokasi_siswa' => 14281, 'alokasi_dana' => 6543193145,  'dana_disalurkan' => 5215837684,  'sisa_dana' => 1327355461],
-            (object)['jenjang' => 'SMA', 'alokasi_siswa' => 22619, 'alokasi_dana' => 22890992249, 'dana_disalurkan' => 18324384989, 'sisa_dana' => 4566607260],
-            (object)['jenjang' => 'SMK', 'alokasi_siswa' => 25918, 'alokasi_dana' => 26132212357, 'dana_disalurkan' => 20576509922, 'sisa_dana' => 5555702435],
-            (object)['jenjang' => 'SMP', 'alokasi_siswa' => 19475, 'alokasi_dana' => 14847358584, 'dana_disalurkan' => 11730543323, 'sisa_dana' => 3116815261],
-        ];
-
-        $totalData = (object)[
-            'alokasi_siswa' => 82293,
-            'alokasi_dana' => 70413756335,
-            'dana_disalurkan' => 55847275918,
-            'sisa_dana' => 14566480417,
-        ];
-    @endphp
-
     <a href="#konten-utama" class="fixed -top-20 left-4 z-[60] rounded-xl bg-[#0055FF] px-5 py-3 text-lg font-extrabold text-white shadow-xl transition focus:top-4 focus:outline-none focus:ring-4 focus:ring-blue-200">Lewati ke konten utama</a>
     
     <!-- Background Decor -->
@@ -210,198 +194,215 @@
             <div class="min-h-screen text-[#071a33] relative overflow-hidden px-4 py-6 sm:px-8 lg:px-12 lg:py-10">
                 <div class="relative z-10 mx-auto max-w-[1540px] space-y-8">
 
-                    <!-- SECTION FILTER REKAP DINAMIS -->
-                    <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50">
-                        <div class="mb-6 flex items-center justify-between border-b border-slate-100 pb-4">
-                            <div class="flex items-center gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
-                                    <i class="fa-solid fa-filter text-lg"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-black text-[#071a33]">Filter Rekap Dinamis</h3>
-                                    <p class="text-xs font-bold text-slate-500">Filter data berdasarkan Tahun, Jenjang, Wilayah, dan Pencarian kata kunci</p>
-                                </div>
+                    <!-- FORM FILTER DINAMIS -->
+                <form id="formFilterRekap" method="GET" action="{{ route('rekap.dinamis') }}" class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50">
+                    <div class="mb-6 flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
+                                <i class="fa-solid fa-filter text-lg"></i>
                             </div>
-                            <button type="button" onclick="resetFilterRekap()" class="inline-flex items-center gap-2 text-xs font-extrabold text-[#0055FF] hover:text-blue-800 transition">
-                                <i class="fa-solid fa-rotate-right"></i> Reset Filter
-                            </button>
-                        </div>
-
-                        <!-- Form Filter Utama (Tahun, Jenjang, Wilayah, Pencarian) -->
-                        <div class="space-y-5">
-                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 items-start">
-                                
-                                <!-- 1. Filter Tahun -->
-                                <div>
-                                    <label for="filterTahun" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Tahun</label>
-                                    <select id="filterTahun" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                                        <option value="Semua" selected>(All) Tahun</option>
-                                        <option value="2026">2026</option>
-                                        <option value="2025">2025</option>
-                                        <option value="2024">2024</option>
-                                    </select>
-                                </div>
-
-                                <!-- 2. Filter Jenjang -->
-                                <div>
-                                    <label for="filterJenjang" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Jenjang</label>
-                                    <select id="filterJenjang" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                                        <option value="Semua" selected>(All) Jenjang</option>
-                                        <option value="SD">SD</option>
-                                        <option value="SMP">SMP</option>
-                                        <option value="SMA">SMA</option>
-                                        <option value="SMK">SMK</option>
-                                    </select>
-                                </div>
-
-                                <!-- 3. Filter Wilayah (Dropdown Kelompok Wilayah) -->
-                                <div>
-                                    <label for="filterWilayah" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Wilayah</label>
-                                    <select id="filterWilayah" onchange="toggleTingkatWilayah()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                                        <option value="Nasional" selected>Nasional / Semua Wilayah</option>
-                                        <option value="Provinsi">Tingkat Provinsi</option>
-                                        <option value="Kabupaten">Tingkat Kabupaten / Kota</option>
-                                        <option value="Kecamatan">Tingkat Kecamatan</option>
-                                    </select>
-                                </div>
-
-                                <!-- 4. Pencarian -->
-                                <div>
-                                    <label for="filterPencarian" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Pencarian</label>
-                                    <div class="relative">
-                                        <input type="text" id="filterPencarian" placeholder="Cari nama daerah / wilayah..." class="w-full rounded-2xl border-2 border-slate-300 bg-white pl-10 pr-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all placeholder:font-normal placeholder:text-slate-400">
-                                        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
-                                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Opsi Turunan Wilayah (Provinsi, Kabupaten, Kecamatan) -->
-                            <div id="containerSubWilayah" class="hidden rounded-2xl border border-blue-100 bg-blue-50/50 p-4 transition-all">
-                                <p class="text-xs font-extrabold uppercase tracking-wider text-[#0055FF] mb-3">Detail Hirarki Wilayah</p>
-                                <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                                    <div id="wrapperProvinsi">
-                                        <label for="selectProvinsi" class="block text-xs font-bold text-slate-600 mb-1">Provinsi</label>
-                                        <select id="selectProvinsi" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
-                                            <option value="Semua" selected>(All) Provinsi</option>
-                                            <option value="31">DKI Jakarta</option>
-                                            <option value="32">Jawa Barat</option>
-                                            <option value="33">Jawa Tengah</option>
-                                            <option value="35">Jawa Timur</option>
-                                        </select>
-                                    </div>
-
-                                    <div id="wrapperKabupaten">
-                                        <label for="selectKabupaten" class="block text-xs font-bold text-slate-600 mb-1">Kabupaten / Kota</label>
-                                        <select id="selectKabupaten" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
-                                            <option value="Semua" selected>(All) Kabupaten</option>
-                                        </select>
-                                    </div>
-
-                                    <div id="wrapperKecamatan">
-                                        <label for="selectKecamatan" class="block text-xs font-bold text-slate-600 mb-1">Kecamatan</label>
-                                        <select id="selectKecamatan" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
-                                            <option value="Semua" selected>(All) Kecamatan</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            <div>
+                                <h3 class="text-xl font-black text-[#071a33]">Filter Rekap Dinamis</h3>
+                                <p class="text-xs font-bold text-slate-500">Filter data berdasarkan Tahun, Jenjang, Wilayah, dan Pencarian kata kunci</p>
                             </div>
                         </div>
-
-                        <!-- Action Buttons -->
-                        <div class="mt-5 flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-100">
-                            <button type="button" class="rounded-2xl border-2 border-slate-200 bg-white px-6 py-2.5 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 flex items-center gap-2">
-                                <i class="fa-solid fa-file-excel text-emerald-600"></i> Ekspor Excel
-                            </button>
-                            <button type="button" class="rounded-2xl bg-[#0055FF] px-6 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue-700 shadow-md shadow-blue-600/20 flex items-center gap-2">
-                                <i class="fa-solid fa-magnifying-glass"></i> Tampilkan Rekap
-                            </button>
-                        </div>
-                    </section>
-
-                    <!-- TABEL DATA AGREGASI -->
-                    <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-4">
-                        <div class="flex items-center justify-between border-b border-slate-100 pb-4">
-                            <div class="flex items-center gap-3">
-                                <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
-                                    <i class="fa-solid fa-table-cells text-lg"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-2xl font-black text-[#071a33]">Ringkasan Data Alokasi & Penyaluran</h3>
-                                    <p class="text-xs font-bold text-slate-500">Agregasi nasional berdasarkan alokasi siswa, alokasi dana, penyaluran, dan sisa dana.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-left border-collapse min-w-[700px]">
-                                <thead>
-                                    <tr class="border-b-2 border-slate-200 bg-slate-50/80 mono text-xs uppercase font-extrabold text-slate-500 tracking-wider">
-                                        <th class="py-4 px-4 rounded-l-xl">JENJANG</th>
-                                        <th class="py-4 px-4 text-right">ALOKASI DANA</th>
-                                        <th class="py-4 px-4 text-right">ALOKASI SISWA</th>
-                                        <th class="py-4 px-4 text-right">DANA DISALURKAN</th>
-                                        <th class="py-4 px-4 text-right rounded-r-xl">SISA DANA</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-100 text-sm font-semibold text-slate-700">
-                                    @foreach($dataRekap as $row)
-                                        <tr class="hover:bg-blue-50/40 transition-colors">
-                                            <td class="py-4 px-4 font-bold text-[#071a33]">
-                                                <span class="inline-block w-12 py-1 text-center text-xs font-extrabold rounded-lg bg-blue-50 text-[#0055FF] border border-blue-100">
-                                                    {{ $row->jenjang }}
-                                                </span>
-                                            </td>
-                                            <td class="py-4 px-4 text-right mono font-bold text-slate-800">
-                                                Rp {{ number_format($row->alokasi_dana, 0, ',', '.') }}
-                                            </td>
-                                            <td class="py-4 px-4 text-right mono font-bold text-slate-800">
-                                                {{ number_format($row->alokasi_siswa, 0, ',', '.') }}
-                                            </td>
-                                            <td class="py-4 px-4 text-right mono text-emerald-600 font-extrabold">
-                                                Rp {{ number_format($row->dana_disalurkan, 0, ',', '.') }}
-                                            </td>
-                                            <td class="py-4 px-4 text-right mono text-amber-600 font-bold">
-                                                Rp {{ number_format($row->sisa_dana, 0, ',', '.') }}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                                <tfoot>
-                                    <tr class="bg-slate-50/80 font-extrabold text-[#071a33] text-sm border-t-2 border-slate-200">
-                                        <td class="py-4 px-4 font-black">Grand Total</td>
-                                        <td class="py-4 px-4 text-right mono text-[#0055FF] font-black">
-                                            Rp {{ number_format($totalData->alokasi_dana, 0, ',', '.') }}
-                                        </td>
-                                        <td class="py-4 px-4 text-right mono font-black">
-                                            {{ number_format($totalData->alokasi_siswa, 0, ',', '.') }}
-                                        </td>
-                                        <td class="py-4 px-4 text-right mono text-emerald-600 font-black">
-                                            Rp {{ number_format($totalData->dana_disalurkan, 0, ',', '.') }}
-                                        </td>
-                                        <td class="py-4 px-4 text-right mono text-amber-600 font-black">
-                                            Rp {{ number_format($totalData->sisa_dana, 0, ',', '.') }}
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </section>
-
-                    <!-- FOOTER KONSISTEN -->
-                    <div class="text-sm font-bold text-slate-400 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-slate-200/60">
-                        <span>© 2020–{{ date('Y') }} Puslapdik · Kemendikdasmen RI</span>
-                        <span>SIPINTAR - Sistem Informasi Program Indonesia Pintar</span>
+                        <button type="button" onclick="resetFilterRekap()" class="inline-flex items-center gap-2 text-xs font-extrabold text-[#0055FF] hover:text-blue-800 transition">
+                            <i class="fa-solid fa-rotate-right"></i> Reset Filter
+                        </button>
                     </div>
 
+                    <div class="space-y-5">
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 items-start">
+                            
+                            <!-- 1. Filter Tahun -->
+                            <div>
+                                <label for="filterTahun" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Tahun</label>
+                                <select id="filterTahun" name="tahun" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                                    <option value="Semua" {{ request('tahun') == 'Semua' ? 'selected' : '' }}>Semua Tahun</option>
+                                    @foreach($tahunList as $itemTahun)
+                                        <option value="{{ $itemTahun }}" {{ (string) request('tahun') === (string) $itemTahun ? 'selected' : '' }}>{{ $itemTahun }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- 2. Filter Jenjang -->
+                            <div>
+                                <label for="filterJenjang" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Jenjang</label>
+                                <select id="filterJenjang" name="jenjang" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                                    <option value="Semua" {{ request('jenjang') == 'Semua' ? 'selected' : '' }}>Semua Jenjang</option>
+                                    @foreach($jenjangList as $itemJenjang)
+                                        <option value="{{ $itemJenjang }}" {{ request('jenjang') === $itemJenjang ? 'selected' : '' }}>{{ $itemJenjang }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- 3. Filter Wilayah -->
+                            <div>
+                                <label for="filterWilayah" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Wilayah</label>
+                                <select id="filterWilayah" name="wilayah" onchange="toggleTingkatWilayah()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                                    <option value="Nasional" {{ request('wilayah') == 'Nasional' ? 'selected' : '' }}>Semua Wilayah</option>
+                                    <option value="Provinsi" {{ request('wilayah') == 'Provinsi' ? 'selected' : '' }}>Tingkat Provinsi</option>
+                                    <option value="Kabupaten" {{ request('wilayah') == 'Kabupaten' ? 'selected' : '' }}>Tingkat Kabupaten / Kota</option>
+                                    <option value="Kecamatan" {{ request('wilayah') == 'Kecamatan' ? 'selected' : '' }}>Tingkat Kecamatan</option>
+                                </select>
+                            </div>
+
+                            <!-- 4. Pencarian -->
+                            <div>
+                                <label for="filterPencarian" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Pencarian</label>
+                                <div class="relative">
+                                    <input type="text" id="filterPencarian" name="search" value="{{ request('search') }}" placeholder="Cari nama daerah / wilayah..." class="w-full rounded-2xl border-2 border-slate-300 bg-white pl-10 pr-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all placeholder:font-normal placeholder:text-slate-400">
+                                    <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Opsi Turunan Wilayah (Provinsi, Kabupaten, Kecamatan) -->
+                        <div id="containerSubWilayah" class="hidden rounded-2xl border border-blue-100 bg-blue-50/50 p-4 transition-all">
+                            <p class="text-xs font-extrabold uppercase tracking-wider text-[#0055FF] mb-3">Detail Hirarki Wilayah</p>
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                                <div id="wrapperProvinsi">
+                                    <label for="selectProvinsi" class="block text-xs font-bold text-slate-600 mb-1">Provinsi</label>
+                                    <select id="selectProvinsi" name="provinsi" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
+                                        <option value="Semua">(All) Provinsi</option>
+                                        @foreach($provinsiList as $itemProvinsi)
+                                            <option value="{{ $itemProvinsi }}" {{ request('provinsi') === $itemProvinsi ? 'selected' : '' }}>{{ $itemProvinsi }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div id="wrapperKabupaten">
+                                    <label for="selectKabupaten" class="block text-xs font-bold text-slate-600 mb-1">Kabupaten / Kota</label>
+                                    <select id="selectKabupaten" name="kabupaten" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
+                                        <option value="Semua">(All) Kabupaten</option>
+                                        @foreach($kabupatenList as $itemKabupaten)
+                                            <option value="{{ $itemKabupaten }}" {{ request('kabupaten') === $itemKabupaten ? 'selected' : '' }}>{{ $itemKabupaten }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div id="wrapperKecamatan">
+                                    <label for="selectKecamatan" class="block text-xs font-bold text-slate-600 mb-1">Kecamatan</label>
+                                    <select id="selectKecamatan" name="kecamatan" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
+                                        <option value="Semua">(All) Kecamatan</option>
+                                        @foreach($kecamatanList as $itemKecamatan)
+                                            <option value="{{ $itemKecamatan }}" {{ request('kecamatan') === $itemKecamatan ? 'selected' : '' }}>{{ $itemKecamatan }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-5 flex flex-wrap items-center justify-end gap-3 pt-4 border-t border-slate-100">
+                        <button type="button" class="rounded-2xl border-2 border-slate-200 bg-white px-6 py-2.5 text-sm font-extrabold text-slate-700 transition hover:bg-slate-50 flex items-center gap-2">
+                            <i class="fa-solid fa-file-excel text-emerald-600"></i> Ekspor Excel
+                        </button>
+                        <button type="submit" class="rounded-2xl bg-[#0055FF] px-6 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue-700 shadow-md shadow-blue-600/20 flex items-center gap-2">
+                            <i class="fa-solid fa-magnifying-glass"></i> Tampilkan Rekap
+                        </button>
+                    </div>
+                </form>
+
+                <!-- TABEL DATA AGREGASI -->
+                <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
+                                <i class="fa-solid fa-table-cells text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-black text-[#071a33]">Ringkasan Data Alokasi & Penyaluran</h3>
+                                <p class="text-xs font-bold text-slate-500">Agregasi data berdasarkan filter yang dipilih (Top 10 Terbesar).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse min-w-[700px]">
+                            <thead>
+                                <tr class="border-b-2 border-slate-200 bg-slate-50/80 mono text-xs uppercase font-extrabold text-slate-500 tracking-wider">
+                                    <th class="py-4 px-4 rounded-l-xl">JENJANG</th>
+                                    <th class="py-4 px-4 text-right">ALOKASI DANA</th>
+                                    <th class="py-4 px-4 text-right">ALOKASI SISWA</th>
+                                    <th class="py-4 px-4 text-right">DANA DISALURKAN</th>
+                                    <th class="py-4 px-4 text-right rounded-r-xl">SISA DANA</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 text-sm font-semibold text-slate-700">
+                                @forelse($dataRekap as $row)
+                                    <tr class="hover:bg-blue-50/40 transition-colors">
+                                        <td class="py-4 px-4 font-bold text-[#071a33]">
+                                            <span class="inline-block w-12 py-1 text-center text-xs font-extrabold rounded-lg bg-blue-50 text-[#0055FF] border border-blue-100">
+                                                {{ $row->jenjang }}
+                                            </span>
+                                        </td>
+                                        <td class="py-4 px-4 text-right mono font-bold text-slate-800">
+                                            Rp {{ number_format($row->alokasi_dana, 0, ',', '.') }}
+                                        </td>
+                                        <td class="py-4 px-4 text-right mono font-bold text-slate-800">
+                                            {{ number_format($row->alokasi_siswa, 0, ',', '.') }}
+                                        </td>
+                                        <td class="py-4 px-4 text-right mono text-emerald-600 font-extrabold">
+                                            Rp {{ number_format($row->dana_disalurkan, 0, ',', '.') }}
+                                        </td>
+                                        <td class="py-4 px-4 text-right mono text-amber-600 font-bold">
+                                            Rp {{ number_format($row->sisa_dana, 0, ',', '.') }}
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="py-6 text-center text-slate-400 font-bold">Tidak ada data rekap yang sesuai dengan filter.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                            @if(isset($grandTotal))
+                            <tfoot>
+                                <tr class="bg-slate-50/80 font-extrabold text-[#071a33] text-sm border-t-2 border-slate-200">
+                                    <td class="py-4 px-4 font-black">Grand Total</td>
+                                    <td class="py-4 px-4 text-right mono text-[#0055FF] font-black">
+                                        Rp {{ number_format($grandTotal->alokasi_dana, 0, ',', '.') }}
+                                    </td>
+                                    <td class="py-4 px-4 text-right mono font-black">
+                                        {{ number_format($grandTotal->alokasi_siswa, 0, ',', '.') }}
+                                    </td>
+                                    <td class="py-4 px-4 text-right mono text-emerald-600 font-black">
+                                        Rp {{ number_format($grandTotal->dana_disalurkan, 0, ',', '.') }}
+                                    </td>
+                                    <td class="py-4 px-4 text-right mono text-amber-600 font-black">
+                                        Rp {{ number_format($grandTotal->sisa_dana, 0, ',', '.') }}
+                                    </td>
+                                </tr>
+                            </tfoot>
+                            @endif
+                        </table>
+                    </div>
+                </section>
+
+                <!-- FOOTER KONSISTEN -->
+                <div class="text-sm font-bold text-slate-400 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-slate-200/60">
+                    <span>© 2020–{{ date('Y') }} Puslapdik · Kemendikdasmen RI</span>
+                    <span>SIPINTAR - Sistem Informasi Program Indonesia Pintar</span>
                 </div>
+
             </div>
         </main>
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            toggleTingkatWilayah();
+
+            document.querySelectorAll('#formFilterRekap select').forEach(function(select) {
+                select.addEventListener('change', function() {
+                    document.getElementById('formFilterRekap').submit();
+                });
+            });
+        });
+
         function toggleTingkatWilayah() {
             const level = document.getElementById('filterWilayah').value;
             const container = document.getElementById('containerSubWilayah');
@@ -414,7 +415,6 @@
             } else {
                 container.classList.remove('hidden');
                 
-                // Tampilkan/Sembunyikan dropdown bertahap sesuai hirarki wilayah
                 prov.style.display = (level === 'Provinsi' || level === 'Kabupaten' || level === 'Kecamatan') ? 'block' : 'none';
                 kab.style.display = (level === 'Kabupaten' || level === 'Kecamatan') ? 'block' : 'none';
                 kec.style.display = (level === 'Kecamatan') ? 'block' : 'none';
@@ -430,7 +430,11 @@
             document.getElementById('selectKabupaten').value = "Semua";
             document.getElementById('selectKecamatan').value = "Semua";
             toggleTingkatWilayah();
+            
+            // Submit form untuk merefresh data setelah reset
+            document.getElementById('formFilterRekap').submit();
         }
     </script>
+     
 </body>
 </html>

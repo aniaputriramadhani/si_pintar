@@ -223,232 +223,1282 @@
             <div class="min-h-screen text-[#071a33] relative overflow-hidden px-4 py-6 sm:px-8 lg:px-12 lg:py-10">
     <div class="relative z-10 mx-auto max-w-[1540px] space-y-8">
 
-        <!-- SECTION FILTER DATA PIP -->
-        <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50">
-            <div class="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
-                <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
-                        <i class="fa-solid fa-filter text-lg"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-black text-[#071a33]">Filter Data PIP</h3>
-                        <p class="text-xs font-bold text-slate-500">Filter data penerima PIP berdasarkan Tahun, Tahap, atau Kategori SK</p>
-                    </div>
-                </div>
-                <button type="button" onclick="resetFilterPip()" class="inline-flex items-center gap-2 text-xs font-extrabold text-[#0055FF] hover:text-blue-800 transition">
-                    <i class="fa-solid fa-rotate-right"></i> Reset Filter
-                </button>
+        <!-- ================= SECTION FILTER DATA PIP ================= -->
+<form id="formFilterPip" method="GET" action="{{ route('pip.index') }}" class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 mb-8">
+    <div class="mb-4 flex items-center justify-between border-b border-slate-100 pb-4">
+        <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
+                <i class="fa-solid fa-filter text-lg"></i>
+            </div>
+            <div>
+                <h3 class="text-xl font-black text-[#071a33]">Filter Data PIP</h3>
+                <p class="text-xs font-bold text-slate-500">Filter data penerima PIP berdasarkan Tahun, Jenjang, Kategori SK, Wilayah, dan Nomor SK</p>
+            </div>
+        </div>
+        <button type="button" onclick="resetFilterPip()" class="inline-flex items-center gap-2 text-xs font-extrabold text-[#0055FF] hover:text-blue-800 transition">
+            <i class="fa-solid fa-rotate-right"></i> Reset Filter
+        </button>
+    </div>
+
+    <!-- Form Filter Layout (Responsive Grid) -->
+    <div class="space-y-4">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-5 items-end">
+            
+            <!-- Filter Tahun -->
+            <div>
+                <label for="filterTahunPip" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Tahun SK</label>
+                <select id="filterTahunPip" name="tahun" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                    <option value="Semua">Semua Tahun</option>
+                    @foreach($tahunList as $item)
+                        <option value="{{ $item }}" {{ (string)$tahun === (string)$item ? 'selected' : '' }}>{{ $item }}</option>
+                    @endforeach
+                </select>
             </div>
 
-            <!-- Form Filter Layout (4 Kolom) -->
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 items-end">
-                
-                <!-- Filter Tahun -->
-                <div>
-                    <label for="filterTahunPip" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Tahun SK</label>
-                    <select id="filterTahunPip" onchange="applyFilterPip()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                        <option value="Semua" selected>Tahun Semua</option>
-                        <option value="2026">Tahun 2026</option>
-                        <option value="2025">Tahun 2025</option>
-                        <option value="2024">Tahun 2024</option>
+            <!-- Filter Jenjang (Urutan: SD, SMP, SMA, SMK) -->
+            <div>
+                <label for="filterJenjangPip" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Jenjang</label>
+                <select id="filterJenjangPip" name="jenjang" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                    <option value="Semua">Semua Jenjang</option>
+                    @php
+                        $sortedJenjang = ['SD', 'SMP', 'SMA', 'SMK'];
+                        $existingJenjang = collect($jenjangList ?? ['SD', 'SMP', 'SMA', 'SMK']);
+                        $finalJenjangList = collect($sortedJenjang)->intersect($existingJenjang)->merge($existingJenjang->diff($sortedJenjang));
+                    @endphp
+                    @foreach($finalJenjangList as $item)
+                        <option value="{{ $item }}" {{ $jenjang === $item ? 'selected' : '' }}>{{ $item }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Filter Kategori SK -->
+            <div>
+                <label for="filterKategoriSk" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Kategori SK</label>
+                <select id="filterKategoriSk" name="status_sk" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                    <option value="Semua">Semua Kategori</option>
+                    @foreach($statusSkList as $item)
+                        <option value="{{ $item }}" {{ $statusSk === $item ? 'selected' : '' }}>{{ $item }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Filter Wilayah Utama (Nasional, Provinsi, Kabupaten, Kecamatan) -->
+            <div>
+                <label for="filterWilayahPip" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Wilayah</label>
+                <select id="filterWilayahPip" name="wilayah_level" onchange="toggleTingkatWilayahPip()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
+                    <option value="Nasional">Semua Wilayah</option>
+                    <option value="Provinsi">Tingkat Provinsi</option>
+                    <option value="Kabupaten">Tingkat Kabupaten / Kota</option>
+                    <option value="Kecamatan">Tingkat Kecamatan</option>
+                </select>
+            </div>
+
+            <!-- Input Nomor SK / Pencarian -->
+            <div>
+                <label for="filterNomorSk" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Nomor SK</label>
+                <input type="text" id="filterNomorSk" name="search" value="{{ $search }}" placeholder="Cth: 211/D4/PIP/2024" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] placeholder:text-slate-400 focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all">
+            </div>
+
+        </div>
+
+        <!-- Opsi Turunan Wilayah Bertingkat (Provinsi, Kabupaten/Kota, Kecamatan) -->
+        <div id="containerSubWilayahPip" class="hidden rounded-2xl border border-blue-100 bg-blue-50/50 p-4 transition-all">
+            <p class="text-xs font-extrabold uppercase tracking-wider text-[#0055FF] mb-3">Detail Hirarki Wilayah</p>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                <div id="wrapperProvinsiPip">
+                    <label for="filterProvinsiPip" class="block text-xs font-bold text-slate-600 mb-1">Provinsi</label>
+                    <select id="filterProvinsiPip" name="provinsi" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
+                        <option value="Semua">Semua Provinsi</option>
+                        @foreach($provinsiList as $item)
+                            <option value="{{ $item }}" {{ $provinsi === $item ? 'selected' : '' }}>{{ $item }}</option>
+                        @endforeach
                     </select>
                 </div>
 
-                <!-- Filter Tahap -->
-                <div>
-                    <label for="filterTahapPip" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Tahap SK</label>
-                    <select id="filterTahapPip" onchange="applyFilterPip()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                        <option value="Semua" selected>Tahap Semua</option>
-                        <option value="1">Tahap 1</option>
-                        <option value="2">Tahap 2</option>
-                        <option value="3">Tahap 3</option>
-                        <option value="4">Tahap 4</option>
-                        <option value="5">Tahap 5</option>
+                <div id="wrapperKabupatenPip">
+                    <label for="filterKabupatenPip" class="block text-xs font-bold text-slate-600 mb-1">Kabupaten/Kota</label>
+                    <select id="filterKabupatenPip" name="kabupaten" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
+                        <option value="Semua">Semua Kabupaten/Kota</option>
+                        @foreach($kabupatenList as $item)
+                            <option value="{{ $item }}" {{ $kabupaten === $item ? 'selected' : '' }}>{{ $item }}</option>
+                        @endforeach
                     </select>
                 </div>
 
-                <!-- Filter Kategori SK -->
-                <div>
-                    <label for="filterKategoriSk" class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2">Kategori SK</label>
-                    <select id="filterKategoriSk" onchange="applyFilterPip()" class="w-full rounded-2xl border-2 border-slate-300 bg-white px-3.5 py-2.5 text-sm font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none focus:ring-4 focus:ring-blue-100 transition-all cursor-pointer">
-                        <option value="Semua" selected>Kategori Semua</option>
-                        <option value="SK Pemberian">SK Pemberian</option>
-                        <option value="SK Nominasi">SK Nominasi</option>
-                        <option value="SK Pembatalan">SK Pembatalan</option>
+                <div id="wrapperKecamatanPip">
+                    <label for="filterKecamatanPip" class="block text-xs font-bold text-slate-600 mb-1">Kecamatan</label>
+                    <select id="filterKecamatanPip" name="kecamatan" class="w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-xs font-bold text-[#071a33] focus:border-[#0055FF] focus:outline-none">
+                        <option value="Semua">Semua Kecamatan</option>
+                        @foreach($kecamatanList as $item)
+                            <option value="{{ $item }}" {{ $kecamatan === $item ? 'selected' : '' }}>{{ $item }}</option>
+                        @endforeach
                     </select>
                 </div>
+            </div>
+        </div>
 
-                <!-- Button Filter -->
+        <!-- Button Submit Filter -->
+        <div class="flex justify-end pt-2">
+            <button type="submit" class="rounded-2xl bg-[#0055FF] px-6 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue-700 shadow-md shadow-blue-600/20 flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass"></i> Tampilkan Filter PIP
+            </button>
+        </div>
+    </div>
+</form>
+
+<!-- ================= CARD TABEL DATA PIP ================= -->
+<section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-4">
+
+    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+
+        <div class="flex items-center gap-3">
+
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
+                <i class="fa-solid fa-list-check text-lg"></i>
+            </div>
+
+            <div>
+                <h3 class="text-2xl font-black text-[#071a33]">
+                    Daftar Penerima Data PIP
+                </h3>
+
+                <p class="text-xs font-bold text-slate-500">
+                    Menampilkan detail data nominasi, pemberian, dan status aktivasi dana PIP siswa
+                </p>
+            </div>
+
+        </div>
+
+        <span class="px-4 py-2 rounded-xl bg-blue-50 text-[#0055FF] text-xs font-black border border-blue-100">
+            Total Data:
+            <span id="totalSiswaPipCount">
+                {{ method_exists($dataPip, 'total') ? $dataPip->total() : count($dataPip) }}
+            </span>
+            Siswa
+        </span>
+
+    </div>
+
+
+    <!-- ================= TABEL ================= -->
+    <div class="overflow-x-auto">
+
+        <table class="w-full text-left border-collapse whitespace-nowrap min-w-[950px]">
+
+            <thead>
+                <tr class="border-b-2 border-slate-200 bg-slate-100 text-slate-800">
+
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider rounded-l-xl">
+                        Nama Siswa
+                    </th>
+
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">
+                        NISN
+                    </th>
+
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">
+                        Nama Sekolah
+                    </th>
+
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">
+                        Nomor SK
+                    </th>
+
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">
+                        Nominal Bantuan
+                    </th>
+
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center">
+                        Status Aktivasi
+                    </th>
+
+                    <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center rounded-r-xl">
+                        Aksi - Detail
+                    </th>
+
+                </tr>
+            </thead>
+
+
+            <tbody
+                id="tablePipBody"
+                class="divide-y divide-slate-200 text-sm font-semibold text-slate-900">
+
+                @forelse($dataPip as $item)
+
+                    @php
+
+                        $rowBg = 'bg-white hover:bg-slate-50';
+
+                        if ($item->status_aktivasi === 'Sudah Aktivasi') {
+
+                            $rowBg = 'bg-emerald-100/90 hover:bg-emerald-200/90 border-b-2 border-emerald-300';
+
+                        } elseif ($item->status_aktivasi === 'Proses di Bank') {
+
+                            $rowBg = 'bg-blue-100/90 hover:bg-blue-200/90 border-b-2 border-blue-300';
+
+                        } else {
+
+                            $rowBg = 'bg-rose-100/90 hover:bg-rose-200/90 border-b-2 border-rose-300';
+
+                        }
+
+                    @endphp
+
+
+                    <tr class="{{ $rowBg }} transition-all font-bold">
+
+                        <td class="p-4 text-[#071a33]">
+                            {{ $item->nama_siswa }}
+                        </td>
+
+                        <td class="p-4 text-slate-800">
+                            {{ $item->nisn }}
+                        </td>
+
+                        <td class="p-4 text-slate-800">
+                            {{ $item->nama_sekolah }}
+                        </td>
+
+                        <td class="p-4 text-slate-700">
+                            {{ $item->no_sk }}
+                        </td>
+
+                        <td class="p-4 text-slate-900">
+                            Rp {{ number_format($item->nominal_dana, 0, ',', '.') }}
+                        </td>
+
+
+                        <!-- STATUS -->
+                        <td class="p-4 text-center">
+
+                            @if($item->status_aktivasi === 'Sudah Aktivasi')
+
+                                <span class="px-3.5 py-1 rounded-full bg-emerald-600 text-white border border-emerald-700 text-xs font-black shadow-sm">
+                                    Sudah Aktivasi
+                                </span>
+
+                            @elseif($item->status_aktivasi === 'Proses di Bank')
+
+                                <span class="px-3.5 py-1 rounded-full bg-blue-600 text-white border border-blue-700 text-xs font-black shadow-sm">
+                                    Proses di Bank
+                                </span>
+
+                            @else
+
+                                <span class="px-3.5 py-1 rounded-full bg-rose-600 text-white border border-rose-700 text-xs font-black shadow-sm">
+                                    Belum Aktivasi
+                                </span>
+
+                            @endif
+
+                        </td>
+
+
+                        <!-- DETAIL -->
+                        <td class="p-4 text-center">
+
+                            <button
+                                type="button"
+                                onclick="detailPip({{ Js::from($item) }})"
+                                class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border-2 border-blue-400 text-[#0055FF] hover:bg-blue-50 font-black text-xs transition shadow-sm">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                                Lihat Detail
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                @empty
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="p-6 text-center text-slate-500 font-bold bg-white">
+
+                            Tidak ada data PIP yang cocok dengan filter.
+
+                        </td>
+
+                    </tr>
+
+                @endforelse
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- ================= PAGINATION ================= -->
+    @if(method_exists($dataPip, 'links'))
+
+        <div class="pt-4">
+
+            {{ $dataPip->withQueryString()->links() }}
+
+        </div>
+
+    @endif
+
+</section>
+
+
+
+<!-- ========================================================= -->
+<!-- ================= MODAL DETAIL PIP ====================== -->
+<!-- ========================================================= -->
+
+<div
+    id="modalDetailPip"
+    class="fixed inset-0 z-[99999] hidden items-center justify-center p-4 sm:p-6">
+
+
+    <!-- OVERLAY -->
+    <div
+        class="absolute inset-0 bg-[#071a33]/75 backdrop-blur-sm"
+        onclick="tutupDetailPip()">
+    </div>
+
+
+    <!-- MODAL -->
+    <div
+        class="relative z-10 w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[2rem] bg-white shadow-2xl border border-slate-200">
+
+
+        <!-- HEADER -->
+        <div class="flex items-center justify-between gap-4 px-6 py-5 sm:px-8 border-b border-slate-200 bg-gradient-to-r from-blue-50 to-white">
+
+            <div class="flex items-center gap-4">
+
+                <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-600 text-white shadow-lg shadow-blue-200">
+
+                    <i class="fa-solid fa-user-graduate text-xl"></i>
+
+                </div>
+
                 <div>
-                    <button type="button" onclick="applyFilterPip()" class="w-full rounded-2xl bg-[#0055FF] px-6 py-2.5 text-sm font-extrabold text-white transition hover:bg-blue-700 shadow-md shadow-blue-600/20 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-magnifying-glass"></i> Filter
-                    </button>
+
+                    <h3 class="text-xl sm:text-2xl font-black text-[#071a33]">
+                        Detail Data PIP
+                    </h3>
+
+                    <p class="text-xs sm:text-sm font-semibold text-slate-500">
+                        Informasi lengkap penerima Program Indonesia Pintar
+                    </p>
+
                 </div>
 
             </div>
-        </section>
 
-        <!-- CARD TABEL DATA PIP -->
-        <section class="rounded-[2.5rem] bg-white border-2 border-slate-200 p-6 sm:p-8 shadow-xl shadow-slate-200/50 space-y-4">
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
-                <div class="flex items-center gap-3">
-                    <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-50 text-[#0055FF]">
-                        <i class="fa-solid fa-list-check text-lg"></i>
+
+            <!-- TOMBOL X -->
+            <button
+                type="button"
+                onclick="tutupDetailPip()"
+                class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-500 hover:bg-rose-100 hover:text-rose-600 transition">
+
+                <i class="fa-solid fa-xmark text-lg"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- CONTENT -->
+        <div class="overflow-y-auto max-h-[calc(90vh-145px)] p-6 sm:p-8">
+
+            <div class="space-y-6">
+
+
+                <!-- ================= STATUS ================= -->
+                <div
+                    id="detailPipStatusBox"
+                    class="rounded-2xl border-2 border-slate-200 bg-slate-50 p-5">
+
+                    <div class="flex items-center justify-between gap-4 flex-wrap">
+
+                        <div class="flex items-center gap-3">
+
+                            <div
+                                id="detailPipStatusIcon"
+                                class="h-11 w-11 rounded-xl flex items-center justify-center bg-slate-200 text-slate-600">
+
+                                <i class="fa-solid fa-clock"></i>
+
+                            </div>
+
+                            <div>
+
+                                <p class="text-xs font-black uppercase tracking-wider text-slate-500">
+                                    Status Aktivasi
+                                </p>
+
+                                <p
+                                    id="detailPipStatus"
+                                    class="text-lg font-black text-slate-800">
+
+                                    -
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="text-right">
+
+                            <p class="text-xs font-bold text-slate-500">
+                                Nominal Bantuan
+                            </p>
+
+                            <p
+                                id="detailPipNominal"
+                                class="text-xl font-black text-[#071a33]">
+
+                                -
+
+                            </p>
+
+                        </div>
+
                     </div>
-                    <div>
-                        <h3 class="text-2xl font-black text-[#071a33]">Daftar Penerima Data PIP</h3>
-                        <p class="text-xs font-bold text-slate-500">Menampilkan detail data nominasi dan pemberian dana PIP siswa</p>
-                    </div>
+
                 </div>
 
-                <span class="px-4 py-2 rounded-xl bg-blue-50 text-[#0055FF] text-xs font-black border border-blue-100">
-                    Total Data: <span id="totalSiswaPipCount">0</span> Siswa
-                </span>
+
+
+                <!-- ================= IDENTITAS SISWA ================= -->
+                <div>
+
+                    <div class="flex items-center gap-2 mb-3">
+
+                        <div class="h-8 w-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                        </div>
+
+                        <h4 class="text-base font-black text-[#071a33]">
+                            Identitas Siswa
+                        </h4>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Nama Siswa
+                            </p>
+
+                            <p
+                                id="detailPipNama"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                NISN
+                            </p>
+
+                            <p
+                                id="detailPipNisn"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                NIK
+                            </p>
+
+                            <p
+                                id="detailPipNik"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Jenjang Pendidikan
+                            </p>
+
+                            <p
+                                id="detailPipJenjang"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= SEKOLAH & WILAYAH ================= -->
+                <div>
+
+                    <div class="flex items-center gap-2 mb-3">
+
+                        <div class="h-8 w-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+
+                            <i class="fa-solid fa-school"></i>
+
+                        </div>
+
+                        <h4 class="text-base font-black text-[#071a33]">
+                            Sekolah & Wilayah
+                        </h4>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+
+                        <div class="sm:col-span-2 rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Nama Sekolah
+                            </p>
+
+                            <p
+                                id="detailPipSekolah"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Provinsi
+                            </p>
+
+                            <p
+                                id="detailPipProvinsi"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Kabupaten / Kota
+                            </p>
+
+                            <p
+                                id="detailPipKabupaten"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Kecamatan
+                            </p>
+
+                            <p
+                                id="detailPipKecamatan"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= INFORMASI PIP ================= -->
+                <div>
+
+                    <div class="flex items-center gap-2 mb-3">
+
+                        <div class="h-8 w-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+
+                            <i class="fa-solid fa-money-check-dollar"></i>
+
+                        </div>
+
+                        <h4 class="text-base font-black text-[#071a33]">
+                            Informasi PIP
+                        </h4>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Tahun PIP
+                            </p>
+
+                            <p
+                                id="detailPipTahun"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-slate-400">
+                                Kategori SK
+                            </p>
+
+                            <p
+                                id="detailPipKategori"
+                                class="mt-1 font-black text-slate-800">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="sm:col-span-2 rounded-xl bg-blue-50 border border-blue-100 p-4">
+
+                            <p class="text-[11px] font-black uppercase text-blue-500">
+                                Nomor SK
+                            </p>
+
+                            <p
+                                id="detailPipSk"
+                                class="mt-1 font-black text-blue-900">
+
+                                -
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <!-- TABEL DENGAN DYNAMIC ROW COLORING -->
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse whitespace-nowrap min-w-[750px]">
-                    <thead>
-                        <tr class="border-b-2 border-slate-200 bg-slate-50/80 text-slate-700">
-                            <th class="py-4 px-4 font-black text-xs uppercase tracking-wider rounded-l-xl">Nama Siswa</th>
-                            <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Nominal Bantuan</th>
-                            <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center">Kategori SK</th>
-                            <th class="py-4 px-4 font-black text-xs uppercase tracking-wider">Nomor SK</th>
-                            <th class="py-4 px-4 font-black text-xs uppercase tracking-wider text-center rounded-r-xl">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tablePipBody" class="divide-y divide-slate-100 text-sm font-semibold text-slate-800">
-                        <!-- Rendered dynamically by JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-        </section>
+        </div>
 
-        <!-- FOOTER -->
-        <div class="text-sm font-bold text-slate-400 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-slate-200/60">
-            <span>© 2020–{{ date('Y') }} Puslapdik · Kemendikdasmen RI</span>
-            <span>SIPINTAR - Sistem Informasi Program Indonesia Pintar</span>
+
+
+        <!-- FOOTER MODAL -->
+        <div class="flex justify-end px-6 sm:px-8 py-4 border-t border-slate-200 bg-slate-50">
+
+            <button
+                type="button"
+                onclick="tutupDetailPip()"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#071a33] text-white font-black text-sm hover:bg-blue-700 transition shadow-lg">
+
+                <i class="fa-solid fa-xmark"></i>
+
+                Tutup
+
+            </button>
+
         </div>
 
     </div>
+
 </div>
 
-@push('scripts')
+
+
+<!-- ================= FOOTER ================= -->
+
+<div class="text-sm font-bold text-slate-500 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 border-t border-slate-200/60 mt-8">
+
+    <span>
+        © 2020–{{ date('Y') }} Puslapdik · Kemendikdasmen RI
+    </span>
+
+    <span>
+        SIPINTAR - Sistem Informasi Program Indonesia Pintar
+    </span>
+
+</div>
+
+
+
+<!-- ========================================================= -->
+<!-- ================= JAVASCRIPT ============================ -->
+<!-- ========================================================= -->
+
 <script>
-    const masterPipData = [
-        { namaSiswa: "Vina Handoko", tahun: "2026", tahap: "5", nominal: "Rp 450.000", kategoriSk: "SK Nominasi", noSk: "102/D4/PIP/2026" },
-        { namaSiswa: "Indra Hidayat", tahun: "2025", tahap: "2", nominal: "Rp 450.000", kategoriSk: "SK Pembatalan", noSk: "044/D4/PIP/2025" },
-        { namaSiswa: "Dedi Rahayu", tahun: "2024", tahap: "5", nominal: "Rp 450.000", kategoriSk: "SK Nominasi", noSk: "211/D4/PIP/2024" },
-        { namaSiswa: "Rina Ramadhan", tahun: "2025", tahap: "3", nominal: "Rp 450.000", kategoriSk: "SK Pemberian", noSk: "089/D4/PIP/2025" },
-        { namaSiswa: "Nur Anggraini", tahun: "2025", tahap: "4", nominal: "Rp 450.000", kategoriSk: "SK Pemberian", noSk: "095/D4/PIP/2025" },
-        { namaSiswa: "Kartika Rahayu", tahun: "2026", tahap: "1", nominal: "Rp 450.000", kategoriSk: "SK Nominasi", noSk: "003/D4/PIP/2026" },
-        { namaSiswa: "Aditya Susanto", tahun: "2025", tahap: "5", nominal: "Rp 450.000", kategoriSk: "SK Pembatalan", noSk: "130/D4/PIP/2025" },
-        { namaSiswa: "Nadia Permata", tahun: "2026", tahap: "2", nominal: "Rp 450.000", kategoriSk: "SK Nominasi", noSk: "041/D4/PIP/2026" },
-        { namaSiswa: "Rizky Utami", tahun: "2025", tahap: "5", nominal: "Rp 450.000", kategoriSk: "SK Pembatalan", noSk: "132/D4/PIP/2025" },
-        { namaSiswa: "Salsabila Simanjuntak", tahun: "2026", tahap: "2", nominal: "Rp 450.000", kategoriSk: "SK Pemberian", noSk: "045/D4/PIP/2026" }
-    ];
 
-    function renderPipTable(data) {
-        const tbody = document.getElementById('tablePipBody');
-        const totalCountSpan = document.getElementById('totalSiswaPipCount');
-        tbody.innerHTML = '';
-        totalCountSpan.innerText = data.length;
+    /* =========================================================
+       FILTER WILAYAH
+    ========================================================= */
 
-        if (data.length === 0) {
-            tbody.innerHTML = `
-                <tr>
-                    <td colspan="5" class="text-center py-8 text-slate-400 font-bold text-sm">
-                        Tidak ada data PIP yang cocok dengan filter.
-                    </td>
-                </tr>
-            `;
+    function toggleTingkatWilayahPip() {
+
+        const wilayahElement =
+            document.getElementById('filterWilayahPip');
+
+        if (!wilayahElement) {
             return;
         }
 
-        data.forEach(item => {
-            const tr = document.createElement('tr');
+        const wilayahLevel =
+            wilayahElement.value;
 
-            let rowBgClass = 'hover:bg-slate-100 transition-all border-b-2 border-slate-200';
-            let textNamaClass = 'text-[#071a33] font-bold';
-            let textSubClass = 'text-slate-700';
-            let textSkClass = 'text-slate-600';
+        const containerSub =
+            document.getElementById('containerSubWilayahPip');
 
-            // Pewarnaan Row berdasarkan Kategori SK
-            if (item.kategoriSk === 'SK Nominasi') {
-                rowBgClass = 'bg-blue-100 hover:bg-blue-200 border-b-2 border-blue-300 transition-all';
-                textNamaClass = 'text-blue-950 font-black';
-                textSubClass = 'text-blue-900 font-bold';
-                textSkClass = 'text-blue-800 font-semibold';
-            } else if (item.kategoriSk === 'SK Pemberian') {
-                rowBgClass = 'bg-emerald-100 hover:bg-emerald-200 border-b-2 border-emerald-300 transition-all';
-                textNamaClass = 'text-emerald-950 font-black';
-                textSubClass = 'text-emerald-900 font-bold';
-                textSkClass = 'text-emerald-800 font-semibold';
-            } else if (item.kategoriSk === 'SK Pembatalan') {
-                rowBgClass = 'bg-rose-100 hover:bg-rose-200 border-b-2 border-rose-300 transition-all';
-                textNamaClass = 'text-rose-950 font-black';
-                textSubClass = 'text-rose-900 font-bold';
-                textSkClass = 'text-rose-800 font-semibold';
+        const wrapProv =
+            document.getElementById('wrapperProvinsiPip');
+
+        const wrapKab =
+            document.getElementById('wrapperKabupatenPip');
+
+        const wrapKec =
+            document.getElementById('wrapperKecamatanPip');
+
+
+        if (!containerSub || !wrapProv || !wrapKab || !wrapKec) {
+            return;
+        }
+
+
+        if (wilayahLevel === 'Nasional') {
+
+            containerSub.classList.add('hidden');
+
+            wrapProv.style.display = 'none';
+            wrapKab.style.display = 'none';
+            wrapKec.style.display = 'none';
+
+        } else {
+
+            containerSub.classList.remove('hidden');
+
+
+            if (wilayahLevel === 'Provinsi') {
+
+                wrapProv.style.display = 'block';
+                wrapKab.style.display = 'none';
+                wrapKec.style.display = 'none';
+
             }
 
-            tr.className = rowBgClass;
+            else if (wilayahLevel === 'Kabupaten') {
 
-            let badgeSk = '';
-            let actionButton = '';
+                wrapProv.style.display = 'block';
+                wrapKab.style.display = 'block';
+                wrapKec.style.display = 'none';
 
-            if (item.kategoriSk === 'SK Pemberian') {
-                badgeSk = `<span class="px-3.5 py-1 rounded-full bg-emerald-200 text-emerald-900 border border-emerald-400 text-xs font-black">SK Pemberian</span>`;
-                actionButton = `<button onclick="detailPip('${item.namaSiswa}')" class="text-[#0055FF] hover:text-blue-900 font-black text-sm transition underline">Detail</button>`;
-            } else if (item.kategoriSk === 'SK Nominasi') {
-                badgeSk = `<span class="px-3.5 py-1 rounded-full bg-blue-200 text-blue-900 border border-blue-400 text-xs font-black">SK Nominasi</span>`;
-                actionButton = `<button onclick="detailPip('${item.namaSiswa}')" class="text-[#0055FF] hover:text-blue-900 font-black text-sm transition underline">Detail</button>`;
-            } else if (item.kategoriSk === 'SK Pembatalan') {
-                badgeSk = `<span class="px-3.5 py-1 rounded-full bg-rose-200 text-rose-900 border border-rose-400 text-xs font-black">SK Pembatalan</span>`;
-                actionButton = `<button onclick="detailPip('${item.namaSiswa}')" class="text-rose-800 hover:text-rose-950 font-black text-sm transition underline">Alasan</button>`;
             }
 
-            tr.innerHTML = `
-                <td class="p-4 ${textNamaClass}">${item.namaSiswa}</td>
-                <td class="p-4 ${textSubClass}">${item.nominal}</td>
-                <td class="p-4 text-center">${badgeSk}</td>
-                <td class="p-4 ${textSkClass}">${item.noSk}</td>
-                <td class="p-4 text-center">${actionButton}</td>
-            `;
-            tbody.appendChild(tr);
-        });
+            else if (wilayahLevel === 'Kecamatan') {
+
+                wrapProv.style.display = 'block';
+                wrapKab.style.display = 'block';
+                wrapKec.style.display = 'block';
+
+            }
+
+        }
+
     }
 
-    function applyFilterPip() {
-        const tahun = document.getElementById('filterTahunPip').value;
-        const tahap = document.getElementById('filterTahapPip').value;
-        const kategori = document.getElementById('filterKategoriSk').value;
 
-        const filtered = masterPipData.filter(item => {
-            const matchTahun = (tahun === "Semua" || item.tahun === tahun);
-            const matchTahap = (tahap === "Semua" || item.tahap === tahap);
-            const matchKategori = (kategori === "Semua" || item.kategoriSk === kategori);
 
-            return matchTahun && matchTahap && matchKategori;
-        });
-
-        renderPipTable(filtered);
-    }
+    /* =========================================================
+       RESET FILTER
+    ========================================================= */
 
     function resetFilterPip() {
-        document.getElementById('filterTahunPip').value = "Semua";
-        document.getElementById('filterTahapPip').value = "Semua";
-        document.getElementById('filterKategoriSk').value = "Semua";
-        renderPipTable(masterPipData);
+
+        const tahun =
+            document.getElementById('filterTahunPip');
+
+        const jenjang =
+            document.getElementById('filterJenjangPip');
+
+        const kategori =
+            document.getElementById('filterKategoriSk');
+
+        const wilayah =
+            document.getElementById('filterWilayahPip');
+
+        const nomorSk =
+            document.getElementById('filterNomorSk');
+
+        const form =
+            document.getElementById('formFilterPip');
+
+
+        if (tahun) {
+            tahun.value = 'Semua';
+        }
+
+        if (jenjang) {
+            jenjang.value = 'Semua';
+        }
+
+        if (kategori) {
+            kategori.value = 'Semua';
+        }
+
+        if (wilayah) {
+            wilayah.value = 'Nasional';
+        }
+
+        if (nomorSk) {
+            nomorSk.value = '';
+        }
+
+
+        toggleTingkatWilayahPip();
+
+
+        if (form) {
+            form.submit();
+        }
+
     }
 
-    function detailPip(nama) {
-        alert(`Melihat detail Data PIP untuk: ${nama}`);
+
+
+    /* =========================================================
+       BUKA MODAL DETAIL PIP
+    ========================================================= */
+
+    function detailPip(item) {
+
+        console.log('DETAIL PIP:', item);
+
+
+        /* ================= IDENTITAS ================= */
+
+        const nama =
+            document.getElementById('detailPipNama');
+
+        const nisn =
+            document.getElementById('detailPipNisn');
+
+        const nik =
+            document.getElementById('detailPipNik');
+
+        const jenjang =
+            document.getElementById('detailPipJenjang');
+
+
+        if (nama) {
+            nama.textContent =
+                item.nama_siswa || '-';
+        }
+
+        if (nisn) {
+            nisn.textContent =
+                item.nisn || '-';
+        }
+
+        if (nik) {
+            nik.textContent =
+                item.nik || '-';
+        }
+
+        if (jenjang) {
+            jenjang.textContent =
+                item.jenjang || '-';
+        }
+
+
+
+        /* ================= SEKOLAH ================= */
+
+        const sekolah =
+            document.getElementById('detailPipSekolah');
+
+        const provinsi =
+            document.getElementById('detailPipProvinsi');
+
+        const kabupaten =
+            document.getElementById('detailPipKabupaten');
+
+        const kecamatan =
+            document.getElementById('detailPipKecamatan');
+
+
+        if (sekolah) {
+            sekolah.textContent =
+                item.nama_sekolah || '-';
+        }
+
+        if (provinsi) {
+            provinsi.textContent =
+                item.provinsi || '-';
+        }
+
+        if (kabupaten) {
+            kabupaten.textContent =
+                item.kabupaten_kota || '-';
+        }
+
+        if (kecamatan) {
+            kecamatan.textContent =
+                item.kecamatan || '-';
+        }
+
+
+
+        /* ================= DATA PIP ================= */
+
+        const tahun =
+            document.getElementById('detailPipTahun');
+
+        const kategori =
+            document.getElementById('detailPipKategori');
+
+        const nomorSk =
+            document.getElementById('detailPipSk');
+
+
+        if (tahun) {
+            tahun.textContent =
+                item.tahun || '-';
+        }
+
+        if (kategori) {
+            kategori.textContent =
+                item.kategori_sk || '-';
+        }
+
+        if (nomorSk) {
+            nomorSk.textContent =
+                item.no_sk || '-';
+        }
+
+
+
+        /* ================= NOMINAL ================= */
+
+        const nominalElement =
+            document.getElementById('detailPipNominal');
+
+        const nominal =
+            Number(item.nominal_dana || 0);
+
+
+        if (nominalElement) {
+
+            nominalElement.textContent =
+                'Rp ' + nominal.toLocaleString('id-ID');
+
+        }
+
+
+
+        /* ================= STATUS ================= */
+
+        const status =
+            item.status_aktivasi || 'Belum Aktivasi';
+
+
+        const statusBox =
+            document.getElementById('detailPipStatusBox');
+
+        const statusIcon =
+            document.getElementById('detailPipStatusIcon');
+
+        const statusText =
+            document.getElementById('detailPipStatus');
+
+
+        if (statusText) {
+
+            statusText.textContent =
+                status;
+
+        }
+
+
+        /* RESET STYLE */
+
+        if (statusBox) {
+
+            statusBox.className =
+                'rounded-2xl border-2 p-5';
+
+        }
+
+
+        if (statusIcon) {
+
+            statusIcon.className =
+                'h-11 w-11 rounded-xl flex items-center justify-center';
+
+        }
+
+
+
+        /* ================= SUDAH AKTIVASI ================= */
+
+        if (status === 'Sudah Aktivasi') {
+
+            if (statusBox) {
+
+                statusBox.classList.add(
+                    'bg-emerald-50',
+                    'border-emerald-200'
+                );
+
+            }
+
+
+            if (statusIcon) {
+
+                statusIcon.classList.add(
+                    'bg-emerald-600',
+                    'text-white'
+                );
+
+                statusIcon.innerHTML =
+                    '<i class="fa-solid fa-circle-check"></i>';
+
+            }
+
+
+            if (statusText) {
+
+                statusText.className =
+                    'text-lg font-black text-emerald-700';
+
+            }
+
+        }
+
+
+
+        /* ================= PROSES DI BANK ================= */
+
+        else if (status === 'Proses di Bank') {
+
+            if (statusBox) {
+
+                statusBox.classList.add(
+                    'bg-blue-50',
+                    'border-blue-200'
+                );
+
+            }
+
+
+            if (statusIcon) {
+
+                statusIcon.classList.add(
+                    'bg-blue-600',
+                    'text-white'
+                );
+
+                statusIcon.innerHTML =
+                    '<i class="fa-solid fa-building-columns"></i>';
+
+            }
+
+
+            if (statusText) {
+
+                statusText.className =
+                    'text-lg font-black text-blue-700';
+
+            }
+
+        }
+
+
+
+        /* ================= BELUM AKTIVASI ================= */
+
+        else {
+
+            if (statusBox) {
+
+                statusBox.classList.add(
+                    'bg-rose-50',
+                    'border-rose-200'
+                );
+
+            }
+
+
+            if (statusIcon) {
+
+                statusIcon.classList.add(
+                    'bg-rose-600',
+                    'text-white'
+                );
+
+                statusIcon.innerHTML =
+                    '<i class="fa-solid fa-clock"></i>';
+
+            }
+
+
+            if (statusText) {
+
+                statusText.className =
+                    'text-lg font-black text-rose-700';
+
+            }
+
+        }
+
+
+
+        /* ================= BUKA MODAL ================= */
+
+        const modal =
+            document.getElementById('modalDetailPip');
+
+
+        if (!modal) {
+
+            console.error(
+                'ERROR: modalDetailPip tidak ditemukan.'
+            );
+
+            return;
+
+        }
+
+
+        modal.classList.remove('hidden');
+
+        modal.classList.add('flex');
+
+        document.body.classList.add('overflow-hidden');
+
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        renderPipTable(masterPipData);
+
+
+    /* =========================================================
+       TUTUP MODAL
+    ========================================================= */
+
+    function tutupDetailPip() {
+
+        const modal =
+            document.getElementById('modalDetailPip');
+
+
+        if (!modal) {
+            return;
+        }
+
+
+        modal.classList.add('hidden');
+
+        modal.classList.remove('flex');
+
+        document.body.classList.remove('overflow-hidden');
+
+    }
+
+
+
+    /* =========================================================
+       ESC UNTUK MENUTUP MODAL
+    ========================================================= */
+
+    document.addEventListener('keydown', function(event) {
+
+        if (event.key === 'Escape') {
+
+            const modal =
+                document.getElementById('modalDetailPip');
+
+
+            if (
+                modal &&
+                !modal.classList.contains('hidden')
+            ) {
+
+                tutupDetailPip();
+
+            }
+
+        }
+
     });
+
+
+
+    /* =========================================================
+       INIT
+    ========================================================= */
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        toggleTingkatWilayahPip();
+
+    });
+
 </script>
-</body>
-</html>
